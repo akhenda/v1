@@ -3,6 +3,7 @@
   "private": true,
   "workspaces": ["packages/*", "apps/*", "tooling/*"],
   "scripts": {
+    "preinstall": "npx only-allow bun",
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
@@ -17,13 +18,16 @@
     "lint": "turbo lint && bun lint:repo",
     "lint:repo": "bunx sherif@latest",
     "lint:repo:fix": "bunx sherif@latest --fix",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@t3-oss/env-nextjs": "^0.11.1",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "ora": "^5.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.1",
