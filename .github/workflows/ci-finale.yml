@@ -1,0 +1,40 @@
+name: Finale
+
+on: workflow_call
+
+jobs:
+  finale:
+    runs-on: ubuntu-latest
+    name: Final Jobs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⤵️ Download code coverage results
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: 📔 Generating coverage badges
+        uses: jpb06/coverage-badges-action@latest
+        if: github.event_name != 'pull_request'
+        with:
+          branches: main,dev
+          commit-message: 'chore: update coverage badges [skip ci]'
+          output-folder: ./.github/badges
+          coverage-summary-path: |
+            ./coverage/apps/**/coverage-summary.json
+            ./coverage/libs/configs/**/coverage-summary.json
+            ./coverage/libs/**/coverage-summary.json
+
+      - name: 📋 TODO to Issue
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: alstr/todo-to-issue-action@v4
+        with:
+          AUTO_ASSIGN: true
