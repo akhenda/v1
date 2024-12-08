@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "ms-playwright.playwright",
+    "firsttris.vscode-jest-runner",
+    "mikestead.dotenv",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "dsznajder.es7-react-js-snippets",
+    "bradlc.vscode-tailwindcss",
+    "wesbos.theme-cobalt2"
+  ]
+}
