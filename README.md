@@ -1,5 +1,6 @@
 ![hero](image.png)
 
+![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)
 
 <p align="center">
 	<h1 align="center"><b>Create v1</b></h1>
@@ -161,6 +162,10 @@ If you prefer to set up the project manually, follow these steps:
    - `bun dev:app`: starts the app
    - `bun dev:convex`: starts the Convex API
    - `bun dev:email`: starts the email app
+
+## Docs
+
+[Commitlint & Semantic Release](./docs/commitlint.md)
 
 ## Detailed Service Setup Instructions
 

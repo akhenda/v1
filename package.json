@@ -2,8 +2,12 @@
   "name": "v1",
   "private": true,
   "workspaces": ["packages/*", "apps/*", "tooling/*"],
+  "packageManager": "bun@1.1.26",
   "scripts": {
     "preinstall": "npx only-allow bun",
+    "prepare": "husky",
+    "gc": "git add . && cz",
+    "gc-ai": "git add . && bunx czg ai -N=5",
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
@@ -18,13 +22,23 @@
     "lint": "turbo lint && bun lint:repo",
     "lint:repo": "bunx sherif@latest",
     "lint:repo:fix": "bunx sherif@latest --fix",
-    "typecheck": "turbo typecheck",
-    "prepare": "husky"
+    "release": "turbo release --concurrency=1",
+    "typecheck": "turbo typecheck"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "useEmoji": true
+    }
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@t3-oss/env-nextjs": "^0.11.1",
+    "@turbo/workspaces": "^2.3.3",
     "chalk": "^4.1.2",
+    "cz-git": "^1.11.0",
     "dotenv": "^16.4.5",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
@@ -33,6 +47,5 @@
     "tsx": "^4.19.1",
     "turbo": "2.1.1",
     "typescript": "^5.5.4"
-  },
-  "packageManager": "bun@1.1.26"
+  }
 }
