@@ -9,6 +9,8 @@ on:
 # permissions:
 #   actions: read
 #   contents: read
+permissions:
+  pull-requests: read
 
 jobs:
   ci-pr-title:
@@ -21,7 +23,7 @@ jobs:
     uses: ./.github/workflows/ci-repo-integrity.yml
 
   ci-validate:
-    name: Validate (Lint/Test/Build)
+    name: Validate (Lint, Test & Build)
     needs: ci-repo-integrity
     uses: ./.github/workflows/ci-validate.yml
 
