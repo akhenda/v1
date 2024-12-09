@@ -3,23 +3,17 @@
   extends: [
     'config:recommended',
     ':label(dependencies)',
-    'monorepo:nrwl',
+    'monorepo:turbo',
     ':semanticCommits',
     ':pinAllExceptPeerDependencies',
     'npm:unpublishSafe',
   ],
   dependencyDashboardTitle: 'Renovate Dashboard 🤖',
   dependencyDashboardApproval: true, // require approval for all updates initially
-  pin: {
-    dependencyDashboardApproval: false,
-    automerge: true,
-  },
+  pin: { dependencyDashboardApproval: false, automerge: true },
   assigneesFromCodeOwners: true,
   rangeStrategy: 'pin',
-  vulnerabilityAlerts: {
-    enabled: true,
-    labels: ['security'],
-  },
+  vulnerabilityAlerts: { enabled: true, labels: ['security'] },
   ignorePaths: [
     '**/node_modules/**',
     '**/bower_components/**',
@@ -28,10 +22,7 @@
   ],
   commitMessageAction: ':arrow_up: update',
   packageRules: [
-    {
-      matchDatasources: ['npm'],
-      minimumReleaseAge: '3 days',
-    },
+    { matchDatasources: ['npm'], minimumReleaseAge: '3 days' },
     // automerge everything but major updates
     {
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
@@ -42,7 +33,14 @@
       matchManagers: ['npm'],
       matchDepTypes: ['dependencies', 'peerDependencies', 'optionalDependencies'],
       semanticCommitType: 'fix',
-      matchPackageNames: ['*', '!/^@nrwl//', '!/^@nx//', '!/^nx$/', '!/^@nx-/', '!/^ts-node/', '!/^tslib/'],
+      matchPackageNames: [
+        '*',
+        '!/^@turbo//',
+        '!/^turbo$/',
+        '!/^@turbo-/',
+        '!/^ts-node/',
+        '!/^tslib/',
+      ],
     },
     {
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
@@ -53,7 +51,14 @@
       matchManagers: ['npm'],
       matchDepTypes: ['devDependencies'],
       semanticCommitType: 'chore',
-      matchPackageNames: ['*', '!/^@nrwl//', '!/^@nx//', '!/^nx$/', '!/^@nx-/', '!/^ts-node/', '!/^tslib/'],
+      matchPackageNames: [
+        '*',
+        '!/^@turbo//',
+        '!/^turbo$/',
+        '!/^@turbo-/',
+        '!/^ts-node/',
+        '!/^tslib/',
+      ],
     },
     // label PRs appropriately
     {
@@ -72,20 +77,17 @@
       groupName: 'react',
     },
     {
-      extends: ['monorepo:nrwl'],
-      groupName: 'Nx',
+      extends: ['monorepo:turbo'],
+      groupName: 'Turborepo',
       postUpgradeTasks: {
-        commands: [
-          'npx nx migrate @nrwl/workspace@{{{newVersion}}} --from=@nrwl/workspace@{{{currentVersion}}}',
-          'bun install && [ -f migrations.json ] && npx nx migrate --run-migrations=migrations.json',
-        ],
+        commands: ['npx @turbo/codemod migrate', 'bun install'],
         fileFilters: ['**/**'],
         executionMode: 'branch',
       },
     },
     {
-      extends: ['monorepo:nrwl'],
-      groupName: 'Nx',
+      extends: ['monorepo:turbo'],
+      groupName: 'Turborepo',
       automerge: true,
       matchUpdateTypes: ['minor', 'patch'],
     },
@@ -98,6 +100,11 @@
       extends: ['monorepo:jest'],
       matchPackageNames: ['ts-jest', 'pretty-format', '@types/jest{/,}**'],
       groupName: 'jest',
+    },
+    {
+      extends: ['monorepo:vitest'],
+      matchPackageNames: ['vitest', '@vitest/ui'],
+      groupName: 'vitest',
     },
 
     // gitmoji

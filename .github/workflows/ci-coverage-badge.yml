@@ -25,7 +25,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage
-          path: coverage
+          path: .
+          merge-multiple: true
 
       - name: 📋 Display structure of downloaded files
         run: ls -R
@@ -42,17 +43,23 @@ jobs:
           echo ${#DEBUG_GIST_SECRET}
           echo ${#DEBUG_NPM_TOKEN}
 
-      - name: 📔 Create coverage badge
-        uses: dkhunt27/nx-code-coverage@v2
+      - name: 📔 Code coverage report
+        uses: eeshdarthvader/code-coverage-assistant@v1
         with:
-          no-coverage-ran: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          coverage-folder: ./coverage
-          coverage-base-folder: ./coverage-base
-          gist-token: ${{ secrets.COVERAGE_BADGES_GIST_TOKEN }}
-          gist-id: e87e6f67fa5b4ffc5757bc946b8db87a
-          color: green
-          named-logo: jest
-          gist-processing: true
-          hide-coverage-reports: false
-          hide-unchanged: false
+          monorepo-base-path: './apps,./packages,./tooling,./tests'
+
+      # - name: 📔 Create coverage badge
+      #   uses: dkhunt27/nx-code-coverage@v2
+      #   with:
+      #     no-coverage-ran: false
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     coverage-folder: ./coverage
+      #     coverage-base-folder: ./coverage-base
+      #     gist-token: ${{ secrets.COVERAGE_BADGES_GIST_TOKEN }}
+      #     gist-id: e87e6f67fa5b4ffc5757bc946b8db87a
+      #     color: green
+      #     named-logo: vitest
+      #     gist-processing: true
+      #     hide-coverage-reports: false
+      #     hide-unchanged: false

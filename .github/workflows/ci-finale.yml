@@ -16,7 +16,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage
-          path: coverage
+          path: .
+          merge-multiple: true
 
       - name: Display structure of downloaded files
         run: ls -R
@@ -29,9 +30,10 @@ jobs:
           commit-message: 'chore: update coverage badges [skip ci]'
           output-folder: ./.github/badges
           coverage-summary-path: |
-            ./coverage/apps/**/coverage-summary.json
-            ./coverage/libs/configs/**/coverage-summary.json
-            ./coverage/libs/**/coverage-summary.json
+            ./apps/**/coverage/coverage-summary.json
+            ./packages/**/coverage/coverage-summary.json
+            ./tooling/**/coverage/coverage-summary.json
+            ./tests/**/coverage/coverage-summary.json
 
       - name: 📋 TODO to Issue
         if: ${{ github.ref == 'refs/heads/main' }}
