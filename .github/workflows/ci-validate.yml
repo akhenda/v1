@@ -3,8 +3,8 @@ name: 🕵️ Validate
 on: workflow_call
 
 jobs:
-  run-nx-cloud:
-    name: NX Affected
+  run-turbo-validate:
+    name: Turbo CI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,6 +14,9 @@ jobs:
 
       - name: 📦 Install dependencies
         uses: ./.github/actions/install-deps
+
+      - name: 💼 Cache for Turbo
+        uses: rharkor/caching-for-turbo@v1.5
 
       - name: 📝 Test & build projects
         run: |
