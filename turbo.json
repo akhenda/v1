@@ -24,6 +24,10 @@
       "cache": false
     },
     "test": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:run": {
       "cache": false
     },
     "clean": {

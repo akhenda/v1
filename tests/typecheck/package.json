@@ -1,0 +1,24 @@
+{
+  "name": "@v1/example-typecheck",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules coverage",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@vitest/coverage-v8": "^2.1.8",
+    "@vitest/ui": "2.1.8",
+    "typescript": "^5.5.4",
+    "vite": "6.0.3",
+    "vitest": "2.1.8"
+  },
+  "stackblitz": {
+    "startCommand": "npm run test:ui"
+  }
+}
