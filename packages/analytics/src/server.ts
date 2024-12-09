@@ -1,6 +1,6 @@
-import { OpenPanel, type PostEventPayload } from "@openpanel/nextjs";
-import { logger } from "@v1/logger";
-import { waitUntil } from "@vercel/functions";
+import { OpenPanel, type PostEventPayload } from '@openpanel/nextjs';
+import { logger } from '@v1/logger';
+import { waitUntil } from '@vercel/functions';
 
 type Props = {
   userId?: string;
@@ -16,21 +16,15 @@ export const setupAnalytics = async (options?: Props) => {
   });
 
   if (userId && fullName) {
-    const [firstName, lastName] = fullName.split(" ");
+    const [firstName, lastName] = fullName.split(' ');
 
-    waitUntil(
-      client.identify({
-        profileId: userId,
-        firstName,
-        lastName,
-      }),
-    );
+    waitUntil(client.identify({ profileId: userId, firstName, lastName }));
   }
 
   return {
-    track: (options: { event: string } & PostEventPayload["properties"]) => {
-      if (process.env.NODE_ENV !== "production") {
-        logger.info("Track", options);
+    track: (options: { event: string } & PostEventPayload['properties']) => {
+      if (process.env.NODE_ENV !== 'production') {
+        logger.info('Track', options);
 
         return;
       }

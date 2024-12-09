@@ -1,7 +1,7 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
-export * from "./use-double-check";
+export * from './use-double-check';
 
 /**
  * Returns a function that calls all of its arguments.

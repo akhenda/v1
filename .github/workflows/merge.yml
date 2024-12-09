@@ -19,6 +19,7 @@ jobs:
     name: Validate (Lint/Test/Build)
     needs: ci-repo-integrity
     uses: ./.github/workflows/ci-validate.yml
+    secrets: inherit
 
   ci-coverage-badge:
     name: Coverage Badge
