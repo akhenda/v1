@@ -25,6 +25,12 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "quickfix.biome": "explicit",
@@ -52,10 +58,7 @@
   "tailwindCSS.experimental.classRegex": [
     ["tva\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
-  "[github-actions-workflow]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
+  "[json5]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

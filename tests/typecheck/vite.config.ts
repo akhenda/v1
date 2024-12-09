@@ -11,5 +11,9 @@ export default defineConfig({
     typecheck: {
       enabled: true,
     },
+    coverage: {
+      enabled: true,
+      reporter: ["text", "json", "json-summary", "lcovonly"],
+    },
   },
 })

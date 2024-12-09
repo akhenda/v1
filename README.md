@@ -1,21 +1,61 @@
 ![hero](image.png)
 
-<p align="center">
-	<h1 align="center"><b>Create v1</b></h1>
-<p align="center">
-    An open-source starter kit based on an <a href="https://v1.run">open-source starter kit</a> by <a href="https://midday.ai">Midday</a>. Ported to <a href="https://convex.dev">Convex</a>.
-    <br />
-    <br />
-    <a href="https://convex-v1.run"><strong>Website</strong></a> ·
-    <a href="https://github.com/get-convex/v1/issues"><strong>Issues</strong></a> ·
-    <a href="#whats-included"><strong>What's included</strong></a> ·
-    <a href="#prerequisites"><strong>Prerequisites</strong></a> ·
-    <a href="#getting-started"><strong>Getting Started</strong></a> ·
-    <a href="#deployment"><strong>Deploying to Production</strong></a>
-  </p>
-</p>
+<div align="center">
+  <h1 align="center">
+    <b>Create v1</b>
+  </h1>
+  <div align="center">
+    <p>An open-source starter kit based on an
+      <a href="https://v1.run">open-source starter kit</a>
+      by
+      <a href="https://midday.ai">Midday</a>.
+      Ported to
+      <a href="https://convex.dev">Convex</a>.
+    </p>
+    <p>
+      <a href="https://convex-v1.run"><strong>Website</strong></a> ·
+      <a href="https://github.com/get-convex/v1/issues"><strong>Issues</strong></a>
+      ·
+      <a href="#whats-included"><strong>What's included</strong></a> ·
+      <a href="#prerequisites"><strong>Prerequisites</strong></a> ·
+      <a href="#getting-started"><strong>Getting Started</strong></a> ·
+      <a href="#deployment"><strong>Deploying to Production</strong></a>
+    </p>
+  </div>
+</div>
 
-![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg) [![CI](https://github.com/akhenda/v1/actions/workflows/merge.yml/badge.svg)](https://github.com/akhenda/v1/actions/workflows/merge.yml) [![codecov](https://codecov.io/gh/akhenda/v1/branch/main/graph/badge.svg)](https://codecov.io/gh/akhenda/v1)
+<div align="center">
+  <a href="https://turbo.build/">
+    <img
+      src="https://img.shields.io/badge/Turborepo-%230F0813.svg?style=flat&logo=Turborepo&logoColor=white"
+      alt="Turborepo"
+    />
+  </a>
+  <a href="https://docs.github.com/en/actions">
+    <img
+      src="https://img.shields.io/badge/github%20actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white"
+      alt="GitHub Actions"
+    />
+  </a>
+  <a href="https://semantic-release.gitbook.io/semantic-release">
+    <img
+      src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"
+      alt="Semantic Release"
+    />
+  </a>
+  <a href="https://github.com/akhenda/v1/actions/workflows/merge.yml">
+    <img
+      src="https://github.com/akhenda/v1/actions/workflows/merge.yml/badge.svg" alt="CI"
+    />
+  </a>
+  <a href="https://codecov.io/gh/akhenda/v1">
+    <img
+      src="https://codecov.io/gh/akhenda/v1/branch/main/graph/badge.svg" alt="Codecov"
+    />
+  </a>
+  <br />
+  <br />
+</div>
 
 Everything you need to build a production ready SaaS, it's an opinionated stack
 using Convex and the latest Next.js framework, a monorepo with a focus on code
@@ -187,9 +227,10 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### Convex
 
-1. Create a new project at https://dashboard.convex.dev
+1. Create a new project at <https://dashboard.convex.dev>
 2. Obtain your Convex URL from the dashboard under 'Settings' > 'URL & Deploy Key'
 3. Add the following to `apps/web/.env` and `apps/app/.env`:
+
    ```
    # The Convex URL from the dashboard. It should look like 'https://example-123.convex.cloud'
    NEXT_PUBLIC_CONVEX_URL=https://foobar-42.convex.cloud
@@ -197,14 +238,17 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### OpenPanel
 
-1. Create an account at https://openpanel.dev
+1. Create an account at <https://openpanel.dev>
 2. Create a new project in the OpenPanel dashboard
 3. Add the following to `apps/app/.env`:
+
    ```
    # The secret key from OpenPanel dashboard under 'Settings' > 'Projects'. Starts with 'sec_'
    OPENPANEL_SECRET_KEY=sec_foobarfoobarfoobarfoobar42
    ```
+
 4. Add the following to `apps/web/.env` and `apps/app/.env`:
+
    ```
    # The client ID from OpenPanel dashboard under 'Settings' > 'Projects'
    NEXT_PUBLIC_OPENPANEL_CLIENT_ID=foo-bar-42-baz-qux-42
@@ -212,7 +256,7 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### Sentry
 
-1. Set up a project on https://sentry.io
+1. Set up a project on <https://sentry.io>
 2. Add the following to `apps/app/.env`:
 
    ```
@@ -231,7 +275,7 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### Resend
 
-1. Create an account at https://resend.com
+1. Create an account at <https://resend.com>
 2. Add the following to `packages/backend/.env`:
 
    ```
@@ -245,7 +289,7 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### Polar
 
-1. Set up an account at https://polar.sh
+1. Set up an account at <https://polar.sh>
    _Note: If you're just testing, be sure to switch to Sandbox via the top left dropdown in the dashboard before proceeding._
 2. Add the following to `packages/backend/.env`:
 
@@ -266,6 +310,7 @@ If you choose to manually set up services and environment variables, follow thes
 
 1. Set up your Cal.com account
 2. Add the following to `apps/web/.env`:
+
    ```
    # Your public Cal.com link, e.g., 'https://cal.com/yourusername'
    NEXT_PUBLIC_CAL_LINK=https://cal.com/your-username
@@ -273,8 +318,9 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### Loops (Optional)
 
-1. Set up an account at https://loops.so
+1. Set up an account at <https://loops.so>
 2. Add the following to `packages/backend/.env`:
+
    ```
    # The ID of the Loops form you want to use, found in the Loops dashboard
    LOOPS_FORM_ID=foobarfoobar42
@@ -282,7 +328,7 @@ If you choose to manually set up services and environment variables, follow thes
 
 ### Google Authentication
 
-1. Set up Google OAuth 2.0 credentials following the guide at https://support.google.com/cloud/answer/6158849?hl=en
+1. Set up Google OAuth 2.0 credentials following the guide at <https://support.google.com/cloud/answer/6158849?hl=en>
 2. Add the following to `packages/backend/.env`:
 
    ```
@@ -295,9 +341,9 @@ If you choose to manually set up services and environment variables, follow thes
 
 3. Set up the authorized redirect URI in your Google Cloud Console:
    - Use your Convex deployment's HTTP Actions URL with the path '/api/auth/callback/google'
-   - Example: 'https://your-convex-deployment.convex.site/api/auth/callback/google'
+   - Example: '<https://your-convex-deployment.convex.site/api/auth/callback/google>'
    - You can find your Convex deployment's HTTP Actions URL in the Convex dashboard under 'Settings' > 'URL & Deploy Key'
-4. Add both http://localhost:3000 and http://localhost:3001 to the list of authorized JavaScript origins for local development.
+4. Add both <http://localhost:3000> and <http://localhost:3001> to the list of authorized JavaScript origins for local development.
 
 After setting up all the required services and environment variables, proceed to step 7 in the Getting Started section to copy the Convex environment variables to your Convex dashboard.
 

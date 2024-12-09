@@ -36,8 +36,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage
-          path: coverage
-      - name: Codecov
+          path: |
+            ./apps/**/coverage/*
+            ./packages/**/coverage/*
+            ./tooling/**/coverage/*
+            ./tests/**/coverage/*
+
+      - name: 📋 Codecov
         uses: codecov/codecov-action@v3.1.0
         if: hashFiles('coverage/**/*') != ''
         with:
