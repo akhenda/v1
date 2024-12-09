@@ -4,7 +4,7 @@
     "enabled": true
   },
   "linter": {
-    "ignore": ["node_modules", ".next", "packages/tsconfig", "**/*/fixtures"],
+    "ignore": ["node_modules", ".next", "packages/tsconfig", "**/*/fixtures", ".react-email"],
     "enabled": true,
     "rules": {
       "recommended": true,
@@ -25,7 +25,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [],
+    "ignore": [".react-email"],
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,

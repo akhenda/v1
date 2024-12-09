@@ -1,14 +1,12 @@
-import type { FastifyInstance } from "fastify";
-import Fastify from "fastify";
+import type { FastifyInstance } from 'fastify';
+import Fastify from 'fastify';
 
-import { usersData } from "../mockData";
+import { usersData } from '../mockData.js';
 
 const app: FastifyInstance = Fastify({
-  logger: process.env.NODE_ENV === "development",
+  logger: process.env.NODE_ENV === 'development',
 });
 
-app.get("/users", async () => {
-  return usersData;
-});
+app.get('/users', async () => usersData);
 
 export default app;

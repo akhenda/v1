@@ -2,6 +2,11 @@ name: 🕵️ Validate
 
 on: workflow_call
 
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
 jobs:
   run-turbo-validate:
     name: Turbo CI
@@ -18,10 +23,20 @@ jobs:
       - name: 💼 Cache for Turbo
         uses: rharkor/caching-for-turbo@v1.5
 
+      - name: 🖥️ Debug Secrets
+        env:
+          DEBUG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG_PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
+        run: |
+          echo ${#DEBUG_GITHUB_TOKEN}
+          echo ${#DEBUG_PUBLIC_CONVEX_URL}
+
       - name: 📝 Test & build projects
         run: |
           bun run test
           bun run build
+        env:
+          NEXT_PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
 
       - name: 🧐 Lint projects
         continue-on-error: true
@@ -45,9 +60,16 @@ jobs:
             ./tooling/**/coverage/*
             ./tests/**/coverage/*
 
-      - name: 📋 Codecov
-        uses: codecov/codecov-action@v3.1.0
-        if: hashFiles('coverage/**/*') != ''
+      - name: 📋 Codecov coverage
+        uses: codecov/codecov-action@v5
+        if: hashFiles('./**/coverage/*') != ''
         with:
           fail_ci_if_error: true
           verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: 📋 Codecov test results
+        uses: codecov/test-results-action@v1
+        if: ${{ !cancelled() }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -53,6 +53,7 @@ packages/email/public
 storybook-static
 tailwind.css
 
-# @v1/tooling
+# @v1
 *.orig
 !.vscode/css_custom_data.json
+tsconfig.vitest-temp.json
