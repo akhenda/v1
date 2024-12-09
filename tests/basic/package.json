@@ -1,0 +1,21 @@
+{
+  "name": "@v1/example-test-basic",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules coverage",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
+  },
+  "devDependencies": {
+    "@vitest/ui": "2.1.8",
+    "vite": "6.0.3",
+    "vitest": "2.1.8"
+  },
+  "stackblitz": {
+    "startCommand": "npm run test:ui"
+  }
+}
