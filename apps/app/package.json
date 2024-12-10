@@ -1,6 +1,6 @@
 {
   "name": "@v1/app",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
@@ -8,7 +8,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "lint": "biome lint",
     "format": "biome format --write .",
-    "release": "semantic-release -e semantic-release-monorepo",
+    "release": "semantic-release",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
@@ -36,10 +36,10 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@sentry/nextjs": "8",
+    "@sentry/nextjs": "8.43.0",
     "@types/node": "22.10.1",
-    "@types/react": "18",
-    "@types/react-dom": "18",
+    "@types/react": "18.2.36",
+    "@types/react-dom": "18.2.13",
     "semantic-release": "24.2.0",
     "semantic-release-monorepo": "8.0.2",
     "typescript": "5.7.2"

@@ -4,7 +4,7 @@
   "workspaces": ["packages/*", "apps/*", "tooling/*", "tests/*"],
   "packageManager": "bun@1.1.26",
   "volta": {
-    "node": "22",
+    "node": "22.12.0",
     "bun": "1"
   },
   "scripts": {

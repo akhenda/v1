@@ -46,7 +46,8 @@
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
     "release": {
-      "cache": false
+      "cache": false,
+      "env": ["GH_TOKEN", "GITHUB_TOKEN"]
     }
   }
 }

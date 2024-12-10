@@ -60,5 +60,8 @@
   ],
   "[json5]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

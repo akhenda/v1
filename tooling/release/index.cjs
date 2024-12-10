@@ -9,26 +9,28 @@
  * @returns A configuration for semantic-release.
  */
 function getBaseConfig(project) {
+  /**
+   * @type {import('semantic-release').GlobalConfig}
+   */
   return {
+    debug: true,
     dryRun: true,
     extends: 'semantic-release-monorepo',
     branches: ['main', { name: 'dev', channel: 'beta', prerelease: 'rc' }],
-    verifyConditions: [
-      '@semantic-release/changelog',
-      '@semantic-release/git',
+    plugins: [
+      '@semantic-release/commit-analyzer',
+      '@semantic-release/release-notes-generator',
+      ['@semantic-release/changelog', { changelogFile: 'docs/CHANGELOG.md' }],
+      ['@semantic-release/npm', { npmPublish: false }],
+      [
+        '@semantic-release/git',
+        {
+          assets: ['package.json', 'docs/CHANGELOG.md'],
+          message: `chore(release): ${project} v\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`,
+        },
+      ],
       '@semantic-release/github',
     ],
-    getLastRelease: '@semantic-release/git',
-    prepare: [
-      { path: '@semantic-release/changelog', changelogFile: 'CHANGELOG.md' },
-      { path: '@semantic-release/npm', npmPublish: false },
-      {
-        path: '@semantic-release/git',
-        assets: ['package.json', 'CHANGELOG.md'],
-        message: `chore(release): ${project} v\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`,
-      },
-    ],
-    publish: ['@semantic-release/github', '@semantic-release/npm'],
     tagFormat: `${project}-v\${version}`,
   };
 }

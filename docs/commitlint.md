@@ -18,12 +18,16 @@ npx czg --api-key=sk-xxxxx
 
 In order to release a project, add a `realese.config.mjs` file to the project. Bare minimal configuration looks like this:
 
-```mjs
-import baseConfig from "@v1/release";
-
-import pkg from "./package.json";
+```cjs
+const baseConfig = require('@v1/release');
+const pkg = require('./package.json');
 
 const config = baseConfig(pkg.name);
+
+/**
+ * @type {import('semantic-release').GlobalConfig}
+ */
+module.exports = config;
 ```
 
 You should also install `semantic-release` and `semantic-release-monorepo` in the project by running:
@@ -38,7 +42,7 @@ Update the project's `package.json` with the following:
 {
   "scripts": {
     ...
-    "release": "semantic-release -e semantic-release-monorepo",
+    "release": "semantic-release",
     ...
   },
   "dependencies": {
