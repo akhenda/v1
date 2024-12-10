@@ -45,6 +45,7 @@ jobs:
 
       - name: ✍🏻 Annotate code linting results
         uses: mongolyy/reviewdog-action-biome@v1
+        if: github.event_name == 'pull_request'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review

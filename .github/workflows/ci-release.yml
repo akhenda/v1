@@ -3,7 +3,9 @@ name: Release
 on: workflow_call
 
 permissions:
-  contents: read # for checkout
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   semantic-release:
@@ -13,7 +15,7 @@ jobs:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
+      # id-token: write # to enable use of OIDC for npm provenance
 
     steps:
       - name: Checkout
@@ -24,10 +26,24 @@ jobs:
       - name: 📦 Install dependencies
         uses: ./.github/actions/install-deps
 
+      - name: 🖥️ Debug Secrets
+        env:
+          DEBUG_GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          DEBUG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG_COVERAGE_BADGES_GIST_TOKEN: ${{ secrets.COVERAGE_BADGES_GIST_TOKEN }}
+          DEBUG_GIST_SECRET: ${{ secrets.GIST_SECRET }}
+          DEBUG_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo ${#DEBUG_GITHUB_TOKEN}
+          echo ${#DEBUG_COVERAGE_BADGES_GIST_TOKEN}
+          echo ${#DEBUG_GIST_SECRET}
+          echo ${#DEBUG_NPM_TOKEN}
+
       - name: Run Semantic Release
         if: ${{ success() && (github.event_name != 'pull_request' || github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           bun run release

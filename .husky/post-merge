@@ -9,7 +9,7 @@ echo 'Checking for changes in bun.lockb...'
 if changed 'bun.lockb'; then
   echo "📦 bun.lockb changed. Run bun install to bring your dependencies up to date."
 
-  yarn
+  bun install
 fi
 
 echo 'You are up to date :)'

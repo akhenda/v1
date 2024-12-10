@@ -46,6 +46,7 @@ jobs:
       # https://github.com/marketplace/actions/code-coverage-with-reviewdog
       - name: 📔 Code coverage report
         uses: hokify/code-coverage-assistant-ts@v2.5
+        if: github.event_name == 'pull_request'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          monorepo-base-path: './tests'
+          monorepo-base-path: './apps,./packages,./tooling,./tests'
