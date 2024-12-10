@@ -3,20 +3,15 @@ name: Release
 on: workflow_call
 
 permissions:
-  contents: write
-  issues: write
-  pull-requests: write
+  contents: write # to be able to publish a GitHub release
+  issues: write # to be able to comment on released issues
+  pull-requests: write # to be able to comment on released pull requests
+  # id-token: write # to enable use of OIDC for npm provenance
 
 jobs:
   semantic-release:
     name: Semantic Release
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      # id-token: write # to enable use of OIDC for npm provenance
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,10 +29,10 @@ jobs:
           DEBUG_GIST_SECRET: ${{ secrets.GIST_SECRET }}
           DEBUG_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo ${#DEBUG_GITHUB_TOKEN}
-          echo ${#DEBUG_COVERAGE_BADGES_GIST_TOKEN}
-          echo ${#DEBUG_GIST_SECRET}
-          echo ${#DEBUG_NPM_TOKEN}
+          echo ${DEBUG_GITHUB_TOKEN}
+          echo ${DEBUG_COVERAGE_BADGES_GIST_TOKEN}
+          echo ${DEBUG_GIST_SECRET}
+          echo ${DEBUG_NPM_TOKEN}
 
       - name: Run Semantic Release
         if: ${{ success() && (github.event_name != 'pull_request' || github.event.action == 'closed' && github.event.pull_request.merged == true) }}
@@ -46,4 +41,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          bun run release
+          GH_TOKEN=${GH_TOKEN} bun run release
