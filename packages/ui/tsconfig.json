@@ -6,9 +6,7 @@
       "@/*": ["./src/*"]
     },
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "types": [],
-    "skipLibCheck": true
+    "moduleResolution": "Bundler"
   },
   "include": ["src"]
 }

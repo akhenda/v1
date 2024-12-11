@@ -10,6 +10,7 @@
   "scripts": {
     "preinstall": "npx only-allow bun",
     "prepare": "husky",
+    "postinstall": "patch-package",
     "gc": "git add . && cz",
     "gc-ai": "git add . && bunx czg ai -N=5",
     "build": "turbo build",
@@ -54,5 +55,8 @@
     "typescript": "5.7.2",
     "vite": "6.0.3",
     "vitest": "2.1.8"
+  },
+  "dependencies": {
+    "patch-package": "^8.0.0"
   }
 }
