@@ -30,16 +30,16 @@
     "next-safe-action": "7.9.0",
     "next-themes": "0.3.0",
     "nuqs": "1.18.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "remeda": "2.14.0",
     "zod": "3.23.8"
   },
   "devDependencies": {
     "@sentry/nextjs": "8.43.0",
     "@types/node": "22.10.1",
-    "@types/react": "18.2.36",
-    "@types/react-dom": "18.2.13",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.2",
     "semantic-release": "24.2.0",
     "semantic-release-monorepo": "8.0.2",
     "typescript": "5.7.2"
