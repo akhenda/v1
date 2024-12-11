@@ -48,9 +48,10 @@
       src="https://github.com/akhenda/v1/actions/workflows/merge.yml/badge.svg" alt="CI"
     />
   </a>
-  <a href="https://codecov.io/gh/akhenda/v1">
+  <a href="https://codecov.io/gh/akhenda/v1" >
     <img
-      src="https://codecov.io/gh/akhenda/v1/branch/main/graph/badge.svg" alt="Codecov"
+      src="https://codecov.io/gh/akhenda/v1/graph/badge.svg?token=7AWIXjWS8m"
+      alt="Codecov"
     />
   </a>
   <br />
