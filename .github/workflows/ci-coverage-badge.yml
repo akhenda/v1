@@ -7,6 +7,13 @@ jobs:
     name: Code Coverage
     runs-on: ubuntu-latest
     steps:
+      - name: 🏗️ Create a few directories
+        run: |
+          mkdir apps
+          mkdir packages
+          mkdir tooling
+          mkdir tests
+
       - name: ⤵️ Download artifact (base code coverage results)
         if: github.event_name == 'pull_request'
         uses: dawidd6/action-download-artifact@v7
@@ -44,9 +51,29 @@ jobs:
           echo ${#DEBUG_NPM_TOKEN}
 
       # https://github.com/marketplace/actions/code-coverage-with-reviewdog
-      - name: 📔 Code coverage report
+      - name: 📔 Apps code coverage report
         uses: hokify/code-coverage-assistant-ts@v2.5
         if: github.event_name == 'pull_request'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          monorepo-base-path: './apps,./packages,./tooling,./tests'
+          monorepo-base-path: './apps'
+
+      - name: 📔 Packages code coverage report
+        uses: hokify/code-coverage-assistant-ts@v2.5
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          monorepo-base-path: './packages'
+
+      - name: 📔 Tooling code coverage report
+        uses: hokify/code-coverage-assistant-ts@v2.5
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          monorepo-base-path: './tooling'
+      - name: 📔 Tests code coverage report
+        uses: hokify/code-coverage-assistant-ts@v2.5
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          monorepo-base-path: './tests'
