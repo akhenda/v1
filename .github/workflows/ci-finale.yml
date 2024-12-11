@@ -33,7 +33,6 @@ jobs:
             ./apps/**/coverage/coverage-summary.json
             ./packages/**/coverage/coverage-summary.json
             ./tooling/**/coverage/coverage-summary.json
-            ./tests/**/coverage/coverage-summary.json
 
       - name: 📋 TODO to Issue
         if: ${{ github.ref == 'refs/heads/main' }}
