@@ -12,7 +12,6 @@ jobs:
           mkdir apps
           mkdir packages
           mkdir tooling
-          mkdir tests
 
       - name: ⤵️ Download artifact (base code coverage results)
         if: github.event_name == 'pull_request'
@@ -28,8 +27,9 @@ jobs:
           if_no_artifact_found: ignore
 
       - name: ⤵️ Download code coverage results
-        id: restored-code-coverage
         uses: actions/download-artifact@v4
+        id: restored-code-coverage
+        continue-on-error: true
         with:
           name: coverage
           path: .
@@ -71,9 +71,3 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           monorepo-base-path: './tooling'
-      - name: 📔 Tests code coverage report
-        uses: hokify/code-coverage-assistant-ts@v2.5
-        if: github.event_name == 'pull_request'
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          monorepo-base-path: './tests'

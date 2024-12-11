@@ -60,7 +60,6 @@ jobs:
             ./apps/**/coverage/*
             ./packages/**/coverage/*
             ./tooling/**/coverage/*
-            ./tests/**/coverage/*
 
       - name: 📋 Codecov coverage
         uses: codecov/codecov-action@v5

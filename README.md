@@ -217,7 +217,8 @@ If you prefer to set up the project manually, follow these steps:
 
 ## Docs
 
-[Commitlint & Semantic Release](./docs/commitlint.md)
+- [Commitlint & Semantic Release](./docs/commitlint.md)
+- [Testing](./docs/testing.md)
 
 ## Detailed Service Setup Instructions
 

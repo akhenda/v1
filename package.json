@@ -1,7 +1,7 @@
 {
   "name": "v1",
   "private": true,
-  "workspaces": ["packages/*", "apps/*", "tooling/*", "tests/*"],
+  "workspaces": ["packages/*", "apps/*", "tooling/*"],
   "packageManager": "bun@1.1.26",
   "volta": {
     "node": "22.12.0",
