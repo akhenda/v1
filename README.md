@@ -1,4 +1,4 @@
-![hero](image.png)
+![hero](.github/images/image.png)
 
 <div align="center">
   <h1 align="center">
