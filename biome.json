@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
-    "enabled": true
+    "enabled": true,
+    "ignore": [".react-email"]
   },
   "linter": {
     "ignore": ["node_modules", ".next", "packages/tsconfig", "**/*/fixtures", ".react-email"],
