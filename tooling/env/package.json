@@ -1,0 +1,26 @@
+{
+  "name": "@v1/env",
+  "main": "./src/index.ts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": "./src/client/index.ts",
+    "./mobile": "./src/mobile/index.ts",
+    "./next": "./src/next/index.ts",
+    "./server": "./src/server/index.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules coverage",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@vitest/ui": "2.1.8",
+    "vitest": "2.1.8"
+  }
+}
