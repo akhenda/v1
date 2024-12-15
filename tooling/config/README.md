@@ -1,4 +1,4 @@
-# env
+# Config
 
 Setups up an env configs repo that holds shared workspace envs in the monorepo.
 

@@ -1,6 +1,5 @@
 {
-  "name": "@v1/env",
-  "main": "./src/index.ts",
+  "name": "@v1/config",
   "version": "0.0.0",
   "private": true,
   "type": "module",
