@@ -18,6 +18,9 @@
     "test:run": "vitest run",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@v1/release": "workspace:*"
+  },
   "devDependencies": {
     "@vitest/ui": "2.1.8",
     "vitest": "2.1.8"

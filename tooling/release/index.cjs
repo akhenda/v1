@@ -14,7 +14,7 @@ function getBaseConfig(project) {
    */
   return {
     debug: true,
-    dryRun: true,
+    dryRun: false,
     extends: 'semantic-release-monorepo',
     branches: ['main', { name: 'dev', channel: 'beta', prerelease: 'rc' }],
     plugins: [
