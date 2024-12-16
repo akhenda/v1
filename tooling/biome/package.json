@@ -1,0 +1,13 @@
+{
+  "name": "@v1/biome",
+  "private": true,
+  "exports": {
+    "./core": "./core.json",
+    "./expo": "./expo.json",
+    "./monorepo": "./monorepo.json",
+    "./nextjs": "./nextjs.json",
+    "./node": "./node.json",
+    "./react-library": "./react-library.json",
+    "./react": "./react.json"
+  }
+}

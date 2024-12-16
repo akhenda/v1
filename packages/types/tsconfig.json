@@ -1,0 +1,11 @@
+{
+  "extends": "@v1/typescript/base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "baseUrl": "."
+  },
+  "include": [],
+  "exclude": [],
+  "references": [{ "path": "./tsconfig.lib.json" }, { "path": "./tsconfig.spec.json" }]
+}

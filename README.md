@@ -54,8 +54,29 @@
       alt="Codecov"
     />
   </a>
-  <br />
-  <br />
+</div>
+
+<div align="center">
+   <a href="https://biomejs.dev">
+      <img
+         alt="Checked with Biome"
+         src="https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome"
+      />
+   </a>
+   <a href="https://biomejs.dev">
+      <img
+         alt="Static Badge"
+         src="https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome"
+      />
+   </a>
+   <a href="https://biomejs.dev">
+      <img
+         alt="Linted with Biome"
+         src="https://img.shields.io/badge/Linted_with-Biome-60a5fa?style=flat&logo=biome"
+      />
+   </a>
+   <br />
+   <br />
 </div>
 
 Everything you need to build a production ready SaaS, it's an opinionated stack

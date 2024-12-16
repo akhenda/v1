@@ -1,0 +1,17 @@
+{
+  "name": "@v1/types",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules coverage",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "release": "semantic-release",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@v1/release": "workspace:*"
+  }
+}

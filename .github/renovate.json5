@@ -3,6 +3,7 @@
   extends: [
     'config:recommended',
     ':label(dependencies)',
+    'customManagers:biomeVersions',
     'monorepo:turbo',
     ':semanticCommits',
     ':pinAllExceptPeerDependencies',
