@@ -13,6 +13,7 @@
     "clean": "rm -rf .turbo node_modules coverage",
     "format": "biome format --write .",
     "lint": "biome check .",
+    "release": "semantic-release",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
