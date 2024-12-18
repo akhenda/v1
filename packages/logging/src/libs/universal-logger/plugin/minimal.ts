@@ -1,7 +1,7 @@
-import type { LogContext, LoggerOptions } from '../../../types.js';
 import { noop } from '../../../utils.js';
+import type { LogContext, LoggerOptions } from '../core/types.js';
 
-const defaultFormatter = (context: LogContext, messages: string[]) => {
+const defaultFormatter = (context: LogContext, messages: unknown[]) => {
   const formatters = [];
   const { level, namespace } = { ...context };
 
@@ -23,15 +23,16 @@ const nativeConsoleMethods = {
   warn: typeof console !== 'undefined' && console.warn,
   error: typeof console !== 'undefined' && console.error,
   fatal: typeof console !== 'undefined' && console.error,
+  off: noop,
 };
 
 const minimal = (options: LoggerOptions) => {
   let { formatter = defaultFormatter } = options;
   const { useNativeConsoleMethods = true, showSource = true } = options;
 
-  if (typeof formatter !== 'function') formatter = (_: LogContext, messages: string[]) => messages;
+  if (typeof formatter !== 'function') formatter = (_: LogContext, messages: unknown[]) => messages;
 
-  return (context: LogContext, messages: string[], next = noop) => {
+  return (context: LogContext, messages: unknown[], next = noop) => {
     // biome-ignore lint/style/noParameterAssign: very intentional
     if (typeof next !== 'function') next = noop;
     if (typeof console === 'undefined') {

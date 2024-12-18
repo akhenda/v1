@@ -11,9 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "convex": "1.17.3",
-    "convex-helpers": "0.1.66",
-    "openai": "4.76.1",
+    "convex": "1.17.4",
+    "convex-helpers": "0.1.67",
+    "openai": "4.77.0",
     "standardwebhooks": "1.0.0"
   }
 }

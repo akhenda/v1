@@ -1,12 +1,6 @@
-import { AnimatedText } from "@/components/animated-text";
-import { CopyText } from "@/components/copy-text";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@v1/ui/tooltip";
-import Image from "next/image";
+import { AnimatedText } from '@/components/animated-text';
+import { CopyText } from '@/components/copy-text';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@v1/ui/tooltip';
 
 export default function Page() {
   return (
@@ -19,11 +13,11 @@ export default function Page() {
       </h1>
 
       <p className="relative z-10 text-center md:text-xl max-w-[80%] mt-2 md:mt-6">
-        An open-source starter kit based on{" "}
+        An open-source starter kit based on{' '}
         <a href="https://midday.ai?utm_source=v1-convex" className="underline">
           Midday
         </a>
-        . Now on{" "}
+        . Now on{' '}
         <a href="https://convex.dev/c/middayv1template" className="underline">
           Convex
         </a>
@@ -42,11 +36,7 @@ export default function Page() {
       <TooltipProvider delayDuration={0}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <a
-              href={process.env.NEXT_PUBLIC_APP_URL}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={process.env.NEXT_PUBLIC_APP_URL} target="_blank" rel="noreferrer">
               <div className="flex items-center gap-2">
                 <span className="text-sm">Get started →</span>
               </div>

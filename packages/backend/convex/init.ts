@@ -1,34 +1,26 @@
-import { Polar } from "@polar-sh/sdk";
-import { asyncMap } from "convex-helpers";
-import { internal } from "./_generated/api";
-import { internalAction, internalMutation } from "./_generated/server";
-import { env } from "./env";
-import schema, { CURRENCIES, INTERVALS, type PlanKey, PLANS } from "./schema";
+import { Polar } from '@polar-sh/sdk';
+import { asyncMap } from 'convex-helpers';
+import { internal } from './_generated/api';
+import { internalAction, internalMutation } from './_generated/server';
+import { env } from './env';
+import schema, { CURRENCIES, INTERVALS, type PlanKey, PLANS } from './schema';
 
 const seedProducts = [
   {
     key: PLANS.FREE,
-    name: "Free",
-    description: "Some of the things, free forever.",
-    amountType: "free",
-    prices: {
-      [INTERVALS.MONTH]: {
-        [CURRENCIES.USD]: 0,
-      },
-    },
+    name: 'Free',
+    description: 'Some of the things, free forever.',
+    amountType: 'free',
+    prices: { [INTERVALS.MONTH]: { [CURRENCIES.USD]: 0 } },
   },
   {
     key: PLANS.PRO,
-    name: "Pro",
-    description: "All the things for one low monthly price.",
-    amountType: "fixed",
+    name: 'Pro',
+    description: 'All the things for one low monthly price.',
+    amountType: 'fixed',
     prices: {
-      [INTERVALS.MONTH]: {
-        [CURRENCIES.USD]: 2000,
-      },
-      [INTERVALS.YEAR]: {
-        [CURRENCIES.USD]: 20000,
-      },
+      [INTERVALS.MONTH]: { [CURRENCIES.USD]: 2000 },
+      [INTERVALS.YEAR]: { [CURRENCIES.USD]: 20000 },
     },
   },
 ] as const;
@@ -36,7 +28,7 @@ const seedProducts = [
 export const insertSeedPlan = internalMutation({
   args: schema.tables.plans.validator,
   handler: async (ctx, args) => {
-    await ctx.db.insert("plans", {
+    await ctx.db.insert('plans', {
       polarProductId: args.polarProductId,
       key: args.key,
       name: args.name,
@@ -50,16 +42,14 @@ export default internalAction(async (ctx) => {
   /**
    * Stripe Products.
    */
-  const polar = new Polar({
-    server: "sandbox",
-    accessToken: env.POLAR_ACCESS_TOKEN,
-  });
+  const polar = new Polar({ server: 'sandbox', accessToken: env.POLAR_ACCESS_TOKEN });
   const products = await polar.products.list({
     organizationId: env.POLAR_ORGANIZATION_ID,
     isArchived: false,
   });
+
   if (products?.result?.items?.length) {
-    console.info("🏃‍♂️ Skipping Polar products creation and seeding.");
+    console.info('🏃‍♂️ Skipping Polar products creation and seeding.');
     return;
   }
 
@@ -76,14 +66,10 @@ export default internalAction(async (ctx) => {
       })),
     });
     const monthPrice = polarProduct.prices.find(
-      (price) =>
-        price.type === "recurring" &&
-        price.recurringInterval === INTERVALS.MONTH,
+      (price) => price.type === 'recurring' && price.recurringInterval === INTERVALS.MONTH,
     );
     const yearPrice = polarProduct.prices.find(
-      (price) =>
-        price.type === "recurring" &&
-        price.recurringInterval === INTERVALS.YEAR,
+      (price) => price.type === 'recurring' && price.recurringInterval === INTERVALS.YEAR,
     );
 
     await ctx.runMutation(internal.init.insertSeedPlan, {
@@ -98,10 +84,7 @@ export default internalAction(async (ctx) => {
               month: {
                 usd: {
                   polarId: monthPrice?.id,
-                  amount:
-                    monthPrice.amountType === "fixed"
-                      ? monthPrice.priceAmount
-                      : 0,
+                  amount: monthPrice.amountType === 'fixed' ? monthPrice.priceAmount : 0,
                 },
               },
             }),
@@ -111,10 +94,7 @@ export default internalAction(async (ctx) => {
               year: {
                 usd: {
                   polarId: yearPrice?.id,
-                  amount:
-                    yearPrice.amountType === "fixed"
-                      ? yearPrice.priceAmount
-                      : 0,
+                  amount: yearPrice.amountType === 'fixed' ? yearPrice.priceAmount : 0,
                 },
               },
             }),
@@ -122,5 +102,5 @@ export default internalAction(async (ctx) => {
     });
   });
 
-  console.info("📦 Polar Products have been successfully created.");
+  console.info('📦 Polar Products have been successfully created.');
 });

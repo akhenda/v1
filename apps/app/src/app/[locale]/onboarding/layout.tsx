@@ -1,32 +1,26 @@
-import { convexAuthNextjsToken } from "@convex-dev/auth/nextjs/server";
-import { api } from "@v1/backend/convex/_generated/api";
-import { fetchAction, fetchMutation, fetchQuery } from "convex/nextjs";
-import { Loader2 } from "lucide-react";
-import Image from "next/image";
-import { redirect } from "next/navigation";
+import { convexAuthNextjsToken } from '@convex-dev/auth/nextjs/server';
+import { api } from '@v1/backend/convex/_generated/api';
+import { fetchAction, fetchMutation, fetchQuery } from 'convex/nextjs';
+import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
-export default async function Layout({
-  children,
-}: { children: React.ReactNode }) {
-  const user = await fetchQuery(
-    api.users.getUser,
-    {},
-    { token: convexAuthNextjsToken() },
-  );
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const user = await fetchQuery(api.users.getUser, {}, { token: await convexAuthNextjsToken() });
   const checkoutUrl = await fetchAction(
     api.subscriptions.getOnboardingCheckoutUrl,
     {},
-    { token: convexAuthNextjsToken() },
+    { token: await convexAuthNextjsToken() },
   );
-  if (!checkoutUrl) {
-    return null;
-  }
+
+  if (!checkoutUrl) return null;
+
   if (!user?.subscription && !user?.polarSubscriptionPendingId) {
     await fetchMutation(
       api.subscriptions.setSubscriptionPending,
       {},
-      { token: convexAuthNextjsToken() },
+      { token: await convexAuthNextjsToken() },
     );
+
     return redirect(checkoutUrl);
   }
 

@@ -1,5 +1,5 @@
-import type { LogContext, LoggerOptions } from '../../../types.js';
-import { colorize, isServer } from '../../../utils.js';
+import { colorize, getIcon, isServer } from '../../../utils.js';
+import type { LogContext, LoggerOptions } from '../core/types.js';
 
 import css from './object-to-css.js';
 import styleableStyle from './styleable-style.js';
@@ -9,6 +9,7 @@ const noop = () => null;
 const styleable = (options: LoggerOptions) => {
   const {
     colorized = true,
+    showIcon = false,
     showSource = true,
     showTimestamp = false,
     formatTimestamp = (t: number) => new Date(t).toISOString(),
@@ -20,7 +21,7 @@ const styleable = (options: LoggerOptions) => {
     level: { ...styleableStyle.level, ...(options.style?.level || {}) },
   };
 
-  return (context: LogContext, messages: string[], next: () => void) => {
+  return (context: LogContext, messages: unknown[], next: () => void) => {
     // biome-ignore lint/style/noParameterAssign: very intentional
     if (typeof next !== 'function') next = noop;
     if (typeof console === 'undefined') {
@@ -75,7 +76,12 @@ const styleable = (options: LoggerOptions) => {
       }
     }
 
-    let msgs = [formatters.join(' '), ...styles, ...messages];
+    let msgs = [
+      formatters.join(' '),
+      ...styles,
+      showIcon ? getIcon(level.name) : null,
+      ...messages.filter(Boolean),
+    ].filter((e) => e !== null);
 
     if (showSource && stackframes.length > 0) {
       const stackframeIndex = Math.min(4, stackframes.length - 1);
