@@ -1,0 +1,17 @@
+diff --git a/node_modules/unilogr/package.json b/node_modules/unilogr/package.json
+index 67cec7a..af46f2c 100644
+--- a/node_modules/unilogr/package.json
++++ b/node_modules/unilogr/package.json
+@@ -49,12 +49,6 @@
+   "main": "dist/index.cjs",
+   "module": "dist/index.mjs",
+   "types": "./dist/index.d.ts",
+-  "exports": {
+-    ".": {
+-      "require": "./dist/index.cjs",
+-      "import": "./dist/index.mjs"
+-    }
+-  },
+   "repository": "https://github.com/gustavotoyota/unilogr.git",
+   "scripts": {
+     "build": "unbuild",

@@ -1,2 +1,2 @@
-export * from './common.ts';
-export * from './helpers.ts';
+export * from './common.js';
+export * from './helpers.js';

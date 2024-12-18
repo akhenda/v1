@@ -45,7 +45,7 @@
     "@turbo/workspaces": "2.3.3",
     "@v1/biome": "workspace:*",
     "@vitest/coverage-v8": "2.1.8",
-    "chalk": "4.1.2",
+    "chalk": "5.3.0",
     "cz-git": "1.11.0",
     "dotenv": "16.4.7",
     "husky": "9.1.7",

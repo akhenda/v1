@@ -1,10 +1,8 @@
 {
   "extends": "@v1/typescript/base.json",
   "compilerOptions": {
-    "declaration": true,
-    "types": ["node", "vitest"],
     "baseUrl": "."
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "app.d.ts"],
   "exclude": ["node_modules"]
 }
