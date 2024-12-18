@@ -19,8 +19,12 @@ function getBaseConfig(project) {
   return {
     debug: true,
     dryRun: false,
-    extends: 'semantic-release-monorepo',
-    branches: ['main', { name: 'dev', channel: 'beta', prerelease: 'rc' }],
+    // extends: 'semantic-release-monorepo',
+    branches: [
+      'main',
+      { name: 'dev', channel: 'beta', prerelease: 'rc' },
+      { name: 'alpha', channel: 'alpha', prerelease: 'alpha' },
+    ],
     plugins: [
       '@semantic-release/commit-analyzer',
       '@semantic-release/release-notes-generator',

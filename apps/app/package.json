@@ -8,7 +8,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "lint": "biome lint",
     "format": "biome format --write .",
-    "release": "semantic-release",
+    "release": "semantic-release-monorepo",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
@@ -36,12 +36,11 @@
     "zod": "3.24.1"
   },
   "devDependencies": {
+    "@rimac-technology/semantic-release-monorepo": "^1.2.5",
     "@sentry/nextjs": "8.47.0",
     "@types/node": "22.10.2",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
-    "semantic-release": "24.2.0",
-    "semantic-release-monorepo": "8.0.2",
     "typescript": "5.7.2"
   }
 }
