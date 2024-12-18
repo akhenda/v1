@@ -9,6 +9,10 @@
  * @returns A configuration for semantic-release.
  */
 function getBaseConfig(project) {
+  console.log('project: ', project);
+  const projectName = project.trim().replace('@v1/', '').trim();
+  console.log('projectName: ', projectName);
+
   /**
    * @type {import('semantic-release').GlobalConfig}
    */
@@ -26,12 +30,12 @@ function getBaseConfig(project) {
         '@semantic-release/git',
         {
           assets: ['package.json', 'docs/CHANGELOG.md'],
-          message: `chore(release): ${project} v\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`,
+          message: `chore(release): ${projectName} v\${nextRelease.version} [skip ci]\n\n\${nextRelease.notes}`,
         },
       ],
       '@semantic-release/github',
     ],
-    tagFormat: `${project}-v\${version}`,
+    tagFormat: `${projectName}-v\${version}`,
   };
 }
 
