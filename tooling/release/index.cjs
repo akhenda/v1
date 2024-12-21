@@ -29,7 +29,8 @@ function getBaseConfig(project) {
       '@semantic-release/commit-analyzer',
       '@semantic-release/release-notes-generator',
       ['@semantic-release/changelog', { changelogFile: 'docs/CHANGELOG.md' }],
-      ['@semantic-release/npm', { npmPublish: false }],
+      // ['@semantic-release/npm', { npmPublish: false }],
+      ['@anolilab/semantic-release-pnpm', { npmPublish: false }],
       [
         '@semantic-release/git',
         {
