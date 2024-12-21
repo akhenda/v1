@@ -8,8 +8,10 @@ on:
 
 permissions:
   actions: read
-  contents: read
+  contents: write
   pull-requests: write
+  issues: write
+  id-token: write
 
 jobs:
   ci-pr-title:
@@ -25,6 +27,12 @@ jobs:
     name: Validate (Lint, Test & Build)
     needs: ci-repo-integrity
     uses: ./.github/workflows/ci-validate.yml
+    secrets: inherit
+
+  ci-release:
+    name: Release
+    needs: ci-validate
+    uses: ./.github/workflows/ci-release.yml
     secrets: inherit
 
   ci-coverage-badge:

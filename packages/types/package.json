@@ -8,10 +8,13 @@
     "clean": "rm -rf .turbo node_modules coverage",
     "format": "biome format --write .",
     "lint": "biome check .",
-    "release": "semantic-release",
+    "release": "semantic-release-monorepo",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@v1/release": "workspace:*"
+  },
+  "devDependencies": {
+    "@rimac-technology/semantic-release-monorepo": "^1.2.5"
   }
 }
