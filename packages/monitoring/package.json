@@ -1,0 +1,21 @@
+{
+  "name": "@v1/monitoring",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "release": "semantic-release",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sentry/core": "8.47.0",
+    "@v1/release": "workspace:*",
+    "@v1/types": "workspace:*"
+  }
+}

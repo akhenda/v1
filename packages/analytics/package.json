@@ -1,10 +1,15 @@
 {
   "name": "@v1/analytics",
   "version": "1.0.0",
-  "main": "src/index.ts",
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "exports": {
+    "./mobile": "./src/libs/open-panel/mobile.tsx",
+    "./next": "./src/libs/open-panel/next.tsx",
+    "./server": "./src/libs/open-panel/server.ts",
+    "./web": "./src/libs/open-panel/web.ts"
+  },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "biome check .",
@@ -13,12 +18,20 @@
   },
   "dependencies": {
     "@openpanel/nextjs": "1.0.7",
+    "@openpanel/react-native": "1.0.1",
+    "@openpanel/sdk": "1.0.0",
+    "@openpanel/web": "1.0.1",
     "@v1/logging": "workspace:*",
-    "@vercel/functions": "1.5.1"
-  },
-  "exports": {
-    "./server": "./src/server.ts",
-    "./client": "./src/client.tsx",
-    "./events": "./src/events.ts"
+    "@vercel/functions": "1.5.1",
+    "expo-application": "6.0.1",
+    "expo-constants": "17.0.3",
+    "expo-device": "7.0.1",
+    "expo-file-system": "18.0.6",
+    "expo-localization": "16.0.0",
+    "next": "15.1.3",
+    "posthog-js": "1.203.2",
+    "posthog-node": "4.3.2",
+    "posthog-react-native": "3.6.1",
+    "remeda": "2.19.0"
   }
 }

@@ -1,10 +1,12 @@
+import * as R from 'remeda';
+
 import { colorize, getIcon, isServer } from '../../../utils.js';
 import type { LogContext, LoggerOptions } from '../core/types.js';
 
 import css from './object-to-css.js';
 import styleableStyle from './styleable-style.js';
 
-const noop = () => null;
+const noop = R.doNothing;
 
 const styleable = (options: LoggerOptions) => {
   const {

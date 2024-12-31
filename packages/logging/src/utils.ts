@@ -1,10 +1,12 @@
+import * as R from 'remeda';
+
 import { LOGS_CONFIG, type LogLevel } from './config.js';
 
 /**
  * A function that does nothing.
  * @returns null
  */
-export const noop = () => {};
+export const noop = R.doNothing;
 
 /**
  * Check if the current environment is a server environment.

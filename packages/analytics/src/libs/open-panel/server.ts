@@ -1,7 +1,7 @@
 import { OpenPanel, type PostEventPayload } from '@openpanel/nextjs';
 import { waitUntil } from '@vercel/functions';
 
-import { logger } from './logger.js';
+import { logger } from '../utils.js';
 
 type Props = { userId?: string; fullName?: string | null };
 

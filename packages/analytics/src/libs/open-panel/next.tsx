@@ -1,6 +1,6 @@
 import { OpenPanelComponent, type PostEventPayload, useOpenPanel } from '@openpanel/nextjs';
 
-import { logger } from './logger.js';
+import { logger } from '../utils.js';
 
 const isProd = process.env.NODE_ENV === 'production';
 
