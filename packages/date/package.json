@@ -1,0 +1,18 @@
+{
+  "name": "@v1/date",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "biome check .",
+    "format": "biome --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@v1/logging": "workspace:*",
+    "dayjs": "1.11.13",
+    "remeda": "2.19.0"
+  }
+}
