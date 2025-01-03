@@ -12,7 +12,8 @@
       ".github",
       ".react-email",
       "_generated",
-      "**/*/fixtures"
+      "**/*/fixtures",
+      "migrations/meta"
     ]
   },
   "vcs": {

@@ -1,0 +1,10 @@
+{
+  "extends": "@v1/typescript/react-library.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "baseUrl": "."
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "drizzle.config.ts", "env.ts"],
+  "exclude": ["node_modules"]
+}
