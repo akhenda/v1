@@ -63,4 +63,9 @@ export default defineSchema({
   })
     .index('userId', ['userId'])
     .index('polarId', ['polarId']),
+
+  messages: defineTable({
+    author: v.string(),
+    body: v.string(),
+  }),
 });

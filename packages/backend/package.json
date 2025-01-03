@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "clean": "rm -rf .turbo node_modules",
     "dev": "convex dev --tail-logs",
+    "format": "biome --write .",
+    "lint": "biome check .",
     "setup": "convex dev --once && convex env set VALIDATE_ENV=true",
-    "seed": "convex dev --once && convex run init"
+    "seed": "convex dev --once && convex run init",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism",
+    "test:coverage": "vitest run --coverage --coverage.reporter=text",
+    "typecheck": "tsc --project convex/tsconfig.json --noEmit"
   },
   "type": "module",
   "author": "",
@@ -15,5 +24,10 @@
     "convex-helpers": "0.1.67",
     "openai": "4.77.0",
     "standardwebhooks": "1.0.0"
+  },
+  "devDependencies": {
+    "@edge-runtime/vm": "5.0.0",
+    "convex-test": "0.0.34",
+    "vitest": "2.1.8"
   }
 }
