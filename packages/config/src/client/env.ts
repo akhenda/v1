@@ -7,44 +7,43 @@
  *  - Envalid (https://github.com/af/envalid)
  */
 import { createEnv } from '@t3-oss/env-core';
-import { z } from 'zod';
 
-import { getEnvWithAccessors, nodeEnvs } from '../utils.js';
+import type { ClientEnvSchema, ClientPrefix, ServerEnvSchema } from '../types.js';
+import { getEnvWithAccessors } from '../utils.js';
 
-const env = createEnv({
-  /**
-   * The prefix that client-side variables must have. This is enforced both at
-   * a type-level and at runtime.
-   */
-  clientPrefix: 'PUBLIC_',
+function getEnv<TClient extends ClientEnvSchema, TServer extends ServerEnvSchema>(client: TClient) {
+  return getEnvWithAccessors(
+    createEnv<ClientPrefix, TServer, TClient>({
+      /**
+       * The prefix that client-side variables must have. This is enforced both at
+       * a type-level and at runtime.
+       */
+      clientPrefix: 'PUBLIC_',
 
-  client: {
-    PUBLIC_ENV: z.enum(nodeEnvs).default('development'),
-    PUBLIC_ADMIN_EMAIL: z.string().email().default('admin@example.com'),
-    PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
-    PUBLIC_CONVEX_URL: z.string(),
-  },
+      client,
 
-  /**
-   * What object holds the environment variables at runtime. This is usually
-   * `process.env` or `import.meta.env`.
-   */
-  runtimeEnv: process.env,
+      /**
+       * What object holds the environment variables at runtime. This is usually
+       * `process.env` or `import.meta.env`.
+       */
+      runtimeEnv: process.env,
 
-  /**
-   * By default, this library will feed the environment variables directly to
-   * the Zod validator.
-   *
-   * This means that if you have an empty string for a value that is supposed
-   * to be a number (e.g. `PORT=` in a ".env" file), Zod will incorrectly flag
-   * it as a type mismatch violation. Additionally, if you have an empty string
-   * for a value that is supposed to be a string with a default value (e.g.
-   * `DOMAIN=` in an ".env" file), the default value will never be applied.
-   *
-   * In order to solve these issues, we recommend that all new projects
-   * explicitly specify this option as true.
-   */
-  emptyStringAsUndefined: true,
-});
+      /**
+       * By default, this library will feed the environment variables directly to
+       * the Zod validator.
+       *
+       * This means that if you have an empty string for a value that is supposed
+       * to be a number (e.g. `PORT=` in a ".env" file), Zod will incorrectly flag
+       * it as a type mismatch violation. Additionally, if you have an empty string
+       * for a value that is supposed to be a string with a default value (e.g.
+       * `DOMAIN=` in an ".env" file), the default value will never be applied.
+       *
+       * In order to solve these issues, we recommend that all new projects
+       * explicitly specify this option as true.
+       */
+      emptyStringAsUndefined: true,
+    }),
+  );
+}
 
-export default getEnvWithAccessors(env);
+export default getEnv;

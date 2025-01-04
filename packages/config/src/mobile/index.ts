@@ -10,9 +10,27 @@
  *
  * Read more here: https://reactnative.dev/docs/security#storing-sensitive-info
  */
+import type { ExpoClientEnvSchema, ExpoEnvOptions, ExpoSharedEnvSchema } from '../types.js';
+
 import constants from './constants.js';
-import env from './env.js';
+import getEnv from './env.js';
 
-const config = { constants, env };
+/**
+ * Retrieves the configuration object for the mobile environment.
+ *
+ * This function utilizes the provided options to validate and access
+ * the environment variables, returning an object containing constants
+ * and the validated environment variables.
+ *
+ * @typeParam TClient - The schema for client-side environment variables.
+ * @typeParam TShared - The schema for shared environment variables.
+ * @param options - The environment options that include client and shared environments.
+ * @returns An object with constants and the validated environment variables.
+ */
+function getConfig<TClient extends ExpoClientEnvSchema, TShared extends ExpoSharedEnvSchema>(
+  options: ExpoEnvOptions<TClient, TShared>,
+) {
+  return { constants, env: getEnv(options) };
+}
 
-export default config;
+export default getConfig;

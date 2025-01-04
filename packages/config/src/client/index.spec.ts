@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import config from './index.js';
+import { clientSchema } from './example.js';
+import getConfig from './index.js';
 
+const config = getConfig(clientSchema);
 const { env, constants } = config;
 
 describe('env/client', () => {

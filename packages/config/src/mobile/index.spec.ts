@@ -1,9 +1,11 @@
 import { beforeAll, describe, expect, it, vitest } from 'vitest';
+import { options } from './example.js';
 
 describe('env/mobile', () => {
   it('gets mobile envs & constants from config', async () => {
-    const config = await import('./index.js');
-    const { env, constants } = config.default;
+    const getConfig = await import('./index.js');
+    const config = getConfig.default(options);
+    const { env, constants } = config;
 
     // Constants
     expect(constants.persistNavigation).toBe('never');
@@ -37,8 +39,9 @@ describe('env/mobile', () => {
     });
 
     it('gets mobile envs & constants from config', async () => {
-      const config = await import('./index.js');
-      const { env, constants } = config.default;
+      const getConfig = await import('./index.js');
+      const config = getConfig.default(options);
+      const { env, constants } = config;
 
       // Constants
       expect(constants.persistNavigation).toBe('never');

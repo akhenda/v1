@@ -1,42 +1,39 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
-
-import { getEnvWithAccessors, nodeEnvs } from '../utils.js';
-
 // https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
-const env = createEnv({
-  shared: {
-    NODE_ENV: z.enum(nodeEnvs).default('development'),
-    PORT: z.coerce.number().int().default(3000),
-    VERCEL_URL: z
-      .string()
-      .optional()
-      .transform((v) => (v ? `https://${v}` : undefined)),
-  },
+import { createEnv } from '@t3-oss/env-nextjs';
 
-  client: {
-    NEXT_PUBLIC_CONVEX_URL: z.string(),
-    NEXT_PUBLIC_OPENPANEL_CLIENT_ID: z.optional(z.string()),
-    NEXT_PUBLIC_SENTRY_DSN: z.optional(z.string()),
-  },
+import type {
+  NextClientEnvSchema,
+  NextEnvOptions,
+  NextExperimentalRuntimeEnv,
+  NextServerEnvSchema,
+  NextSharedEnvSchema,
+} from '../types.js';
+import { getEnvWithAccessors } from '../utils.js';
 
-  runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL,
-    NEXT_PUBLIC_OPENPANEL_CLIENT_ID: process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID,
-    NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
+function getEnv<
+  TServer extends NextServerEnvSchema,
+  TClient extends NextClientEnvSchema,
+  TShared extends NextSharedEnvSchema,
+  TExperimentalRuntimeEnv extends NextExperimentalRuntimeEnv,
+>(options: NextEnvOptions<TServer, TClient, TShared, TExperimentalRuntimeEnv>) {
+  const { server, client, shared, runtimeEnv } = options;
 
-    PORT: process.env.PORT,
-    VERCEL_URL: process.env.VERCEL_URL,
-  },
+  return getEnvWithAccessors(
+    createEnv<TServer, TClient, TShared>({
+      server,
+      shared,
+      client,
 
-  skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,
+      experimental__runtimeEnv: runtimeEnv,
+      skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,
 
-  // Tell the library when we're in a server context.
-  isServer: typeof window === 'undefined',
+      // Tell the library when we're in a server context.
+      isServer: typeof window === 'undefined',
 
-  // Treat empty strings as undefined.
-  emptyStringAsUndefined: true,
-});
+      // Treat empty strings as undefined.
+      emptyStringAsUndefined: true,
+    }),
+  );
+}
 
-export default getEnvWithAccessors(env);
+export default getEnv;

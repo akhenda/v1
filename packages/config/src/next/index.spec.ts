@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import config from './index.js';
+import { options } from './example.js';
+import getConfig from './index.js';
 
+const config = getConfig(options);
 const { env, constants } = config;
 
 describe('env/next', () => {

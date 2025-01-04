@@ -33,7 +33,11 @@
         "noForEach": "off"
       },
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": {
+          "level": "warn",
+          "fix": "safe"
+        }
       },
       "style": {
         "noNonNullAssertion": "off"
