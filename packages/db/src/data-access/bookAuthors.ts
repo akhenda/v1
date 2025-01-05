@@ -4,8 +4,6 @@ import { db } from '../drizzle.js';
 import { tables } from '../schema/index.js';
 import { logger } from '../utils.js';
 
-type TableName = 'bookAuthor';
-
 const query = db.query.bookAuthor;
 const table = tables.bookAuthor;
 

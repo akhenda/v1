@@ -37,6 +37,10 @@
         "noUnusedImports": {
           "level": "warn",
           "fix": "safe"
+        },
+        "noUnusedVariables": {
+          "level": "warn",
+          "fix": "safe"
         }
       },
       "style": {

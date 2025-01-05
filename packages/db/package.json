@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf .turbo node_modules",
+    "dev": "bun run docker:up",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "drizzle-kit:copy": "cp node_modules/drizzle-kit/bin.cjs node_modules/drizzle-kit/bin.js",
