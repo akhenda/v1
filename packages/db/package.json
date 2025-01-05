@@ -9,6 +9,8 @@
     "clean": "rm -rf .turbo node_modules",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
+    "drizzle-kit:copy": "cp node_modules/drizzle-kit/bin.cjs node_modules/drizzle-kit/bin.js",
+    "drizzle-kit:esm": "npx jiti ../../node_modules/drizzle-kit/bin.js --config=./drizzle.config.ts",
     "format": "biome --write .",
     "generate": "bun run build && drizzle-kit generate",
     "lint": "biome check .",
@@ -20,6 +22,7 @@
   "dependencies": {
     "@clerk/nextjs": "6.9.6",
     "@clerk/themes": "2.2.3",
+    "@v1/config": "workspace:*",
     "@v1/logging": "workspace:*",
     "@v1/types": "workspace:*",
     "dotenv": "16.4.7",

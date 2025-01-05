@@ -15,7 +15,7 @@ async function resetTable(db: DB, table: Table) {
 (async () => {
   for (const table of [schema.book, schema.user]) {
     // await db.delete(table); // clear tables without truncating / resetting ids
-    // await resetTable(db, table);
+    await resetTable(db, table);
   }
 
   await seeds.book(db);

@@ -9,7 +9,7 @@ services:
     ports:
       - ${DB_PORT}:5432
     volumes:
-      - ./db-data:/var/lib/postgresql/data
+      - ~/Docker/volumes/@v1/db/pg:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
@@ -21,4 +21,4 @@ services:
       PGADMIN_DEFAULT_EMAIL: jakhenda@gmail.com
       PGADMIN_DEFAULT_PASSWORD: supersecret
     volumes:
-      - ./pgadmin-data:/var/lib/pgadmin
+      - ~/Docker/volumes/@v1/db/pgadmin:/var/lib/pgadmin

@@ -24,7 +24,8 @@
         "next-env.d.ts",
         ".expo/**",
         ".react-email/.next/**",
-        "!.react-email/.next/cache/**"
+        "!.react-email/.next/cache/**",
+        "dist/**"
       ]
     },
     "start": {

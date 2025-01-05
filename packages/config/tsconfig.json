@@ -3,8 +3,9 @@
   "compilerOptions": {
     "declaration": true,
     "types": ["node", "vitest"],
-    "baseUrl": "."
+    "outDir": "dist",
+    "rootDir": "src"
   },
-  "include": ["src/**/*.ts", "global.d.ts", "test-setup.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "global.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

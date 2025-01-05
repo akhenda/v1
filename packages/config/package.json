@@ -3,14 +3,30 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "sideEffects": false,
   "exports": {
-    "./client": "./src/client/index.ts",
-    "./mobile": "./src/mobile/index.ts",
-    "./next": "./src/next/index.ts",
-    "./server": "./src/server/index.ts"
+    "./client": {
+      "types": "./src/client/index.ts",
+      "default": "./dist/client/index.cjs"
+    },
+    "./mobile": {
+      "types": "./src/mobile/index.ts",
+      "default": "./dist/mobile/index.cjs"
+    },
+    "./next": {
+      "types": "./src/next/index.ts",
+      "default": "./dist/next/index.cjs"
+    },
+    "./server": {
+      "types": "./src/server/index.ts",
+      "default": "./dist/server/index.cjs"
+    }
   },
   "scripts": {
-    "clean": "rm -rf .turbo node_modules coverage",
+    "build": "tsup src --format cjs,esm",
+    "build:tsc": "tsc",
+    "clean": "rm -rf .turbo dist node_modules coverage",
+    "dev": "tsc --watch",
     "format": "biome format --write .",
     "lint": "biome check .",
     "release": "semantic-release",
@@ -24,6 +40,7 @@
   },
   "devDependencies": {
     "@vitest/ui": "2.1.8",
+    "tsup": "8.3.5",
     "vitest": "2.1.8"
   }
 }

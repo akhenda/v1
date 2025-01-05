@@ -1,7 +1,6 @@
 {
   "extends": "@v1/typescript/react-library.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
     "outDir": "./dist",
     "baseUrl": "."
   },

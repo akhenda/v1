@@ -1,14 +1,20 @@
-import { config } from 'dotenv';
-import { expand } from 'dotenv-expand';
+import { z } from 'zod';
 
-import { ZodError, z } from 'zod';
+/**
+ * NOTE: We are forced to build our config package because `drizzle-kit` does
+ * not support ESM
+ *
+ * TODO(akhenda): Once `drizzle-kit` supports ESM, we should stop building it.
+ * We'll just import it directly and let JIT handle it in this package.
+ */
+import getConfig from '@v1/config/server';
 
 const stringBoolean = z.coerce
   .string()
   .transform((val) => val === 'true')
   .default('false');
 
-const EnvSchema = z.object({
+const EnvSchema = {
   NODE_ENV: z.string().default('development'),
   DB_HOST: z.string(),
   DB_USER: z.string(),
@@ -19,30 +25,8 @@ const EnvSchema = z.object({
   DB_MIGRATING: stringBoolean,
   DB_SEEDING: stringBoolean,
   DB_LOG_LEVEL: z.enum(['info', 'warn', 'error', 'debug', 'trace']).default('info'),
-});
+};
 
-export type EnvSchema = z.infer<typeof EnvSchema>;
+const config = getConfig(EnvSchema);
 
-expand(config());
-
-try {
-  EnvSchema.parse(process.env);
-} catch (error) {
-  if (error instanceof ZodError) {
-    let message = 'Missing required values in .env:\n';
-
-    error.issues.forEach((issue) => {
-      message += `${issue.path[0]}\n`;
-    });
-
-    const e = new Error(message);
-
-    e.stack = '';
-
-    throw e;
-  }
-
-  console.error(error);
-}
-
-export default EnvSchema.parse(process.env);
+export default config.env;
