@@ -1,0 +1,6 @@
+{
+  "aliases": {
+    "components": "@design/ui-kit/components",
+    "lib": "packages/universal/design/lib"
+  }
+}

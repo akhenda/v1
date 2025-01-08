@@ -1,3 +1,3 @@
-import { createProjectLogger } from '@v1/logging';
+import { createProjectLogger } from '@v1/logging/nextjs';
 
-export const logger = createProjectLogger('@v1/web', 'trace');
+export const logger = createProjectLogger('@v1/web');

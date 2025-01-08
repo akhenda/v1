@@ -1,10 +1,4 @@
-import type {
-  NextClientEnvSchema,
-  NextEnvOptions,
-  NextExperimentalRuntimeEnv,
-  NextServerEnvSchema,
-  NextSharedEnvSchema,
-} from '../types.js';
+import type { ExperimentalRuntimeEnv, NextEnvOptions, ZodEnvSchema } from '../types.js';
 
 import * as constants from './constants.js';
 import getEnv from './env.js';
@@ -25,10 +19,10 @@ import getEnv from './env.js';
  */
 
 function getConfig<
-  TServer extends NextServerEnvSchema,
-  TClient extends NextClientEnvSchema,
-  TShared extends NextSharedEnvSchema,
-  TExperimentalRuntimeEnv extends NextExperimentalRuntimeEnv,
+  TServer extends ZodEnvSchema,
+  TClient extends ZodEnvSchema,
+  TShared extends ZodEnvSchema,
+  TExperimentalRuntimeEnv extends ExperimentalRuntimeEnv,
 >(options: NextEnvOptions<TServer, TClient, TShared, TExperimentalRuntimeEnv>) {
   return { constants, env: getEnv(options) };
 }

@@ -1,8 +1,10 @@
 import { PostHog, PostHogProvider } from 'posthog-react-native';
 import type { PostHogPersistedProperty } from 'posthog-react-native/lib/posthog-core/src';
+import type { PropsWithChildren } from 'react';
 
 import { NoOp, logger, noop } from '../utils.js';
-import type { Config, ExpoPostHogProviderProps, SetData } from './types.js';
+
+import type { Config, ExpoPostHogProviderProps, SetData, TrackedUser } from './types.js';
 
 /* Setup */
 
@@ -34,54 +36,76 @@ function reset(client: PostHog, propertiesToKeep?: PostHogPersistedProperty[]) {
 
 /* User related */
 
-function setUserId(
-  client: PostHog,
-
-  /** Required. User's unique identifier */
-  distinctId: string,
-
-  /** $set, optional */
-  setData?: SetData,
-
-  /** $set_once, optional */
-  setOnceData?: SetData,
-) {
-  client.identify(distinctId, setData, setOnceData);
-}
-
 // TODO(prod): Add user properties
 
-function setUser(
+/**
+ * Identifies a user and sets their associated traits in PostHog.
+ *
+ * This function uses the `identify` method of the PostHog client to associate
+ * the provided distinct identifier with the user and optionally sets or sets once
+ * their traits.
+ *
+ * Best practices when using identify
+ *
+ * 1. Call identify as soon as you're able to
+ *
+ * In your frontend, you should call identify as soon as you're able to. Typically, this is every
+ * time your app loads for the first time, and directly after your users log in. This ensures that
+ * events sent during your users' sessions are correctly associated with them.
+ * You only need to call identify once per session.
+ *
+ * 2. Use unique strings for distinct IDs
+ *
+ * If two users have the same distinct ID, their data is merged and they are considered one user in
+ * PostHog. Two common ways this can happen are:
+ * - Your logic for generating IDs does not generate sufficiently strong IDs and you can end up
+ *   with a clash where 2 users have the same ID.
+ * - There's a bug, typo, or mistake in your code leading to most or all users being identified
+ *   with generic IDs like null, true, or distinctId.
+ * PostHog also has built-in protections to stop the most common distinct ID mistakes.
+ *
+ * 3. Reset after logout
+ *
+ * If a user logs out on your frontend, you should call reset() to unlink any future events made on
+ * that device with that user.
+ * This is important if your users are sharing a computer, as otherwise all of those users are
+ * grouped together into a single user due to shared cookies between sessions. We strongly
+ * recommend you call reset on logout even if you don't expect users to share a computer.
+ *
+ * @param {PostHog} client - The PostHog client instance.
+ * @param {string} distinctId - The user's unique identifier.
+ * @param {SetData} [setData] - Optional data to set for the user.
+ * @param {SetData} [setOnceData] - Optional data to set once for the user.
+ */
+function identifyUser(
   client: PostHog,
-  user: { id: string },
+  user: TrackedUser,
 
-  /** $set, optional */
-  setData?: SetData,
-
-  /** $set_once, optional */
+  /** $set_once data (optional) */
   setOnceData?: SetData,
 ) {
-  setUserId(client, user.id, setData, setOnceData);
+  const { id, firstName, lastName, email } = user;
+
+  client.identify(id, { firstName, lastName, email }, setOnceData);
 }
 
 /* Properties */
 
-function setUserProperty(
+function setUserProperty<T extends string>(
   client: PostHog,
-  eventName: string,
-  propertyName: string,
+  propertyName: T,
   propertyValue: string,
 ) {
-  client.capture(eventName, { $set: { [propertyName]: [propertyValue] } });
+  client.capture('$set', { $set: { [propertyName]: [propertyValue] } });
 }
 
-function unsetUserProperty(client: PostHog, eventName: string, propertyName: string) {
-  client.capture(eventName, { $unset: [propertyName] });
+function unsetUserProperty<T extends string>(client: PostHog, propertyName: T) {
+  client.capture('$unset', { $unset: [propertyName] });
 }
 
 /* Events */
 
-function trackEvent(client: PostHog, eventName: string, properties?: SetData) {
+function trackEvent<T extends string>(client: PostHog, eventName: T, properties?: SetData) {
   client.capture(eventName, { ...properties });
 }
 
@@ -97,7 +121,10 @@ export function ExpoPostHogProvider({ children, host, apiKey }: ExpoPostHogProvi
   );
 }
 
-export function setupAnalytics(config: Config, env: { isProd: boolean }) {
+export function setupAnalytics<
+  PropertyNames extends string = string,
+  EventNames extends string = string,
+>(config: Config, env: { isProd: boolean }) {
   const client = init(config);
 
   if (!env.isProd || !client) {
@@ -110,26 +137,25 @@ export function setupAnalytics(config: Config, env: { isProd: boolean }) {
       trackEvent: noop,
       shutdown: noop,
       PostHogProvider: NoOp,
+      ExpoPostHogProvider: NoOp,
     };
   }
 
-  trackEvent(client, 'app-start');
+  trackEvent(client, 'analytics-lib-init');
 
   return {
     shutdown: () => shutdown(client),
     reset: (propertiesToKeep?: PostHogPersistedProperty[]) => reset(client, propertiesToKeep),
-    setUserId: (distinctId: string, setData: SetData, setOnceData?: SetData) =>
-      setUserId(client, distinctId, setData, setOnceData),
-    setUser: (user: { id: string }, setData: SetData, setOnceData?: SetData) =>
-      setUser(client, user, setData, setOnceData),
+    identifyUser: (user: TrackedUser, onceData?: SetData) => identifyUser(client, user, onceData),
     trackPageView: () => trackPageView(client),
-    setUserProperty: (eventName: string, propertyName: string, propertyValue: string) =>
-      setUserProperty(client, eventName, propertyName, propertyValue),
-    unsetUserProperty: (eventName: string, propertyName: string) =>
-      unsetUserProperty(client, eventName, propertyName),
-    trackEvent: (eventName: string, properties?: SetData) =>
-      trackEvent(client, eventName, properties),
-    PostHogProvider: ExpoPostHogProvider,
-    ExpoPostHogProvider,
+    setUserProperty: (prop: PropertyNames, value: string) => setUserProperty(client, prop, value),
+    unsetUserProperty: (property: PropertyNames) => unsetUserProperty(client, property),
+    trackEvent: (name: EventNames, properties?: SetData) => trackEvent(client, name, properties),
+    ExpoPostHogProvider: ({ children }: PropsWithChildren) => (
+      <ExpoPostHogProvider host={config.apiHost} apiKey={config.apiKey}>
+        {children}
+      </ExpoPostHogProvider>
+    ),
+    PostHogProvider,
   };
 }

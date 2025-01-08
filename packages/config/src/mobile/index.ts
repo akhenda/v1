@@ -10,7 +10,7 @@
  *
  * Read more here: https://reactnative.dev/docs/security#storing-sensitive-info
  */
-import type { ExpoClientEnvSchema, ExpoEnvOptions, ExpoSharedEnvSchema } from '../types.js';
+import type { ExpoEnvOptions, ZodEnvSchema } from '../types.js';
 
 import constants from './constants.js';
 import getEnv from './env.js';
@@ -27,7 +27,7 @@ import getEnv from './env.js';
  * @param options - The environment options that include client and shared environments.
  * @returns An object with constants and the validated environment variables.
  */
-function getConfig<TClient extends ExpoClientEnvSchema, TShared extends ExpoSharedEnvSchema>(
+function getConfig<TClient extends ZodEnvSchema, TShared extends ZodEnvSchema>(
   options: ExpoEnvOptions<TClient, TShared>,
 ) {
   return { constants, env: getEnv(options) };

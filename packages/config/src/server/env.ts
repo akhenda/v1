@@ -8,10 +8,10 @@
  */
 import { createEnv } from '@t3-oss/env-core';
 
-import type { NextServerEnvSchema } from '../types.js';
+import type { ZodEnvSchema } from '../types.js';
 import { getEnvWithAccessors } from '../utils.js';
 
-function getEnv<TServer extends NextServerEnvSchema>(server: TServer) {
+function getEnv<TServer extends ZodEnvSchema>(server: TServer) {
   return getEnvWithAccessors(
     createEnv<undefined, TServer>({
       server,

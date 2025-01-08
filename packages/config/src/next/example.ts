@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { nodeEnvs } from '../types.js';
+import { type NextEnvOptions, nodeEnvs } from '../types.js';
 
 export const serverSchema = {};
 export const clientSchema = {
@@ -29,4 +29,9 @@ export const options = {
   client: clientSchema,
   shared: sharedSchema,
   runtimeEnv,
-};
+} satisfies NextEnvOptions<
+  typeof serverSchema,
+  typeof clientSchema,
+  typeof sharedSchema,
+  typeof runtimeEnv
+>;

@@ -1,16 +1,11 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@v1/ui/select";
-import { cn } from "@v1/ui/utils";
-import { Monitor, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@v1/ui/select';
+import { cn } from '@v1/ui/utils';
+import { Monitor, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 export function ThemeSwitcher({ triggerClass }: { triggerClass?: string }) {
   const { theme: currentTheme, setTheme, themes } = useTheme();
+
   return (
     <Select
       value={currentTheme}
@@ -18,14 +13,14 @@ export function ThemeSwitcher({ triggerClass }: { triggerClass?: string }) {
     >
       <SelectTrigger
         className={cn(
-          "h-6 rounded border-primary/20 bg-secondary !px-2 hover:border-primary/40",
+          'h-6 rounded border-primary/20 bg-secondary !px-2 hover:border-primary/40',
           triggerClass,
         )}
       >
         <div className="flex items-start gap-2">
-          {currentTheme === "light" ? (
+          {currentTheme === 'light' ? (
             <Sun className="h-[14px] w-[14px]" />
-          ) : currentTheme === "dark" ? (
+          ) : currentTheme === 'dark' ? (
             <Moon className="h-[14px] w-[14px]" />
           ) : (
             <Monitor className="h-[14px] w-[14px]" />
@@ -42,7 +37,7 @@ export function ThemeSwitcher({ triggerClass }: { triggerClass?: string }) {
           <SelectItem
             key={theme}
             value={theme}
-            className={`text-sm font-medium text-primary/60 ${theme === currentTheme && "text-primary"}`}
+            className={`text-sm font-medium text-primary/60 ${theme === currentTheme && 'text-primary'}`}
           >
             {theme && theme.charAt(0).toUpperCase() + theme.slice(1)}
           </SelectItem>
@@ -57,15 +52,10 @@ export function ThemeSwitcherHome() {
   return (
     <div className="flex gap-3">
       {themes.map((theme) => (
-        <button
-          key={theme}
-          name="theme"
-          onClick={() => setTheme(theme)}
-          type="button"
-        >
-          {theme === "light" ? (
+        <button key={theme} name="theme" onClick={() => setTheme(theme)} type="button">
+          {theme === 'light' ? (
             <Sun className="h-4 w-4 text-primary/80 hover:text-primary" />
-          ) : theme === "dark" ? (
+          ) : theme === 'dark' ? (
             <Moon className="h-4 w-4 text-primary/80 hover:text-primary" />
           ) : (
             <Monitor className="h-4 w-4 text-primary/80 hover:text-primary" />

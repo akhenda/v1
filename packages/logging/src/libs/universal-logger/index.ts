@@ -212,6 +212,6 @@ class Logger {
  * show the source, enable timestamps, or use colorized output.
  * @returns The singleton Logger instance for the specified project, level, and options.
  */
-export function createProjectLogger(project: string, level: LogLevel, options?: LoggerOptions) {
+export function createLogger(project = '@v1', level: LogLevel = 'trace', options?: LoggerOptions) {
   return Logger.getInstance(project, level, options);
 }

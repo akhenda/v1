@@ -5,6 +5,7 @@ export function getCleanedEnvAccessors<T extends Record<string, unknown>>(env: T
 
   return {
     // If NODE_ENV is not set, assume production
+    environment,
     isProd: !environment || environment === 'production',
     isDev: environment === 'development',
     isTest: environment === 'test',
@@ -16,6 +17,7 @@ export function getCleanedMobileEnvAccessors<T extends Record<string, unknown>>(
   isDevBundle = true,
 ) {
   return {
+    environment: env.APP_VARIANT,
     // If APP_VARIANT is not set, assume production
     isProd: !env.APP_VARIANT || env.APP_VARIANT === 'production',
     isDev: env.APP_VARIANT === 'development',

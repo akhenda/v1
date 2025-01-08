@@ -1,4 +1,4 @@
-import { createLogger } from '@rasri/log';
+import { createLogger as rasriCreateLogger } from '@rasri/log';
 import * as R from 'remeda';
 
 import type { LogLevel } from '../config.js';
@@ -11,7 +11,7 @@ class Logger {
   private static instance?: Logger;
   private static level?: LogLevel;
   private static project?: string;
-  private logger?: ReturnType<typeof createLogger>;
+  private logger?: ReturnType<typeof rasriCreateLogger>;
 
   /**
    * The Logger's constructor should always be private to prevent direct
@@ -37,7 +37,7 @@ class Logger {
   }
 
   private configure() {
-    this.logger = createLogger(Logger.project, {
+    this.logger = rasriCreateLogger(Logger.project, {
       shouldShowTime: () => true,
       // shouldPrint: (level: string) => {
       //   return level === Logger.level;
@@ -103,6 +103,6 @@ class Logger {
  * of messages to be logged.
  * @returns The singleton Logger instance for the specified project and level.
  */
-export function createProjectLogger(project: string, level: LogLevel) {
+export function createLogger(project = '@v1', level: LogLevel = 'trace') {
   return Logger.getInstance(project, level);
 }

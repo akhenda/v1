@@ -1,4 +1,4 @@
-import type { NextServerEnvSchema } from '../types.js';
+import type { ZodEnvSchema } from '../types.js';
 
 import * as constants from './constants.js';
 import getEnv from './env.js';
@@ -13,7 +13,7 @@ import getEnv from './env.js';
  * @param schema - The Zod schema to validate the environment variables.
  * @returns An object with constants and the validated environment variables.
  */
-function getConfig<T extends NextServerEnvSchema>(schema: T) {
+function getConfig<T extends ZodEnvSchema>(schema: T) {
   return { constants, env: getEnv(schema) };
 }
 

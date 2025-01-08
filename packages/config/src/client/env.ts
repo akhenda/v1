@@ -8,10 +8,10 @@
  */
 import { createEnv } from '@t3-oss/env-core';
 
-import type { ClientEnvSchema, ClientPrefix, ServerEnvSchema } from '../types.js';
+import type { ClientEnvSchema, ClientPrefix, ZodEnvSchema } from '../types.js';
 import { getEnvWithAccessors } from '../utils.js';
 
-function getEnv<TClient extends ClientEnvSchema, TServer extends ServerEnvSchema>(client: TClient) {
+function getEnv<TClient extends ClientEnvSchema, TServer extends ZodEnvSchema>(client: TClient) {
   return getEnvWithAccessors(
     createEnv<ClientPrefix, TServer, TClient>({
       /**

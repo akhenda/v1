@@ -1,20 +1,14 @@
 // https://env.t3.gg/docs/nextjs#validate-schema-on-build-(recommended)
 import { createEnv } from '@t3-oss/env-nextjs';
 
-import type {
-  NextClientEnvSchema,
-  NextEnvOptions,
-  NextExperimentalRuntimeEnv,
-  NextServerEnvSchema,
-  NextSharedEnvSchema,
-} from '../types.js';
+import type { ExperimentalRuntimeEnv, NextEnvOptions, ZodEnvSchema } from '../types.js';
 import { getEnvWithAccessors } from '../utils.js';
 
 function getEnv<
-  TServer extends NextServerEnvSchema,
-  TClient extends NextClientEnvSchema,
-  TShared extends NextSharedEnvSchema,
-  TExperimentalRuntimeEnv extends NextExperimentalRuntimeEnv,
+  TServer extends ZodEnvSchema,
+  TClient extends ZodEnvSchema,
+  TShared extends ZodEnvSchema,
+  TExperimentalRuntimeEnv extends ExperimentalRuntimeEnv,
 >(options: NextEnvOptions<TServer, TClient, TShared, TExperimentalRuntimeEnv>) {
   const { server, client, shared, runtimeEnv } = options;
 

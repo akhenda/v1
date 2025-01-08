@@ -136,6 +136,6 @@ class Logger {
  * of messages to be logged.
  * @returns The singleton Logger instance for the specified project and level.
  */
-export function createProjectLogger(project: string, level: LogLevel) {
+export function createLogger(project = '@v1', level: LogLevel = 'debug') {
   return Logger.getInstance(project, level);
 }

@@ -6,15 +6,18 @@ import type { ErrorMonitoringConfig, PossibleSentry, Primitives } from './types.
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
 
-export function getProjectErrorMonitoring<T extends PossibleSentry>(
-  Sentry: T,
-  { env, sentryDsn, runtimeVersion, version, integrations = [] }: ErrorMonitoringConfig,
-) {
+export function getAppErrorMonitoring<T extends PossibleSentry>(Sentry: T) {
   return {
     /*  Setup  */
-    init() {
-      const isEnabled = env !== 'development';
-      const sampleRate = env === 'production' ? prodSampleRate : fullSampleRate;
+    init({
+      environment,
+      sentryDsn,
+      runtimeVersion,
+      version,
+      integrations = [],
+    }: ErrorMonitoringConfig) {
+      const enabled = environment !== 'development';
+      const tracesSampleRate = environment === 'production' ? prodSampleRate : fullSampleRate;
 
       if (!sentryDsn) {
         console.warn('Failed to initialize Sentry - No DSN found');
@@ -25,9 +28,9 @@ export function getProjectErrorMonitoring<T extends PossibleSentry>(
       Sentry.init({
         dsn: sentryDsn,
         debug: false,
-        tracesSampleRate: sampleRate,
-        enabled: isEnabled,
-        environment: env,
+        tracesSampleRate,
+        enabled,
+        environment,
         integrations,
         denyUrls: [
           /mixpanel.com/i,
@@ -65,7 +68,7 @@ export function getProjectErrorMonitoring<T extends PossibleSentry>(
     },
 
     clearUser() {
-      Sentry.configureScope((scope) => scope.setUser(null));
+      Sentry.configureScope?.((scope) => scope.setUser(null));
     },
 
     /*  Monitoring  */

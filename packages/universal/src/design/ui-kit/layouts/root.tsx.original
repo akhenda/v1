@@ -1,0 +1,102 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import type { Theme } from '@react-navigation/native';
+import { SplashScreen, Stack } from 'expo-router';
+import { useEffect, useMemo, useState } from 'react';
+import { Platform } from 'react-native';
+
+import { logger } from '@/core/observability';
+import Providers from '@/core/providers';
+import { NAV_THEME } from '@/design/lib/constants';
+import { useColorScheme } from '@/design/lib/hooks';
+import { setAndroidNavigationBar } from '@/design/lib/utils';
+import { ThemeToggle } from '@/design/ui-kit/components/theme-toggle';
+import { Text } from '@/design/ui-kit/components/ui/text';
+
+const DARK_THEME: Theme = { dark: true, colors: NAV_THEME.dark, fonts: NAV_THEME.fonts };
+const LIGHT_THEME: Theme = { dark: false, colors: NAV_THEME.light, fonts: NAV_THEME.fonts };
+
+// Catch any errors thrown by the Layout component.
+export { ErrorBoundary } from 'expo-router';
+
+export const unstable_settings = {
+  // Ensure that reloading on `/modal` keeps a back button present.
+  initialRouteName: '(tabs)',
+};
+
+// Prevent the splash screen from auto-hiding before getting the color scheme.
+SplashScreen.preventAutoHideAsync()
+  .catch((error) => {
+    logger.error(error, 'Failed to persist the SplashScreen');
+  })
+  .finally(() => {
+    logger.done('Persisted the SplashScreen');
+  });
+
+export default function RootLayout() {
+  const { colorScheme, setColorScheme, isDarkColorScheme } = useColorScheme();
+  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
+  const statusBarStyle = useMemo(() => (isDarkColorScheme ? 'light' : 'dark'), [isDarkColorScheme]);
+  const appTheme: Theme = useMemo(
+    () => (isDarkColorScheme ? DARK_THEME : LIGHT_THEME),
+    [isDarkColorScheme],
+  );
+
+  useEffect(() => {
+    (async () => {
+      const theme = await AsyncStorage.getItem('theme');
+
+      if (Platform.OS === 'web') {
+        // Adds the background color to the html element to prevent white background on overscroll.
+        document.documentElement.classList.add('bg-background');
+      }
+
+      if (!theme) {
+        AsyncStorage.setItem('theme', colorScheme);
+        setIsColorSchemeLoaded(true);
+
+        return;
+      }
+
+      const colorTheme = theme === 'dark' ? 'dark' : 'light';
+
+      if (colorTheme !== colorScheme) {
+        setColorScheme(colorTheme);
+        setAndroidNavigationBar(colorTheme);
+        setIsColorSchemeLoaded(true);
+
+        return;
+      }
+
+      setAndroidNavigationBar(colorTheme);
+      setIsColorSchemeLoaded(true);
+    })().finally(() => {
+      SplashScreen.hideAsync()
+        .catch((error: unknown) => {
+          logger.error(error, 'Failed to hide the SplashScreen');
+        })
+        .finally(() => {
+          logger.done('Hidden the SplashScreen');
+        });
+    });
+  }, [colorScheme, setColorScheme]);
+
+  if (!isColorSchemeLoaded) return null;
+
+  return (
+    <Providers appTheme={appTheme} statusBarStyle={statusBarStyle}>
+      <Stack
+        initialRouteName="(tabs)"
+        screenOptions={{
+          headerBackTitle: 'Back',
+          headerTitle(props) {
+            return <Text className="text-xl font-semibold">{props.children}</Text>;
+          },
+          headerRight: () => <ThemeToggle />,
+        }}
+      >
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+      </Stack>
+    </Providers>
+  );
+}

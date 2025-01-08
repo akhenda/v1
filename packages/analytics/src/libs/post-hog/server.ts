@@ -5,9 +5,27 @@ import type { Config, SetData } from './types.js';
 
 /* Setup */
 
+/**
+ * Initializes PostHog with the provided configuration.
+ *
+ * The PostHog client is created with `flushAt` set to `1` and `flushInterval` set to `0`.
+ * This ensures that events are sent immediately and not batched. The client instance is
+ * returned, and the caller is responsible for calling await posthog.shutdown() once done.
+ *
+ * Note: Because server-side functions in Next.js can be short-lived, we set `flushAt` to `1` and
+ * `flushInterval` to `0`.
+ *
+ * - `flushAt` sets how many capture calls we should flush the queue (in one batch).
+ * - `flushInterval` sets how many milliseconds we should wait before flushing the queue.
+ *    Setting them to the lowest number ensures events are sent immediately and not batched.
+ *    We also need to call `await posthog.shutdown()` once done.
+ *
+ * @param {Config} config - The PostHog configuration.
+ * @returns {Promise<PostHog>} A promise that resolves to the PostHog client instance.
+ */
 function init({ apiKey, apiHost }: Config) {
   try {
-    const client = new PostHog(apiKey, { host: apiHost });
+    const client = new PostHog(apiKey, { host: apiHost, flushAt: 1, flushInterval: 0 });
 
     return client;
   } catch (error) {

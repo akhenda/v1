@@ -1,5 +1,6 @@
 // biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 import { EventEmitter } from 'events';
+
 import LogLevel from './LogLevel.js';
 import { DEBUG, ERROR, INFO, OFF, TRACE, WARN } from './constants.js';
 import stacktrace from './stacktrace.js';
@@ -47,6 +48,7 @@ class Logger extends EventEmitter {
         this.emit('log', { ...context }, messages);
       } catch (e) {
         // Ignore
+        console.error(e);
       }
 
       next();
@@ -54,7 +56,7 @@ class Logger extends EventEmitter {
       try {
         this.emit('log', { ...context }, messages);
       } catch (e) {
-        // Ignore
+        console.error(e);
       }
 
       next();

@@ -2,6 +2,7 @@ import type {
   Breadcrumb,
   CaptureContext,
   Event,
+  Integration,
   Scope,
   SeverityLevel,
   Span,
@@ -19,7 +20,7 @@ export type PossibleSentry = {
   init: (options: {
     dsn: string;
     enabled: boolean;
-    integrations: unknown[];
+    integrations: Integration[];
     debug: boolean;
     tracesSampleRate: number;
     environment: 'production' | 'development';
@@ -29,7 +30,7 @@ export type PossibleSentry = {
   captureEvent: (event: Event) => void;
   captureException: (exception: unknown) => void;
   captureMessage: (message: string, context?: CaptureContext | SeverityLevel) => void;
-  configureScope: (callback: (scope: Scope) => void) => void;
+  configureScope?: (callback: (scope: Scope) => void) => void;
   setContext: (name: string, context: Record<string, unknown> | null) => void;
   setTag: (key: keyof typeof tags, value: Primitives) => void;
   setUser: (user: User) => void;
@@ -40,9 +41,9 @@ export type PossibleSentry = {
 };
 
 export type ErrorMonitoringConfig = {
-  env: 'production' | 'development';
+  environment: 'production' | 'development';
   sentryDsn?: string;
   runtimeVersion?: string;
   version?: string;
-  integrations?: unknown[];
+  integrations?: Integration[];
 };

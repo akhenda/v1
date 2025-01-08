@@ -4,7 +4,7 @@ import { z } from 'zod';
  * NOTE: We are forced to build our config package because `drizzle-kit` does
  * not support ESM
  *
- * TODO(akhenda): Once `drizzle-kit` supports ESM, we should stop building it.
+ * TODO(prod): Once `drizzle-kit` supports ESM, we should stop building it.
  * We'll just import it directly and let JIT handle it in this package.
  */
 import getConfig from '@v1/config/server';

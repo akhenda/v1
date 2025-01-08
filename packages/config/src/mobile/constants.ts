@@ -1,3 +1,5 @@
+import type { SupportedLocale, SupportedLocales } from '../types.js';
+
 export const isDev = __DEV__;
 export const bundleIdRegex = /^com\.[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[dev|prod|preview|rc]+$/;
 
@@ -23,6 +25,16 @@ export interface BaseConfig {
    * can be used in production as well if you prefer.
    */
   persistNavigation: 'always' | 'dev' | 'prod' | 'never';
+
+  /**
+   * The default locale for the app
+   */
+  defaultLocale: SupportedLocale;
+
+  /**
+   * The supported locales for the app
+   */
+  supportedLocales: SupportedLocales;
 }
 
 const constants: BaseConfig = {
@@ -30,6 +42,8 @@ const constants: BaseConfig = {
   exitRoutes: ['Welcome', 'Home'],
   persistNavigation: 'never',
   bundleEnv: isDev ? 'development' : 'production',
+  defaultLocale: 'en',
+  supportedLocales: ['en', 'sw'],
 };
 
 export default constants;

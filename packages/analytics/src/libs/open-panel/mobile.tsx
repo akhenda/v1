@@ -40,13 +40,7 @@ function init(config: Config) {
 function identifyUser(client: OpenPanel, user: TrackedUser, properties?: Properties) {
   const { profileId, firstName, lastName, email } = user;
 
-  client.identify({
-    profileId,
-    firstName,
-    lastName,
-    email,
-    properties,
-  });
+  client.identify({ profileId, firstName, lastName, email, properties });
 }
 
 /* Events */
@@ -77,17 +71,17 @@ function trackPageView(client: OpenPanel, path: string, properties?: Properties)
   client.screenView(path, properties);
 }
 
-export function setupAnalytics(config: Config, env: { isProd: boolean }) {
+export function setupAnalytics<EventNames extends string = string>(
+  config: Config,
+  env: { isProd: boolean },
+) {
   const client = init(config);
 
   if (!env.isProd || !client) return { identifyUser: noop, trackEvent: noop, trackPageView: noop };
 
   return {
-    identifyUser: (user: TrackedUser, properties?: Properties) =>
-      identifyUser(client, user, properties),
-    trackEvent: (eventName: string, properties?: Properties) =>
-      trackEvent(client, eventName, properties),
-    trackPageView: (path: string, properties?: Properties) =>
-      trackPageView(client, path, properties),
+    identifyUser: (user: TrackedUser, props?: Properties) => identifyUser(client, user, props),
+    trackEvent: (name: EventNames, properties?: Properties) => trackEvent(client, name, properties),
+    trackPageView: (path: string, props?: Properties) => trackPageView(client, path, props),
   };
 }

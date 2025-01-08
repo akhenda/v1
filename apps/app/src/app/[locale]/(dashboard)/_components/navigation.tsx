@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useAuthActions } from "@convex-dev/auth/react";
-import type { api } from "@v1/backend/convex/_generated/api";
-import { Button, buttonVariants } from "@v1/ui/button";
+import { useAuthActions } from '@convex-dev/auth/react';
+import type { api } from '@v1/backend/convex/_generated/api';
+import { Button, buttonVariants } from '@v1/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,23 +10,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@v1/ui/dropdown-menu";
-import { Logo } from "@v1/ui/logo";
-import { cn } from "@v1/ui/utils";
-import { type Preloaded, usePreloadedQuery } from "convex/react";
-import {
-  Check,
-  ChevronDown,
-  ChevronUp,
-  LogOut,
-  Settings,
-  Slash,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { LanguageSwitcher } from "./language-switcher";
-import { ThemeSwitcher } from "./theme-switcher";
+} from '@v1/ui/dropdown-menu';
+import { cn } from '@v1/ui/utils';
+import { type Preloaded, usePreloadedQuery } from 'convex/react';
+import { Check, ChevronDown, ChevronUp, LogOut, Settings, Slash } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { LanguageSwitcher } from './language-switcher';
+import { ThemeSwitcher } from './theme-switcher';
 
 export function Navigation({
   preloadedUser,
@@ -36,9 +28,9 @@ export function Navigation({
   const { signOut } = useAuthActions();
   const pathname = usePathname();
   const router = useRouter();
-  const isDashboardPath = pathname === "/";
-  const isSettingsPath = pathname === "/settings";
-  const isBillingPath = pathname === "/settings/billing";
+  const isDashboardPath = pathname === '/';
+  const isSettingsPath = pathname === '/settings';
+  const isBillingPath = pathname === '/settings/billing';
 
   const user = usePreloadedQuery(preloadedUser);
 
@@ -56,10 +48,7 @@ export function Navigation({
           <Slash className="h-6 w-6 -rotate-12 stroke-[1.5px] text-primary/10" />
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="gap-2 px-2 data-[state=open]:bg-primary/5"
-              >
+              <Button variant="ghost" className="gap-2 px-2 data-[state=open]:bg-primary/5">
                 <div className="flex items-center gap-2">
                   {user.avatarUrl ? (
                     <img
@@ -71,9 +60,7 @@ export function Navigation({
                     <span className="h-8 w-8 rounded-full bg-gradient-to-br from-lime-400 from-10% via-cyan-300 to-blue-500" />
                   )}
 
-                  <p className="text-sm font-medium text-primary/80">
-                    {user?.name || ""}
-                  </p>
+                  <p className="text-sm font-medium text-primary/80">{user?.name || ''}</p>
                   <span className="flex h-5 items-center rounded-full bg-primary/10 px-2 text-xs font-medium text-primary/80">
                     Free
                   </span>
@@ -84,10 +71,7 @@ export function Navigation({
                 </span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              sideOffset={8}
-              className="min-w-56 bg-card p-2"
-            >
+            <DropdownMenuContent sideOffset={8} className="min-w-56 bg-card p-2">
               <DropdownMenuLabel className="flex items-center text-xs font-normal text-primary/60">
                 Personal Account
               </DropdownMenuLabel>
@@ -103,9 +87,7 @@ export function Navigation({
                     <span className="h-6 w-6 rounded-full bg-gradient-to-br from-lime-400 from-10% via-cyan-300 to-blue-500" />
                   )}
 
-                  <p className="text-sm font-medium text-primary/80">
-                    {user.name || ""}
-                  </p>
+                  <p className="text-sm font-medium text-primary/80">{user.name || ''}</p>
                 </div>
                 <Check className="h-[18px] w-[18px] stroke-[1.5px] text-primary/60" />
               </DropdownMenuItem>
@@ -115,7 +97,7 @@ export function Navigation({
                 <Button
                   size="sm"
                   className="w-full"
-                  onClick={() => router.push("/settings/billing")}
+                  onClick={() => router.push('/settings/billing')}
                 >
                   Upgrade to PRO
                 </Button>
@@ -128,7 +110,7 @@ export function Navigation({
           <a
             href="https://github.com/get-convex/v1/tree/main/docs"
             className={cn(
-              `${buttonVariants({ variant: "outline", size: "sm" })} group hidden h-8 gap-2 rounded-full bg-transparent px-2 pr-2.5 md:flex`,
+              `${buttonVariants({ variant: 'outline', size: 'sm' })} group hidden h-8 gap-2 rounded-full bg-transparent px-2 pr-2.5 md:flex`,
             )}
           >
             <svg
@@ -157,20 +139,17 @@ export function Navigation({
                 )}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              sideOffset={8}
-              className="fixed -right-4 min-w-56 bg-card p-2"
-            >
+            <DropdownMenuContent sideOffset={8} className="fixed -right-4 min-w-56 bg-card p-2">
               <DropdownMenuItem className="group flex-col items-start focus:bg-transparent">
                 <p className="text-sm font-medium text-primary/80 group-hover:text-primary group-focus:text-primary">
-                  {user?.name || ""}
+                  {user?.name || ''}
                 </p>
                 <p className="text-sm text-primary/60">{user?.email}</p>
               </DropdownMenuItem>
 
               <DropdownMenuItem
                 className="group h-9 w-full cursor-pointer justify-between rounded-md px-2"
-                onClick={() => router.push("/settings")}
+                onClick={() => router.push('/settings')}
               >
                 <span className="text-sm text-primary/60 group-hover:text-primary group-focus:text-primary">
                   Settings
@@ -180,7 +159,7 @@ export function Navigation({
 
               <DropdownMenuItem
                 className={cn(
-                  "group flex h-9 justify-between rounded-md px-2 hover:bg-transparent",
+                  'group flex h-9 justify-between rounded-md px-2 hover:bg-transparent',
                 )}
               >
                 <span className="w-full text-sm text-primary/60 group-hover:text-primary group-focus:text-primary">
@@ -191,7 +170,7 @@ export function Navigation({
 
               <DropdownMenuItem
                 className={cn(
-                  "group flex h-9 justify-between rounded-md px-2 hover:bg-transparent",
+                  'group flex h-9 justify-between rounded-md px-2 hover:bg-transparent',
                 )}
               >
                 <span className="w-full text-sm text-primary/60 group-hover:text-primary group-focus:text-primary">
@@ -219,45 +198,39 @@ export function Navigation({
       <div className="mx-auto flex w-full max-w-screen-xl items-center gap-3">
         <div
           className={cn(
-            "flex h-12 items-center border-b-2",
-            isDashboardPath ? "border-primary" : "border-transparent",
+            'flex h-12 items-center border-b-2',
+            isDashboardPath ? 'border-primary' : 'border-transparent',
           )}
         >
           <Link
             href="/"
-            className={cn(
-              `${buttonVariants({ variant: "ghost", size: "sm" })} text-primary/80`,
-            )}
+            className={cn(`${buttonVariants({ variant: 'ghost', size: 'sm' })} text-primary/80`)}
           >
             Dashboard
           </Link>
         </div>
         <div
           className={cn(
-            "flex h-12 items-center border-b-2",
-            isSettingsPath ? "border-primary" : "border-transparent",
+            'flex h-12 items-center border-b-2',
+            isSettingsPath ? 'border-primary' : 'border-transparent',
           )}
         >
           <Link
             href="/settings"
-            className={cn(
-              `${buttonVariants({ variant: "ghost", size: "sm" })} text-primary/80`,
-            )}
+            className={cn(`${buttonVariants({ variant: 'ghost', size: 'sm' })} text-primary/80`)}
           >
             Settings
           </Link>
         </div>
         <div
           className={cn(
-            "flex h-12 items-center border-b-2",
-            isBillingPath ? "border-primary" : "border-transparent",
+            'flex h-12 items-center border-b-2',
+            isBillingPath ? 'border-primary' : 'border-transparent',
           )}
         >
           <Link
             href="/settings/billing"
-            className={cn(
-              `${buttonVariants({ variant: "ghost", size: "sm" })} text-primary/80`,
-            )}
+            className={cn(`${buttonVariants({ variant: 'ghost', size: 'sm' })} text-primary/80`)}
           >
             Billing
           </Link>

@@ -5,10 +5,14 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    "./mobile": "./src/libs/open-panel/mobile.tsx",
-    "./next": "./src/libs/open-panel/next.tsx",
-    "./server": "./src/libs/open-panel/server.ts",
-    "./web": "./src/libs/open-panel/web.ts"
+    "./op/mobile": "./src/libs/open-panel/mobile.tsx",
+    "./op/next": "./src/libs/open-panel/next.tsx",
+    "./op/server": "./src/libs/open-panel/server.ts",
+    "./op/web": "./src/libs/open-panel/web.ts",
+    "./mobile": "./src/libs/post-hog/mobile.tsx",
+    "./next": "./src/libs/post-hog/next.tsx",
+    "./server": "./src/libs/post-hog/server.ts",
+    "./web": "./src/libs/post-hog/web.ts"
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",

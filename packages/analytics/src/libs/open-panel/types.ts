@@ -32,13 +32,5 @@ export type Config = {
   trackAttributes?: boolean;
 };
 
-export type TrackedUser = {
-  profileId: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-};
-
-export type Properties = {
-  tier: 'free' | 'pro';
-};
+export type TrackedUser = { profileId: string; firstName: string; lastName: string; email: string };
+export type Properties = { tier?: 'free' | 'pro'; segments?: string };

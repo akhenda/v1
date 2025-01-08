@@ -18,8 +18,8 @@ async function resetTable(db: DB, table: Table) {
     await resetTable(db, table);
   }
 
-  await seeds.book(db);
-  await seeds.user(db);
+  await seeds.book();
+  await seeds.user();
 
   await connection.end();
 })();

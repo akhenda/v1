@@ -39,3 +39,10 @@ export type Union2Tuple<T> = PickOne<T> extends infer U // assign PickOne<T> to 
 export type Prettify<T> = {
   [K in keyof T]: T[K];
 } & {};
+
+/**
+ * Converts an array of strings into a union
+ */
+export type UnionFromArray<T extends readonly string[]> = {
+  [K in T[number]]: K;
+}[T[number]];

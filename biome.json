@@ -60,7 +60,8 @@
     "formatter": {
       "arrowParentheses": "always",
       "quoteStyle": "single"
-    }
+    },
+    "jsxRuntime": "reactClassic"
   },
   "json": {
     "formatter": {

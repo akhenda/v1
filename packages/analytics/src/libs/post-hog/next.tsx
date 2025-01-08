@@ -4,7 +4,7 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import { posthog } from 'posthog-js';
 import { PostHogProvider, usePostHog } from 'posthog-js/react';
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode, Suspense, useEffect } from 'react';
 
 import { NoOp } from '../utils.js';
 import type { Config, NextPostHogProviderProps } from './types.js';
@@ -13,7 +13,7 @@ export function NextPostHogProvider({
   children,
   host,
   apiKey,
-  personProfiles = 'identified_only',
+  personProfiles = 'always',
 }: NextPostHogProviderProps) {
   useEffect(() => {
     posthog.init(apiKey, {
@@ -21,13 +21,14 @@ export function NextPostHogProvider({
       person_profiles: personProfiles,
       // Disable automatic pageview capture, as we capture manually
       capture_pageview: false,
+      capture_pageleave: false,
     });
   }, []);
 
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
 }
 
-export default function PostHogPageView() {
+export function PostHogPageView() {
   const posthog = usePostHog();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -46,6 +47,20 @@ export default function PostHogPageView() {
   return null;
 }
 
+/**
+ * Wrap this in Suspense to avoid the `useSearchParams` usage above
+ * from de-opting the whole app into client-side rendering
+ *
+ * @see: https://nextjs.org/docs/messages/deopted-into-client-rendering
+ */
+export default function SuspendedPostHogPageView() {
+  return (
+    <Suspense fallback={null}>
+      <PostHogPageView />
+    </Suspense>
+  );
+}
+
 export function setupAnalytics(
   config: Config,
   env: { isProd: boolean; enablePageViews?: boolean },
@@ -62,10 +77,11 @@ export function setupAnalytics(
         personProfiles={personProfiles}
         {...props}
       >
-        {env.enablePageViews && <PostHogPageView />}
+        {env.enablePageViews && <SuspendedPostHogPageView />}
         {children}
       </NextPostHogProvider>
     ),
     PostHogPageView,
+    SuspendedPostHogPageView,
   };
 }

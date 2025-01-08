@@ -1,6 +1,9 @@
 import type { ClientOptions, ServerOptions } from '@t3-oss/env-core';
 import type { ZodType } from 'zod';
 
+export type SupportedLocales = ('en' | 'sw')[];
+export type SupportedLocale = SupportedLocales[number];
+
 /** Node Envs */
 export const nodeEnvs = ['development', 'test', 'production', 'staging'] as const;
 
@@ -11,6 +14,9 @@ export type NodeEnv = (typeof nodeEnvs)[number];
 export type ExpoAppVariant = (typeof expoAppVariants)[number];
 
 export interface CleanedEnvAccessors {
+  /** NODE_ENV */
+  readonly environment: NodeEnv;
+
   /** True if NODE_ENV === 'development' */
   readonly isDevelopment: boolean;
 
@@ -28,6 +34,9 @@ export interface CleanedEnvAccessors {
 }
 
 export interface CleanedMobileEnvAccessors {
+  /** APP_VARIANT */
+  readonly environment: ExpoAppVariant;
+
   /** True if APP_VARIANT === 'development' */
   readonly isDevelopment: boolean;
 
@@ -63,47 +72,30 @@ export type ExpoClientPrefix = typeof EXPO_CLIENT_PREFIX;
 
 export type EnvPrefixFormat = string | undefined;
 export type ZodEnvSchema = Record<string, ZodType>;
-export type ServerEnvSchema = ZodEnvSchema;
-export type ClientEnvSchema<TClient extends ZodEnvSchema = NonNullable<unknown>> = ClientOptions<
-  ClientPrefix,
-  TClient
->['client'];
-export type SharedEnvSchema = ZodEnvSchema;
-
-export type NextServerEnvSchema<
-  TPrefix extends EnvPrefixFormat = undefined,
-  TServer extends ZodEnvSchema = NonNullable<unknown>,
-> = ServerOptions<TPrefix, TServer>['server'];
-export type NextClientEnvSchema<TClient extends ZodEnvSchema = NonNullable<unknown>> =
-  ClientOptions<NextClientPrefix, TClient>['client'];
-export type NextSharedEnvSchema = ZodEnvSchema;
-export type NextExperimentalRuntimeEnv = Record<string, string | boolean | number | undefined>;
-
-export type ExpoServerEnvSchema<
-  TPrefix extends EnvPrefixFormat = undefined,
-  TServer extends ZodEnvSchema = NonNullable<unknown>,
-> = ServerOptions<TPrefix, TServer>['server'];
-export type ExpoClientEnvSchema<TClient extends ZodEnvSchema = NonNullable<unknown>> =
-  ClientOptions<ExpoClientPrefix, TClient>['client'];
-export type ExpoSharedEnvSchema = ZodEnvSchema;
+export type ExperimentalRuntimeEnv = Record<string, string | boolean | number | undefined>;
+export type ClientEnvSchema<
+  TClient extends ZodEnvSchema = NonNullable<unknown>,
+  TPrefix extends string | undefined = ClientPrefix,
+> = ClientOptions<TPrefix, TClient>['client'];
 
 export type NextEnvOptions<
-  TServer extends NextServerEnvSchema,
-  TClient extends NextClientEnvSchema,
-  TShared extends NextSharedEnvSchema,
-  TExperimentalRuntimeEnv extends NextExperimentalRuntimeEnv = NonNullable<unknown>,
+  TServer extends ZodEnvSchema,
+  TClient extends ZodEnvSchema,
+  TShared extends ZodEnvSchema,
+  TExperimentalRuntimeEnv extends ExperimentalRuntimeEnv = NonNullable<unknown>,
+  TPrefix extends string | undefined = NextClientPrefix,
 > = {
   /**
    * Specify your server-side environment variables schema here. This way you
    * can ensure the app isn't built with invalid env vars.
    */
-  server: TServer;
+  server: ServerOptions<TPrefix, TServer>['server'];
 
   /**
    * Specify your client-side environment variables schema here. This way you
    * can ensure the app isn't built with invalid env vars.
    */
-  client: TClient;
+  client: ClientOptions<TPrefix, TClient>['client'];
 
   /**
    * Shared variables, often those that are provided by build tools and is
@@ -121,14 +113,15 @@ export type NextEnvOptions<
 };
 
 export type ExpoEnvOptions<
-  TClient extends ExpoClientEnvSchema,
-  TShared extends ExpoSharedEnvSchema,
+  TClient extends ZodEnvSchema,
+  TShared extends ZodEnvSchema,
+  TPrefix extends string | undefined = ExpoClientPrefix,
 > = {
   /**
    * Specify your client-side environment variables schema here. This way you
    * can ensure the app isn't built with invalid env vars.
    */
-  client: TClient;
+  client: ClientOptions<TPrefix, TClient>['client'];
 
   /**
    * Shared variables, often those that are provided by build tools and is

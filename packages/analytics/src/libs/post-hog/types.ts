@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
 export type Config = {
   /**
@@ -13,20 +13,15 @@ export type Config = {
    */
   apiHost: 'https://us.i.posthog.com' | 'https://eu.i.posthog.com';
 
+  /**
+   * The
+   */
   personProfiles?: 'always' | 'identified_only';
 };
 
 export type SetData = Record<string, unknown>;
-
-export type ExpoPostHogProviderProps = {
-  children: ReactNode;
-  host: Config['apiHost'];
-  apiKey: Config['apiKey'];
-};
-
-export type NextPostHogProviderProps = {
-  children: ReactNode;
-  host: Config['apiHost'];
-  apiKey: Config['apiKey'];
-  personProfiles: Config['personProfiles'];
-};
+export type TrackedUser = { id: string; firstName: string; lastName: string; email: string };
+export type PostHogConfig = { host: Config['apiHost']; apiKey: Config['apiKey'] };
+export type ExpoPostHogProviderProps = PropsWithChildren & PostHogConfig;
+export type NextPostHogProviderProps = PropsWithChildren &
+  PostHogConfig & { personProfiles: Config['personProfiles'] };

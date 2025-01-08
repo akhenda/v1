@@ -7,13 +7,7 @@
  * https://github.com/t3-oss/t3-env/issues/203
  */
 import { createEnv } from '@t3-oss/env-core';
-import type {
-  ExpoClientEnvSchema,
-  ExpoClientPrefix,
-  ExpoEnvOptions,
-  ExpoServerEnvSchema,
-  ExpoSharedEnvSchema,
-} from '../types.js';
+import type { ExpoClientPrefix, ExpoEnvOptions, ZodEnvSchema } from '../types.js';
 import { getEnvWithAccessors } from '../utils.js';
 
 import { isDev } from './constants.js';
@@ -40,9 +34,9 @@ import { isDev } from './constants.js';
  * persists, try restarting the server with the -c flag to clear the cache.
  */
 function getEnv<
-  TClient extends ExpoClientEnvSchema,
-  TShared extends ExpoSharedEnvSchema,
-  TServer extends ExpoServerEnvSchema,
+  TClient extends ZodEnvSchema,
+  TShared extends ZodEnvSchema,
+  TServer extends ZodEnvSchema,
 >(options: ExpoEnvOptions<TClient, TShared>) {
   const { client, shared } = options;
 

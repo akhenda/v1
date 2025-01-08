@@ -1,10 +1,10 @@
 import users from './fixtures/users.json' with { type: 'json' };
 
 import dal from '../data-access/index.js';
-import type { DB, Role } from '../schema/index.js';
+import type { Role } from '../schema/index.js';
 import { logger } from '../utils.js';
 
-export default async function seed(db: DB) {
+export default async function seed() {
   logger.info('Seeding users...');
 
   await Promise.all(

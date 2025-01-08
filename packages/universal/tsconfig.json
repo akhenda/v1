@@ -1,0 +1,13 @@
+{
+  "extends": "@v1/typescript/universal-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["jest"]
+  },
+  "include": ["nativewind-env.d.ts", "src/**/*.ts", "src/**/*.tsx"]
+}

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { expoAppVariants } from '../types.js';
+import type { ExpoEnvOptions } from '../types.js';
 import { withEnvSuffix } from '../utils.js';
 
 export const clientSchema = {
@@ -35,4 +36,7 @@ export const sharedSchema = {
   SECRET_KEY: z.string(),
 };
 
-export const options = { client: clientSchema, shared: sharedSchema };
+export const options = { client: clientSchema, shared: sharedSchema } satisfies ExpoEnvOptions<
+  typeof clientSchema,
+  typeof sharedSchema
+>;
