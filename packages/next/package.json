@@ -1,5 +1,5 @@
 {
-  "name": "@v1/{{ name }}",
+  "name": "@v1/next",
   "private": true,
   "version": "0.1.0",
   "type": "module",
