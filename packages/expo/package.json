@@ -5,9 +5,6 @@
   "sideEffects": false,
   "type": "module",
   "files": ["tailwind.config.ts", "postcss.config.js", "globals.css"],
-  "imports": {
-    "#*": "./src/*"
-  },
   "exports": {
     "./globals.css": "./src/globals.css"
   },
