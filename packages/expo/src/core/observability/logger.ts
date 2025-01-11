@@ -8,7 +8,7 @@ import { Toaster, type ToasterType } from '@/design/ui-kit/components/toaster';
 import { ErrorMonitoring } from './monitoring';
 import type { LoggerDetails, NetworkErrorType, UserMessageType } from './types';
 
-const Logger = createProjectLogger('@v1/universal');
+const Logger = createProjectLogger('@v1/expo');
 
 function showToast(userMessage?: UserMessageType, type: ToasterType['type'] = 'error') {
   if (userMessage && Boolean(userMessage.title) && Boolean(userMessage.message)) {

@@ -35,7 +35,7 @@
     "body": [
       "import * as React from 'react';",
       "",
-      "import { Text, View } from '@lantean/universal/design/ui-kit/components/ui';",
+      "import { Text, View } from '@v1/expo/design/ui-kit/components/ui';",
       "",
       "type Props = {",
       "  $2",

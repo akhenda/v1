@@ -1,6 +1,6 @@
-# Universal
+# Expo
 
-This package holds all the shared universal UI modules
+This package holds all the shared Expo UI components
 
 ## Setup
 
@@ -19,7 +19,7 @@ Nativewind, Tailwind & RN Animated are already installed for you.
 Create a `tailwind.config.js` file at the root of your expo app. Then, extend the base `tailwind.config.ts` file from this package.
 
 ```js
-const { buildConfig } = require('@v1/universal/design/ui-kit/tailwind.config');
+const { buildConfig } = require('@v1/expo/design/ui-kit/tailwind.config');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = buildConfig(__dirname);
@@ -49,7 +49,7 @@ const { withNativeWind } = require('nativewind/metro');
 const config = getDefaultConfig(__dirname);
 
 module.exports = withNativeWind(config, {
-  input: '@v1/universal/design/ui-kit/global.css',
+  input: '@v1/expo/design/ui-kit/global.css',
 });
 ```
 
@@ -57,7 +57,7 @@ module.exports = withNativeWind(config, {
 
 ```js
 // app/_layout.js
-import '@v1/universal/design/ui-kit/global.css';
+import '@v1/expo/design/ui-kit/global.css';
 
 import { Slot } from 'expo-router';
 
@@ -68,9 +68,9 @@ export default Slot;
 
 ```js
 // app/_layout.js
-import '@v1/universal/design/ui-kit/global.css';
+import '@v1/expo/design/ui-kit/global.css';
 
-import RootLayout from '@v1/universal/design/ui-kit/root-layout';
+import RootLayout from '@v1/expo/design/ui-kit/root-layout';
 
 export default RootLayout;
 ```

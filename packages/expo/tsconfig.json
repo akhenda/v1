@@ -1,5 +1,5 @@
 {
-  "extends": "@v1/typescript/universal-library.json",
+  "extends": "@v1/typescript/expo-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

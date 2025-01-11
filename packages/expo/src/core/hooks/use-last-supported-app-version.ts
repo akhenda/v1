@@ -6,6 +6,15 @@ import { useGetFlagValueSync } from '@/core/services/feature-flags';
 
 import { useOnMount } from './use-on-mount';
 
+/**
+ * Hook to determine if the current app version is supported.
+ * It checks the last supported version from feature flags and compares it with
+ * the current app version. If the current app version is greater than or equal
+ * to the last supported version, the app is considered supported.
+ *
+ * @returns {Object} An object containing a boolean `isAppSupported` indicating
+ * whether the app version is supported.
+ */
 export const useLastSupportedAppVersion = () => {
   const { getFlagValueSync } = useGetFlagValueSync();
   const [isAppSupported, setIsAppSupported] = useState(true);
