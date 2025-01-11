@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pressable, View } from 'react-native';
 
-import { useColorScheme } from '@/design/lib/hooks/useColorScheme';
+import { useColorScheme } from '@/design/lib/hooks/use-color-scheme';
 import { MoonStar } from '@/design/lib/icons/MoonStar';
 import { Sun } from '@/design/lib/icons/Sun';
 import { cn } from '@/design/lib/utils';

@@ -80,6 +80,24 @@ export function removeItemFromArray<T, U>(
   setItem(storage, key, updatedItems);
 }
 
+/**
+ * Returns an object with helper functions for interacting with MMKV storage.
+ * The helpers are bound to the given `storage` object, which defaults to the
+ * `defaultStorage` instance if not provided.
+ *
+ * The returned helpers are:
+ *
+ * - `getItem<T>(key: string)`: Retrieves a value from the MMKV storage.
+ * - `getItemArray<T>(key: string)`: Retrieves an array of values from the MMKV
+ *   storage.
+ * - `setItem<T>(key: string, value: T)`: Stores a value in the MMKV storage.
+ * - `removeItem(key: string)`: Removes a key-value pair from the MMKV storage.
+ * - `removeItemFromArray<T, U>(key: string, target: keyof T, targetValue: U)`: Removes the first item from an array in MMKV storage that matches the
+ *   given target and target value.
+ *
+ * @param storage The MMKV storage object to use. Defaults to `defaultStorage`.
+ * @returns An object with the bound helper functions.
+ */
 export function getStorageHelpers(storage: MMKV = defaultStorage) {
   return {
     /** Retrieves a value from the MMKV storage. */

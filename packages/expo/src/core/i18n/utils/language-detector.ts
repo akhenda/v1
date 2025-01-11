@@ -67,6 +67,11 @@ const detectLanguageToUse = () => {
   return selectedLanguage;
 };
 
+/**
+ * The language detector module for i18next.
+ *
+ * NOTE(prod): Also check out https://github.com/jakex7/react-native-localization-settings
+ */
 export const languageDetector: LanguageDetectorModule = {
   type: 'languageDetector',
   detect: detectLanguageToUse,

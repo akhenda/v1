@@ -11,6 +11,8 @@ import type { LogLevel } from './config.js';
 import { createLogger as createPinoLogger } from './libs/pino.js';
 import { createLogger } from './libs/universal-logger/index.js';
 
+export type { LogLevel };
+
 export function createProjectLogger(
   project: string,
   level: LogLevel = 'trace',

@@ -13,7 +13,42 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@sentry/core": "8.47.0",
+    "@sentry/nextjs": "8.48.0",
+    "@tanstack/query-sync-storage-persister": "5.62.16",
+    "@tanstack/react-query": "5.62.15",
+    "@tanstack/react-query-persist-client": "5.62.15",
+    "@v1/analytics": "workspace:*",
+    "@v1/date": "workspace:*",
     "@v1/logging": "workspace:*",
-    "remeda": "2.19.0"
+    "@v1/monitoring": "workspace:*",
+    "apisauce": "3.1.0",
+    "axios": "1.7.9",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "i18next": "24.2.0",
+    "i18next-browser-languagedetector": "8.0.2",
+    "lucide-react": "0.471.0",
+    "next-themes": "0.4.4",
+    "posthog-js": "1.205.0",
+    "react-error-boundary": "5.0.0",
+    "react-i18next": "15.4.0",
+    "remeda": "2.19.0",
+    "semver": "7.6.3",
+    "sonner": "1.7.1",
+    "tailwind-merge": "2.6.0",
+    "tailwindest": "2.3.6",
+    "translation-check": "1.1.0",
+    "usehooks-ts": "3.1.0",
+    "zustand": "5.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwindcss": "3.4.17",
+    "tailwindcss-animate": "1.0.7",
+    "typescript": "5.7.2"
   }
 }

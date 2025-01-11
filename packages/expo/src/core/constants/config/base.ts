@@ -26,10 +26,10 @@ export const expoAppClientEnvSchema = {
  *
  * Shared env vars
  */
-const SharedEnvSchema = {
+const sharedEnvSchema = {
   SENTRY_DSN: z.string(),
 };
 
-const config = getConfig({ client: expoAppClientEnvSchema, shared: SharedEnvSchema });
+const config = getConfig({ client: expoAppClientEnvSchema, shared: sharedEnvSchema });
 
 export default config;

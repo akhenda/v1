@@ -1,3 +1,3 @@
-export * from './useColorScheme';
-export * from './useKeyboard';
-export * from './useSplashScreen';
+export * from './use-color-scheme';
+export * from './use-keyboard';
+export * from './use-splash-screen';
