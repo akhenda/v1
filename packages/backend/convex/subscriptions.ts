@@ -176,7 +176,7 @@ export const replaceSubscription = internalMutation({
 });
 
 export const setSubscriptionPending = mutation({
-  handler: async (ctx, args) => {
+  handler: async (ctx) => {
     const userId = await getAuthUserId(ctx);
     if (!userId) throw new Error('User not found');
 
