@@ -48,6 +48,7 @@ class Logger extends EventEmitter {
         this.emit('log', { ...context }, messages);
       } catch (e) {
         // Ignore
+        // biome-ignore lint/suspicious/noConsole: <explanation>
         console.error(e);
       }
 
@@ -56,6 +57,7 @@ class Logger extends EventEmitter {
       try {
         this.emit('log', { ...context }, messages);
       } catch (e) {
+        // biome-ignore lint/suspicious/noConsole: <explanation>
         console.error(e);
       }
 

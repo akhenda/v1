@@ -4,25 +4,23 @@
  * Implementation based on github.com/epicweb-dev/epic-stack
  */
 
-import { useState } from 'react';
+import { type ButtonHTMLAttributes, useState } from 'react';
 
 import { callAll } from '../utils';
 
 export function useDoubleCheck() {
   const [doubleCheck, setDoubleCheck] = useState(false);
 
-  function getButtonProps(props?: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-    const onBlur: React.ButtonHTMLAttributes<HTMLButtonElement>['onBlur'] = () =>
-      setDoubleCheck(false);
-
-    const onClick: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'] = doubleCheck
+  function getButtonProps(props?: ButtonHTMLAttributes<HTMLButtonElement>) {
+    const onBlur: ButtonHTMLAttributes<HTMLButtonElement>['onBlur'] = () => setDoubleCheck(false);
+    const onClick: ButtonHTMLAttributes<HTMLButtonElement>['onClick'] = doubleCheck
       ? undefined
       : (e) => {
           e.preventDefault();
           setDoubleCheck(true);
         };
 
-    const onKeyUp: React.ButtonHTMLAttributes<HTMLButtonElement>['onKeyUp'] = (e) => {
+    const onKeyUp: ButtonHTMLAttributes<HTMLButtonElement>['onKeyUp'] = (e) => {
       if (e.key === 'Escape') setDoubleCheck(false);
     };
 

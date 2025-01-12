@@ -1,11 +1,14 @@
 'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type { PropsWithChildren } from 'react';
+
 import { I18nProviderClient, useScopedI18n } from '@/locales/client';
 import { buttonVariants } from '@v1/ui/button';
 import { cn } from '@v1/ui/utils';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-const LayoutContainer = ({ children }: { children: React.ReactNode }) => {
+const LayoutContainer = ({ children }: PropsWithChildren) => {
   const t = useScopedI18n('settings.sidebar');
   const pathname = usePathname();
   const isSettingsPath = pathname === '/settings';
@@ -23,7 +26,7 @@ const LayoutContainer = ({ children }: { children: React.ReactNode }) => {
           >
             <span
               className={cn(
-                `text-sm text-primary/80 ${isSettingsPath && 'font-medium text-primary'}`,
+                `text-primary/80 text-sm ${isSettingsPath && 'font-medium text-primary'}`,
               )}
             >
               {t('general')}
@@ -37,7 +40,7 @@ const LayoutContainer = ({ children }: { children: React.ReactNode }) => {
           >
             <span
               className={cn(
-                `text-sm text-primary/80 ${isBillingPath && 'font-medium text-primary'}`,
+                `text-primary/80 text-sm ${isBillingPath && 'font-medium text-primary'}`,
               )}
             >
               {t('billing')}
@@ -53,7 +56,7 @@ const LayoutContainer = ({ children }: { children: React.ReactNode }) => {
 export default async function Layout({
   children,
   params,
-}: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
+}: PropsWithChildren<{ params: Promise<{ locale: string }> }>) {
   const { locale } = await params;
 
   return (

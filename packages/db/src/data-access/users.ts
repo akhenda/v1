@@ -70,7 +70,7 @@ async function findByEmail(email: string) {
  *
  * @returns An array of all user records in the database.
  */
-async function findAll() {
+function findAll() {
   logger.debug('find all users');
 
   return query.findMany();

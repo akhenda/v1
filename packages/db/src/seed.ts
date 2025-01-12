@@ -8,7 +8,7 @@ import env from '../env.js';
 
 if (!env.DB_SEEDING) throw new Error('You must set DB_SEEDING to "true" when running seeds');
 
-async function resetTable(db: DB, table: Table) {
+function resetTable(db: DB, table: Table) {
   return db.execute(sql.raw(`TRUNCATE TABLE ${getTableName(table)} RESTART IDENTITY CASCADE`));
 }
 

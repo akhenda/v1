@@ -10,7 +10,7 @@ const Card = React.forwardRef<ViewRef, ViewProps>(({ className, ...props }, ref)
   <View
     ref={ref}
     className={cn(
-      'rounded-lg border border-border bg-card shadow-sm shadow-foreground/10',
+      'rounded-lg border border-border bg-card shadow-foreground/10 shadow-sm',
       className,
     )}
     {...props}
@@ -29,7 +29,7 @@ const CardTitle = React.forwardRef<TextRef, TextProps>(({ className, ...props },
     aria-level={3}
     ref={ref}
     className={cn(
-      'text-2xl text-card-foreground font-semibold leading-none tracking-tight',
+      'font-semibold text-2xl text-card-foreground leading-none tracking-tight',
       className,
     )}
     {...props}
@@ -38,7 +38,7 @@ const CardTitle = React.forwardRef<TextRef, TextProps>(({ className, ...props },
 CardTitle.displayName = 'CardTitle';
 
 const CardDescription = React.forwardRef<TextRef, TextProps>(({ className, ...props }, ref) => (
-  <Text ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
+  <Text ref={ref} className={cn('text-muted-foreground text-sm', className)} {...props} />
 ));
 CardDescription.displayName = 'CardDescription';
 

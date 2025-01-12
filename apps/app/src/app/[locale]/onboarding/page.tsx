@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import { useForm } from "@tanstack/react-form";
-import { zodValidator } from "@tanstack/zod-form-adapter";
-import { api } from "@v1/backend/convex/_generated/api";
-import * as validators from "@v1/backend/convex/utils/validators";
-import { Button } from "@v1/ui/button";
-import { Input } from "@v1/ui/input";
-import { useMutation, useQuery } from "convex/react";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useFormStatus } from "react-dom";
+import { useForm } from '@tanstack/react-form';
+import { zodValidator } from '@tanstack/zod-form-adapter';
+import { useMutation, useQuery } from 'convex/react';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
+
+import { api } from '@v1/backend/convex/_generated/api';
+import * as validators from '@v1/backend/convex/utils/validators';
+import { Button } from '@v1/ui/button';
+import { Input } from '@v1/ui/input';
 
 export default function OnboardingUsername() {
   const user = useQuery(api.users.getUser);
@@ -22,7 +23,7 @@ export default function OnboardingUsername() {
   const form = useForm({
     validatorAdapter: zodValidator(),
     defaultValues: {
-      username: "",
+      username: '',
     },
     onSubmit: async ({ value }) => {
       await updateUsername({
@@ -36,7 +37,7 @@ export default function OnboardingUsername() {
       return;
     }
     if (user?.username && user?.subscription) {
-      router.push("/");
+      router.push('/');
     }
   }, [user]);
 
@@ -50,7 +51,7 @@ export default function OnboardingUsername() {
     return (
       <div className="flex h-screen w-screen flex-col items-center justify-center gap-4">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="text-center text-base font-normal text-primary/60">
+        <p className="text-center font-normal text-base text-primary/60">
           Processing your subscription. This may take a moment...
         </p>
       </div>
@@ -61,10 +62,8 @@ export default function OnboardingUsername() {
     <div className="mx-auto flex h-full w-full max-w-96 flex-col items-center justify-center gap-6">
       <div className="flex flex-col items-center gap-2">
         <span className="mb-2 select-none text-6xl">👋</span>
-        <h3 className="text-center text-2xl font-medium text-primary">
-          Welcome!
-        </h3>
-        <p className="text-center text-base font-normal text-primary/60">
+        <h3 className="text-center font-medium text-2xl text-primary">Welcome!</h3>
+        <p className="text-center font-normal text-base text-primary/60">
           Let's get started by choosing a username.
         </p>
       </div>
@@ -96,7 +95,7 @@ export default function OnboardingUsername() {
                 onChange={(e) => field.handleChange(e.target.value)}
                 className={`bg-transparent ${
                   field.state.meta?.errors.length > 0 &&
-                  "border-destructive focus-visible:ring-destructive"
+                  'border-destructive focus-visible:ring-destructive'
                 }`}
               />
             )}
@@ -105,18 +104,18 @@ export default function OnboardingUsername() {
 
         <div className="flex flex-col">
           {form.state.fieldMeta.username?.errors.length > 0 && (
-            <span className="mb-2 text-sm text-destructive dark:text-destructive-foreground">
-              {form.state.fieldMeta.username?.errors.join(" ")}
+            <span className="mb-2 text-destructive text-sm dark:text-destructive-foreground">
+              {form.state.fieldMeta.username?.errors.join(' ')}
             </span>
           )}
         </div>
 
         <Button type="submit" size="sm" className="w-full">
-          {pending ? <Loader2 className="animate-spin" /> : "Continue"}
+          {pending ? <Loader2 className="animate-spin" /> : 'Continue'}
         </Button>
       </form>
 
-      <p className="px-6 text-center text-sm font-normal leading-normal text-primary/60">
+      <p className="px-6 text-center font-normal text-primary/60 text-sm leading-normal">
         You can update your username at any time from your account settings.
       </p>
     </div>

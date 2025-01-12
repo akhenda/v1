@@ -14,8 +14,6 @@ import type { Primitives } from '@v1/types';
 
 import type { tags } from './constants.js';
 
-export type { Primitives };
-
 export type PossibleSentry = {
   init: (options: {
     dsn: string;

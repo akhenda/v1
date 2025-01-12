@@ -20,7 +20,7 @@ export const StoreUpdateAvailableBanner = () => {
   const { t } = useTranslation();
 
   return (
-    <View className="bg-dark flex-wrap flex-row gap-2 p-4 rounded-lg">
+    <View className="flex-row flex-wrap gap-2 rounded-lg bg-dark p-4">
       <Text>{t('Go update now')}</Text>
       <Button onPress={openAppStorePage}>{t('An update is available on the stores')}</Button>
     </View>

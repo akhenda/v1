@@ -43,7 +43,7 @@ class Logger {
    * This implementation let you subclass the Logger class while keeping
    * just one instance of each subclass around.
    */
-  public static getInstance(project: string, level: LogLevel): Logger {
+  static getInstance(project: string, level: LogLevel): Logger {
     if (!Logger.instance) Logger.instance = new Logger(project, level);
 
     return Logger.instance;

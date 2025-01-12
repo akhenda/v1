@@ -1,13 +1,17 @@
 import '@v1/ui/globals.css';
 
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
-import { Provider as AnalyticsProvider } from '@v1/analytics/op/next';
-import { cn } from '@v1/ui/utils';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import type { PropsWithChildren } from 'react';
+
+import { Provider as AnalyticsProvider } from '@v1/analytics/op/next';
+import { cn } from '@v1/ui/utils';
+
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
+
 import { ConvexClientProvider } from './convex-client-provider';
 
 const DepartureMono = localFont({
@@ -22,17 +26,13 @@ export const metadata: Metadata = {
     'A free, open-source starter kit for your next project, built with insights from Midday.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           `${DepartureMono.variable} ${GeistSans.variable} ${GeistMono.variable}`,
-          'antialiased dark',
+          'dark antialiased',
         )}
       >
         <ConvexClientProvider>

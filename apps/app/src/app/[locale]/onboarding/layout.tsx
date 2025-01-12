@@ -1,10 +1,12 @@
 import { convexAuthNextjsToken } from '@convex-dev/auth/nextjs/server';
-import { api } from '@v1/backend/convex/_generated/api';
 import { fetchAction, fetchMutation, fetchQuery } from 'convex/nextjs';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import type { PropsWithChildren } from 'react';
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+import { api } from '@v1/backend/convex/_generated/api';
+
+export default async function Layout({ children }: PropsWithChildren) {
   const user = await fetchQuery(api.users.getUser, {}, { token: await convexAuthNextjsToken() });
   const checkoutUrl = await fetchAction(
     api.subscriptions.getOnboardingCheckoutUrl,
@@ -26,7 +28,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
   return (
     <div className="relative flex h-screen w-full bg-card">
-      <div className="absolute left-1/2 top-8 mx-auto -translate-x-1/2 transform justify-center">
+      <div className="-translate-x-1/2 absolute top-8 left-1/2 mx-auto transform justify-center">
         <Image src="/logo.png" alt="logo" width={100} height={100} />
       </div>
       <div className="z-10 h-screen w-screen">{children}</div>

@@ -9,7 +9,7 @@ export function UploadInput({
   ...props
 }: {
   generateUploadUrl: () => Promise<string>;
-  onUploadComplete: (uploaded: UploadFileResponse[]) => void;
+  onUploadComplete: (uploaded: UploadFileResponse[]) => Promise<null>;
 } & Pick<
   InputHTMLAttributes<HTMLInputElement>,
   'accept' | 'id' | 'type' | 'className' | 'required' | 'tabIndex'
@@ -19,14 +19,14 @@ export function UploadInput({
     onUploadComplete: async (uploaded) => {
       if (fileInputRef.current) fileInputRef.current.value = '';
 
-      onUploadComplete(uploaded);
+      await onUploadComplete(uploaded);
     },
   });
   return (
     <input
       ref={fileInputRef}
       type="file"
-      onChange={async (event) => {
+      onChange={(event) => {
         if (!event.target.files) return;
 
         const files = Array.from(event.target.files);

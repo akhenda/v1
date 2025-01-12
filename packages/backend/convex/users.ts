@@ -85,8 +85,12 @@ export const deleteCurrentUserAccount = mutation({
       .withIndex('userId', (q) => q.eq('userId', userId))
       .unique();
 
-    if (!subscription) console.error('No subscription found');
-    else await ctx.db.delete(subscription._id);
+    if (subscription) {
+      await ctx.db.delete(subscription._id);
+    } else {
+      // biome-ignore lint/suspicious/noConsole: <explanation>
+      console.error('No subscription found');
+    }
 
     await asyncMap(['google' /* add other providers as needed */], async (provider) => {
       const authAccount = await ctx.db

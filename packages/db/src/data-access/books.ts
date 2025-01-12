@@ -54,7 +54,7 @@ async function findById(id: number) {
  *
  * @returns An array of all book records in the database.
  */
-async function findAll() {
+function findAll() {
   logger.debug('find all books');
 
   return query.findMany();

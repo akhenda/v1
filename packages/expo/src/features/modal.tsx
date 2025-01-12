@@ -28,9 +28,9 @@ export default function ModalScreen() {
   return (
     <>
       <View className="flex-1 items-center justify-center">
-        <View className="native:pb-24 max-w-md gap-6 p-4">
+        <View className="max-w-md gap-6 p-4 native:pb-24">
           <View className="gap-1">
-            <H1 className="text-foreground text-center">Create an account</H1>
+            <H1 className="text-center text-foreground">Create an account</H1>
             <Muted className="text-center text-base">
               Enter you email below to create your account
             </Muted>
@@ -39,7 +39,7 @@ export default function ModalScreen() {
           <Select>
             <SelectTrigger>
               <SelectValue
-                className="text-foreground native:text-lg text-sm"
+                className="native:text-lg text-foreground text-sm"
                 placeholder="Select a role"
               />
             </SelectTrigger>
@@ -63,9 +63,9 @@ export default function ModalScreen() {
             </SelectContent>
           </Select>
           <View className="flex-row items-center gap-3">
-            <View className="bg-muted h-px flex-1" />
+            <View className="h-px flex-1 bg-muted" />
             <Muted>OR CONTINUE WITH</Muted>
-            <View className="bg-muted h-px flex-1" />
+            <View className="h-px flex-1 bg-muted" />
           </View>
           <Button>
             <Text>Github</Text>

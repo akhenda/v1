@@ -1,5 +1,5 @@
 // https://medium.com/@barisberkemalkoc/axios-interceptor-intelligent-db46653b7303
-import assert from 'node:assert';
+import assert from 'node:assert/strict';
 import Axios, { type InternalAxiosRequestConfig } from 'axios';
 
 import { config } from '@/core/constants';

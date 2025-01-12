@@ -17,10 +17,8 @@ function showToast(
   }
 }
 
-function reporter(level: LogLevel, message?: string, details?: LoggerDetails) {
-  const logger = Logger[level];
-  const { error, userMessage, ...rest } = details || {};
-  const severityLevel = {
+function getSeverityLevel(level: LogLevel) {
+  return {
     trace: 'log',
     debug: 'debug',
     done: 'info',
@@ -31,27 +29,9 @@ function reporter(level: LogLevel, message?: string, details?: LoggerDetails) {
     error: 'error',
     fatal: 'fatal',
   }[level] as SeverityLevel;
+}
 
-  if (['error', 'fatal'].includes(level) && error) {
-    try {
-      ErrorMonitoring.scope((scope) => {
-        scope.setLevel(severityLevel);
-
-        if (rest.transactionName) scope.setTransactionName(rest.transactionName);
-
-        ErrorMonitoring.exception(error);
-      });
-
-      if (message) logger(message, error, rest);
-      showToast(userMessage);
-    } catch (newError) {
-      console.error('Error parsing error:', newError);
-    }
-  } else {
-    if (message) logger(message, rest);
-    showToast(userMessage, level === 'success' ? 'success' : 'info');
-  }
-
+function parseError(error: unknown, message?: string, userMessage?: UserMessageType) {
   let errorMessage: string;
 
   if (error) {
@@ -69,6 +49,34 @@ function reporter(level: LogLevel, message?: string, details?: LoggerDetails) {
   }
 
   return { message, userMessage };
+}
+
+function reporter(level: LogLevel, message?: string, details?: LoggerDetails) {
+  const logger = Logger[level];
+  const { error, userMessage, ...rest } = details || {};
+
+  if (['error', 'fatal'].includes(level) && error) {
+    try {
+      ErrorMonitoring.scope((scope) => {
+        scope.setLevel(getSeverityLevel(level));
+
+        if (rest.transactionName) scope.setTransactionName(rest.transactionName);
+
+        ErrorMonitoring.exception(error);
+      });
+
+      if (message) logger(message, error, rest);
+      showToast(userMessage);
+    } catch (newError) {
+      // biome-ignore lint/suspicious/noConsole: this is intentional
+      console.error('Error parsing error:', newError);
+    }
+  } else {
+    if (message) logger(message, rest);
+    showToast(userMessage, level === 'success' ? 'success' : 'info');
+  }
+
+  return parseError(error, message, userMessage);
 }
 
 const dev = (message: string, details?: LoggerDetails) => reporter('debug', message, details);

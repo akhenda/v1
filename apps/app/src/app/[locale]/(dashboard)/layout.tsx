@@ -1,10 +1,13 @@
 import { convexAuthNextjsToken } from '@convex-dev/auth/nextjs/server';
-import { api } from '@v1/backend/convex/_generated/api';
 import { fetchQuery, preloadQuery } from 'convex/nextjs';
 import { redirect } from 'next/navigation';
+import type { ReactNode } from 'react';
+
+import { api } from '@v1/backend/convex/_generated/api';
+
 import { Navigation } from './_components/navigation';
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: ReactNode }) {
   const user = await fetchQuery(api.users.getUser, {}, { token: await convexAuthNextjsToken() });
 
   if (!user?.username || !user?.subscription) return redirect('/onboarding');

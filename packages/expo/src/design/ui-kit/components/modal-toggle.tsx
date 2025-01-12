@@ -19,7 +19,7 @@ export function ModalToggle() {
       {({ pressed }) => (
         <View
           className={cn(
-            'web:pl-4 aspect-square flex-1 items-end justify-center pt-0.5',
+            'aspect-square flex-1 items-end justify-center pt-0.5 web:pl-4',
             pressed && 'opacity-70',
           )}
         >

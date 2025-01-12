@@ -49,7 +49,9 @@ export default internalAction(async (ctx) => {
   });
 
   if (products?.result?.items?.length) {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.info('🏃‍♂️ Skipping Polar products creation and seeding.');
+
     return;
   }
 
@@ -78,29 +80,30 @@ export default internalAction(async (ctx) => {
       name: product.name,
       description: product.description,
       prices: {
-        ...(!monthPrice
-          ? {}
-          : {
+        ...(monthPrice
+          ? {
               month: {
                 usd: {
                   polarId: monthPrice?.id,
                   amount: monthPrice.amountType === 'fixed' ? monthPrice.priceAmount : 0,
                 },
               },
-            }),
-        ...(!yearPrice
-          ? {}
-          : {
+            }
+          : {}),
+        ...(yearPrice
+          ? {
               year: {
                 usd: {
                   polarId: yearPrice?.id,
                   amount: yearPrice.amountType === 'fixed' ? yearPrice.priceAmount : 0,
                 },
               },
-            }),
+            }
+          : {}),
       },
     });
   });
 
+  // biome-ignore lint/suspicious/noConsole: <explanation>
   console.info('📦 Polar Products have been successfully created.');
 });

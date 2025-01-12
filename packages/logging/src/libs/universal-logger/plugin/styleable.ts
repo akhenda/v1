@@ -23,6 +23,7 @@ const styleable = (options: LoggerOptions) => {
     level: { ...styleableStyle.level, ...(options.style?.level || {}) },
   };
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
   return (context: LogContext, messages: unknown[], next: () => void) => {
     // biome-ignore lint/style/noParameterAssign: very intentional
     if (typeof next !== 'function') next = noop;
@@ -32,9 +33,9 @@ const styleable = (options: LoggerOptions) => {
       return;
     }
 
-    const styles = [];
-    const formatters = [];
-    const timestamp = new Date().getTime();
+    const styles: string[] = [];
+    const formatters: string[] = [];
+    const timestamp = Date.now();
     const { namespace, level, stackframes = [] } = context;
     const scope = namespace ? `(${namespace})` : '';
 
@@ -47,7 +48,7 @@ const styleable = (options: LoggerOptions) => {
 
     if (colorized) {
       if (isServer()) {
-        formatters.push(colorize(` ${timestampWithScope} `, level.name, true));
+        formatters.push(colorize(` ${timestampWithScope} `, level.name, true) ?? '');
       } else {
         formatters.push(`%c ${timestampWithScope} %c`);
         styles.push(style.timestamp);

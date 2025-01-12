@@ -9,7 +9,7 @@ export type PageMeta = {
 export type PageLinks = { first: string; previous: string; next: string; last: string };
 
 export type Page<T> = {
-  items: Array<T>;
+  items: T[];
   meta: PageMeta;
   links: PageLinks;
 };

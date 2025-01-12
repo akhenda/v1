@@ -23,7 +23,7 @@ export const MaintenanceMode = () => {
   if (!isMaintenanceModeEnabled) return null;
 
   return (
-    <View className="bg flex items-center justify-center h-full w-full px-8">
+    <View className="bg flex h-full w-full items-center justify-center px-8">
       <Text className="bb-2 text-large">{t('The app is in maintenance')}</Text>
       <Text className="text-center">{t('It will be available online as soon as possible')}</Text>
     </View>

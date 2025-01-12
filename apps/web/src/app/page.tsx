@@ -1,18 +1,19 @@
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@v1/ui/tooltip';
+
 import { AnimatedText } from '@/components/animated-text';
 import { CopyText } from '@/components/copy-text';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@v1/ui/tooltip';
 
 export default function Page() {
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute -top-[118px] inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] -z-10 [transform:perspective(1000px)_rotateX(-63deg)] h-[80%] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none -z-10" />
+    <div className="relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden">
+      <div className="-top-[118px] -z-10 pointer-events-none absolute inset-0 h-[80%] bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] [transform:perspective(1000px)_rotateX(-63deg)]" />
+      <div className="-z-10 pointer-events-none absolute inset-0 bg-gradient-to-t from-background to-transparent" />
 
-      <h1 className="font-departure text-[40px] md:text-[84px] relative z-10 text-center h-[120px] md:h-auto leading-tight">
+      <h1 className="relative z-10 h-[120px] text-center font-departure text-[40px] leading-tight md:h-auto md:text-[84px]">
         <AnimatedText text="Production ready code" />
       </h1>
 
-      <p className="relative z-10 text-center md:text-xl max-w-[80%] mt-2 md:mt-6">
+      <p className="relative z-10 mt-2 max-w-[80%] text-center md:mt-6 md:text-xl">
         An open-source starter kit based on{' '}
         <a href="https://midday.ai?utm_source=v1-convex" className="underline">
           Midday
@@ -48,8 +49,8 @@ export default function Page() {
         </Tooltip>
       </TooltipProvider>
 
-      <div className="absolute -bottom-[280px] inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] -z-10 [transform:perspective(560px)_rotateX(63deg)] pointer-events-none" />
-      <div className="absolute w-full bottom-[100px] h-1/2  bg-gradient-to-b from-background to-transparent pointer-events-none -z-10" />
+      <div className="-bottom-[280px] -z-10 pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] [transform:perspective(560px)_rotateX(63deg)]" />
+      <div className="-z-10 pointer-events-none absolute bottom-[100px] h-1/2 w-full bg-gradient-to-b from-background to-transparent" />
     </div>
   );
 }

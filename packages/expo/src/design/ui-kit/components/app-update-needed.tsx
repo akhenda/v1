@@ -22,7 +22,7 @@ export const AppUpdateNeeded = () => {
 
   return (
     <View
-      className="bg flex items-center justify-center h-full w-full px-8"
+      className="bg flex h-full w-full items-center justify-center px-8"
       testID="app-update-needed-screen"
     >
       <Text className="pb-2 text-large">{t('Your app is outdated')}</Text>

@@ -10,6 +10,7 @@ import {
 } from '@polar-sh/sdk/models/components/webhooksubscriptionupdatedpayload';
 import { httpRouter } from 'convex/server';
 import { Webhook } from 'standardwebhooks';
+
 import { internal } from './_generated/api';
 import type { Doc } from './_generated/dataModel';
 import { type ActionCtx, httpAction } from './_generated/server';
@@ -17,7 +18,7 @@ import { auth } from './auth';
 import {
   sendSubscriptionErrorEmail,
   sendSubscriptionSuccessEmail,
-} from './email/templates/subscriptionEmail';
+} from './email/templates/subscription-email';
 import { env } from './env';
 
 const handleUpdateSubscription = async (
@@ -124,6 +125,11 @@ http.route({
             ctx,
             WebhookSubscriptionUpdatedPayloadSchema.parse(event),
           );
+        }
+
+        default: {
+          // biome-ignore lint/suspicious/noConsole: <explanation>
+          console.info('Unknown event type', event);
         }
       }
     } catch (err: unknown) {

@@ -25,14 +25,19 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "all": true,
       "a11y": {
+        "noAutofocus": "off",
         "noSvgWithoutTitle": "off"
       },
       "complexity": {
-        "noForEach": "off"
+        "noForEach": "off",
+        "useSimplifiedLogicExpression": "off"
       },
       "correctness": {
+        "noUndeclaredDependencies": "off",
+        "useImportExtensions": "off",
+        "noNodejsModules": "off",
         "useExhaustiveDependencies": "off",
         "noUnusedImports": {
           "level": "warn",
@@ -43,15 +48,51 @@
           "fix": "safe"
         }
       },
+      "nursery": {
+        "all": true,
+        "noCommonJs": "off",
+        "noProcessEnv": "off",
+        "noSecrets": "off",
+        "useComponentExportOnlyModules": "off",
+        "useExplicitType": "off",
+        "useImportRestrictions": "off",
+        "useConsistentCurlyBraces": "off",
+        "useStrictMode": "off",
+        "noExportedImports": "off",
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "error",
+          "options": {
+            "attributes": ["className"],
+            "functions": ["clsx", "cva", "tw", "twMerge", "cn", "twJoin"]
+          }
+        }
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noReExportAll": "off"
+      },
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noDefaultExport": "off",
+        "noImplicitBoolean": "off",
+        "noNamespaceImport": "off",
+        "useBlockStatements": "off",
+        "useExplicitLengthCheck": "off",
+        "useSingleVarDeclarator": "off",
+        "useNamingConvention": "off"
+      },
+      "suspicious": {
+        "noReactSpecificProps": "off",
+        "noArrayIndexKey": "off"
       }
     }
   },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 100
+    "lineWidth": 100,
+    "formatWithErrors": true
   },
   "organizeImports": {
     "enabled": true
@@ -61,11 +102,37 @@
       "arrowParentheses": "always",
       "quoteStyle": "single"
     },
+    "globals": [
+      "__DEV__",
+      "afterEach",
+      "afterAll",
+      "beforeEach",
+      "beforeAll",
+      "jest"
+    ],
     "jsxRuntime": "reactClassic"
+  },
+  "css": {
+    "formatter": {
+      "lineWidth": 80,
+      "quoteStyle": "double"
+    },
+    "parser": {
+      "allowWrongLineComments": false,
+      "cssModules": false
+    }
   },
   "json": {
     "formatter": {
+      "lineWidth": 80,
       "trailingCommas": "none"
+    },
+    "linter": {
+      "enabled": true
+    },
+    "parser": {
+      "allowComments": true,
+      "allowTrailingCommas": false
     }
   }
 }

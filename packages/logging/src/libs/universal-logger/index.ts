@@ -45,7 +45,8 @@ class Logger {
   private static instance: Logger;
   private static level: LogLevel;
   private static project: string;
-  public logger: ReturnType<typeof universalLogger> | null = null;
+
+  logger: ReturnType<typeof universalLogger> | null = null;
 
   /**
    * The Logger's constructor should always be private to prevent direct
@@ -64,7 +65,7 @@ class Logger {
    * This implementation let you subclass the Logger class while keeping
    * just one instance of each subclass around.
    */
-  public static getInstance(project: string, level: LogLevel, options?: LoggerOptions): Logger {
+  static getInstance(project: string, level: LogLevel, options?: LoggerOptions): Logger {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!Logger.instance) Logger.instance = new Logger(project, level, options);
 

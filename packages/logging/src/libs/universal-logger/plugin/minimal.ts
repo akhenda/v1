@@ -2,7 +2,7 @@ import { noop } from '../../../utils.js';
 import type { LogContext, LoggerOptions } from '../core/types.js';
 
 const defaultFormatter = (context: LogContext, messages: unknown[]) => {
-  const formatters = [];
+  const formatters: string[] = [];
   const { level, namespace } = { ...context };
 
   if (level?.name) formatters.push(level.name.toUpperCase());

@@ -31,9 +31,10 @@ const unitless = {
   strokeWidth: true,
 };
 
+const msPattern = /^ms-/;
+
 const normalizeVendorPrefix = (() => {
   const uppercasePattern = /[A-Z]/g;
-  const msPattern = /^ms-/;
 
   return (str: string) =>
     str.replace(uppercasePattern, '-$&').toLowerCase().replace(msPattern, '-ms-');

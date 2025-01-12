@@ -1,10 +1,18 @@
 import type { Breadcrumb, CaptureContext, Event, Scope, SeverityLevel, User } from '@sentry/core';
 
+import type { Primitives } from '@v1/types';
+
 import type { tags } from './constants.js';
-import type { ErrorMonitoringConfig, PossibleSentry, Primitives } from './types.js';
+import type { ErrorMonitoringConfig, PossibleSentry } from './types.js';
 
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
+
+const mixPanelRegex = /mixpanel.com/i;
+const flagsmithRegex = /flagsmith.com/i;
+const onesignalRegex = /onesignal.com/i;
+const appleRegex = /apple.com/i;
+const postHogRegex = /posthog.com/i;
 
 export function getAppErrorMonitoring<T extends PossibleSentry>(Sentry: T) {
   return {
@@ -20,6 +28,7 @@ export function getAppErrorMonitoring<T extends PossibleSentry>(Sentry: T) {
       const tracesSampleRate = environment === 'production' ? prodSampleRate : fullSampleRate;
 
       if (!sentryDsn) {
+        // biome-ignore lint/suspicious/noConsole: <explanation>
         console.warn('Failed to initialize Sentry - No DSN found');
 
         return;
@@ -32,23 +41,17 @@ export function getAppErrorMonitoring<T extends PossibleSentry>(Sentry: T) {
         enabled,
         environment,
         integrations,
-        denyUrls: [
-          /mixpanel.com/i,
-          /flagsmith.com/i,
-          /onesignal.com/i,
-          /apple.com/i,
-          /posthog.com/i,
-        ],
+        denyUrls: [mixPanelRegex, flagsmithRegex, onesignalRegex, appleRegex, postHogRegex],
         beforeBreadcrumb(breadcrumb) {
-          if (typeof breadcrumb.data?.url === 'string') {
-            if (
-              breadcrumb.data.url.match(/mixpanel.com/i) ??
-              breadcrumb.data.url.match(/flagsmith.com/i) ??
-              breadcrumb.data.url.match(/onesignal.com/i) ??
-              breadcrumb.data.url.match(/apple.com/i)
-            )
-              return null;
-          }
+          if (
+            typeof breadcrumb.data?.url === 'string' &&
+            (breadcrumb.data.url.match(mixPanelRegex) ??
+              breadcrumb.data.url.match(flagsmithRegex) ??
+              breadcrumb.data.url.match(onesignalRegex) ??
+              breadcrumb.data.url.match(postHogRegex) ??
+              breadcrumb.data.url.match(appleRegex))
+          )
+            return null;
 
           if (breadcrumb.category === 'console') return null;
 

@@ -5,6 +5,7 @@ import StackGenerator from 'stack-generator';
 const generateError = function stacktrace$$generateError() {
   try {
     // Error must be thrown to get stack in IE
+    // biome-ignore lint/suspicious/useErrorMessage: intentional
     throw new Error();
   } catch (error) {
     return error as Error;

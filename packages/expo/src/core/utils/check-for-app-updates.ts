@@ -83,9 +83,9 @@ export const checkForNativeUpdate = async (optionsOverwrites: StartUpdateOptions
 export const openAppStorePage = async () => {
   try {
     await Linking.openURL(
-      !IS_ANDROID
-        ? `https://apps.apple.com/app/apple-store/id${config.itunesItemId}`
-        : `market://details?id=${config.bundleId}&showAllReviews=true`,
+      IS_ANDROID
+        ? `market://details?id=${config.bundleId}&showAllReviews=true`
+        : `https://apps.apple.com/app/apple-store/id${config.itunesItemId}`,
     );
   } catch (error) {
     logger.error(error, 'Failed to open app store to update the app');

@@ -28,7 +28,7 @@ export default function RickyScreen() {
   }
 
   return (
-    <View className="bg-secondary/30 flex-1 items-center justify-center gap-5 p-6">
+    <View className="flex-1 items-center justify-center gap-5 bg-secondary/30 p-6">
       <Card className="w-full max-w-sm rounded-2xl p-6">
         <CardHeader className="items-center">
           <Avatar alt="Rick Sanchez's Avatar" className="h-24 w-24">
@@ -40,10 +40,10 @@ export default function RickyScreen() {
           <View className="p-3" />
           <CardTitle className="pb-2 text-center">Rick Sanchez</CardTitle>
           <View className="flex-row">
-            <CardDescription className="text-base font-semibold">Scientist</CardDescription>
+            <CardDescription className="font-semibold text-base">Scientist</CardDescription>
             <Tooltip delayDuration={150}>
               <TooltipTrigger className="px-2 pb-0.5 active:opacity-50">
-                <Info size={14} strokeWidth={2.5} className="text-foreground/70 h-4 w-4" />
+                <Info size={14} strokeWidth={2.5} className="h-4 w-4 text-foreground/70" />
               </TooltipTrigger>
               <TooltipContent className="px-4 py-2 shadow">
                 <Text className="native:text-lg">Freelance</Text>
@@ -55,15 +55,15 @@ export default function RickyScreen() {
           <View className="flex-row justify-around gap-3">
             <View className="items-center">
               <Text className="text-muted-foreground text-sm">Dimension</Text>
-              <Text className="text-xl font-semibold">C-137</Text>
+              <Text className="font-semibold text-xl">C-137</Text>
             </View>
             <View className="items-center">
               <Text className="text-muted-foreground text-sm">Age</Text>
-              <Text className="text-xl font-semibold">70</Text>
+              <Text className="font-semibold text-xl">70</Text>
             </View>
             <View className="items-center">
               <Text className="text-muted-foreground text-sm">Species</Text>
-              <Text className="text-xl font-semibold">Human</Text>
+              <Text className="font-semibold text-xl">Human</Text>
             </View>
           </View>
         </CardContent>
@@ -77,7 +77,7 @@ export default function RickyScreen() {
                 exiting={FadeOutDown}
                 className="w-11 items-center"
               >
-                <Text className="text-sm font-bold text-sky-600">{progress}%</Text>
+                <Text className="font-bold text-sky-600 text-sm">{progress}%</Text>
               </Animated.View>
             </LayoutAnimationConfig>
           </View>
@@ -85,7 +85,7 @@ export default function RickyScreen() {
           <View />
           <Button
             variant="outline"
-            className="shadow-foreground/5 shadow"
+            className="shadow shadow-foreground/5"
             onPress={updateProgressValue}
           >
             <Text>Update</Text>

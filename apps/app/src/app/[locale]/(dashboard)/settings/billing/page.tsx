@@ -1,12 +1,13 @@
 'use client';
 
+import { useAction, useQuery } from 'convex/react';
+import { useState } from 'react';
+
 import { getLocaleCurrency } from '@/utils/misc';
 import { api } from '@v1/backend/convex/_generated/api';
 import { CURRENCIES, PLANS } from '@v1/backend/convex/schema';
 import { Button } from '@v1/ui/button';
 import { Switch } from '@v1/ui/switch';
-import { useAction, useQuery } from 'convex/react';
-import { useState } from 'react';
 
 export default function BillingSettings() {
   const user = useQuery(api.users.getUser);
@@ -33,8 +34,8 @@ export default function BillingSettings() {
   return (
     <div className="flex h-full w-full flex-col gap-6">
       <div className="flex w-full flex-col gap-2 p-6 py-2">
-        <h2 className="text-xl font-medium text-primary">This is a demo app.</h2>
-        <p className="text-sm font-normal text-primary/60">
+        <h2 className="font-medium text-primary text-xl">This is a demo app.</h2>
+        <p className="font-normal text-primary/60 text-sm">
           Convex SaaS is a demo app that uses Stripe test environment. You can find a list of test
           card numbers on the{' '}
           <a
@@ -52,10 +53,10 @@ export default function BillingSettings() {
       {/* Plans */}
       <div className="flex w-full flex-col items-start rounded-lg border border-border bg-card">
         <div className="flex flex-col gap-2 p-6">
-          <h2 className="text-xl font-medium text-primary">Plan</h2>
-          <p className="flex items-start gap-1 text-sm font-normal text-primary/60">
+          <h2 className="font-medium text-primary text-xl">Plan</h2>
+          <p className="flex items-start gap-1 font-normal text-primary/60 text-sm">
             You are currently on the{' '}
-            <span className="flex h-[18px] items-center rounded-md bg-primary/10 px-1.5 text-sm font-medium text-primary/80">
+            <span className="flex h-[18px] items-center rounded-md bg-primary/10 px-1.5 font-medium text-primary/80 text-sm">
               {user.plan?.key
                 ? user.plan?.key.charAt(0).toUpperCase() + user.plan?.key.slice(1)
                 : 'Free'}
@@ -75,9 +76,9 @@ export default function BillingSettings() {
               >
                 <div className="flex w-full flex-col items-start p-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-base font-medium text-primary">{plan.name}</span>
+                    <span className="font-medium text-base text-primary">{plan.name}</span>
                     {plan._id !== freePlan?._id && (
-                      <span className="flex items-center rounded-md bg-primary/10 px-1.5 text-sm font-medium text-primary/80">
+                      <span className="flex items-center rounded-md bg-primary/10 px-1.5 font-medium text-primary/80 text-sm">
                         {currency === CURRENCIES.USD ? '$' : '€'} {/* TODO: remove assertions */}
                         {selectedPlanInterval === 'month'
                           ? (plan.prices.month?.[currency]?.amount ?? 0) / 100
@@ -86,7 +87,7 @@ export default function BillingSettings() {
                       </span>
                     )}
                   </div>
-                  <p className="text-start text-sm font-normal text-primary/60">
+                  <p className="text-start font-normal text-primary/60 text-sm">
                     {plan.description}
                   </p>
                 </div>
@@ -94,7 +95,7 @@ export default function BillingSettings() {
                 {/* Billing Switch */}
                 {plan._id !== freePlan?._id && (
                   <div className="flex items-center gap-2 px-4">
-                    <label htmlFor="interval-switch" className="text-start text-sm text-primary/60">
+                    <label htmlFor="interval-switch" className="text-start text-primary/60 text-sm">
                       {selectedPlanInterval === 'month' ? 'Monthly' : 'Yearly'}
                     </label>
                     <Switch
@@ -116,14 +117,14 @@ export default function BillingSettings() {
             <div className="flex w-full items-center overflow-hidden rounded-md border border-primary/60">
               <div className="flex w-full flex-col items-start p-4">
                 <div className="flex items-end gap-2">
-                  <span className="text-base font-medium text-primary">{proPlan?.name}</span>
-                  <p className="flex items-start gap-1 text-sm font-normal text-primary/60">
+                  <span className="font-medium text-base text-primary">{proPlan?.name}</span>
+                  <p className="flex items-start gap-1 font-normal text-primary/60 text-sm">
                     {user.subscription.cancelAtPeriodEnd === true ? (
-                      <span className="flex h-[18px] items-center text-sm font-medium text-red-500">
+                      <span className="flex h-[18px] items-center font-medium text-red-500 text-sm">
                         Expires
                       </span>
                     ) : (
-                      <span className="flex h-[18px] items-center text-sm font-medium text-green-500">
+                      <span className="flex h-[18px] items-center font-medium text-green-500 text-sm">
                         Renews
                       </span>
                     )}
@@ -134,7 +135,7 @@ export default function BillingSettings() {
                     .
                   </p>
                 </div>
-                <p className="text-start text-sm font-normal text-primary/60">
+                <p className="text-start font-normal text-primary/60 text-sm">
                   {proPlan?.description}
                 </p>
               </div>
@@ -142,8 +143,8 @@ export default function BillingSettings() {
           </div>
         )}
 
-        <div className="flex min-h-14 w-full items-center justify-between rounded-lg rounded-t-none border-t border-border bg-secondary px-6 py-3 dark:bg-card">
-          <p className="text-sm font-normal text-primary/60">
+        <div className="flex min-h-14 w-full items-center justify-between rounded-lg rounded-t-none border-border border-t bg-secondary px-6 py-3 dark:bg-card">
+          <p className="font-normal text-primary/60 text-sm">
             You will not be charged for testing the subscription upgrade.
           </p>
           {user.subscription?.planId === freePlan?._id && (
@@ -157,14 +158,14 @@ export default function BillingSettings() {
       {/* Manage Subscription */}
       <div className="flex w-full flex-col items-start rounded-lg border border-border bg-card">
         <div className="flex flex-col gap-2 p-6">
-          <h2 className="text-xl font-medium text-primary">Manage Subscription</h2>
-          <p className="flex items-start gap-1 text-sm font-normal text-primary/60">
+          <h2 className="font-medium text-primary text-xl">Manage Subscription</h2>
+          <p className="flex items-start gap-1 font-normal text-primary/60 text-sm">
             Update your payment method, billing address, and more.
           </p>
         </div>
 
-        <div className="flex min-h-14 w-full items-center justify-between rounded-lg rounded-t-none border-t border-border bg-secondary px-6 py-3 dark:bg-card">
-          <p className="text-sm font-normal text-primary/60">
+        <div className="flex min-h-14 w-full items-center justify-between rounded-lg rounded-t-none border-border border-t bg-secondary px-6 py-3 dark:bg-card">
+          <p className="font-normal text-primary/60 text-sm">
             You will be redirected to the Stripe Customer Portal.
           </p>
 

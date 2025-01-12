@@ -21,10 +21,10 @@ export default function WelcomeEmail() {
     <Html>
       <Preview>Welcome</Preview>
       <Tailwind>
-        <Body className="my-auto mx-auto font-sans">
-          <Container className="border-transparent my-[40px] mx-auto max-w-[600px]">
+        <Body className="mx-auto my-auto font-sans">
+          <Container className="mx-auto my-[40px] max-w-[600px] border-transparent">
             <Img src="/logo.png" alt="logo" width={100} height={100} />
-            <Heading className="font-normal text-center p-0 my-[30px] mx-0">Welcome to v1</Heading>
+            <Heading className="mx-0 my-[30px] p-0 text-center font-normal">Welcome to v1</Heading>
             <Section className="mb-4">Hi, I'm Pontus, one of the founders.</Section>
             <Section className="mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel
@@ -45,7 +45,7 @@ export default function WelcomeEmail() {
             </Section>
             <Section className="mb-6">
               <Link href={baseUrl}>
-                <Button className="bg-black text-white p-4 text-center">Get started</Button>
+                <Button className="bg-black p-4 text-center text-white">Get started</Button>
               </Link>
             </Section>
             <Hr />

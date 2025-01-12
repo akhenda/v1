@@ -46,9 +46,11 @@ export async function sendEmail(options: SendEmailOptions) {
   }
   const parsedErrorResult = ResendErrorSchema.safeParse(data);
   if (parsedErrorResult.success) {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.error(parsedErrorResult.data);
     throw new Error(`Error sending email: ${parsedErrorResult.data.message}`);
   }
+  // biome-ignore lint/suspicious/noConsole: <explanation>
   console.error(data);
   throw new Error('Error sending email');
 }

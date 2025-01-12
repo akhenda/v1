@@ -6,10 +6,10 @@ import { setupAnalytics } from '@v1/analytics/mobile';
 
 import { config } from '@/core/constants';
 
-import type { AnalyticsType } from './types';
+import type { AnalyticsEventNames, AnalyticsPropertyNames } from './types';
 
 const { apiKey, apiHost, personProfiles } = config.postHog;
-const Analytics = setupAnalytics<AnalyticsType.PropertyNames, AnalyticsType.EventNames>(
+const Analytics = setupAnalytics<AnalyticsPropertyNames, AnalyticsEventNames>(
   { apiKey, apiHost, personProfiles },
   { isProd: config.isProd },
 );

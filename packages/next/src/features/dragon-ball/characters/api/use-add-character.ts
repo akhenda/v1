@@ -27,7 +27,7 @@ export function useUpdateCharacter(page: number) {
       const newItems = currentPage.items.filter(({ id }) => id !== characterId);
 
       if (nextPage?.items.length) {
-        const lastCharacterOnPage = currentPage.items[currentPage.items.length - 1];
+        const lastCharacterOnPage = currentPage.items.at(-1);
 
         if (lastCharacterOnPage) {
           const indexOnNextPage = nextPage.items.findIndex(

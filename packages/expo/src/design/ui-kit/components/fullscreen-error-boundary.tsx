@@ -17,9 +17,9 @@ export const FullscreenErrorBoundary = () => {
   const { t } = useTranslation();
 
   return (
-    <View className="bg flex self-center items-center justify-center h-full w-full px-6">
+    <View className="bg flex h-full w-full items-center justify-center self-center px-6">
       <Text className="mb-2 text-large">{t('Error!')}</Text>
-      <Text className="text-medium text-center">
+      <Text className="text-center text-medium">
         {t('An unknown error occured. If the error persist, contact support.')}
       </Text>
       <View className="mt-4">

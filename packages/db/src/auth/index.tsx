@@ -11,7 +11,7 @@ const client = {
   /**
    * Get the currently logged in user in the browser
    */
-  async authUser() {
+  authUser() {
     return {};
   },
 };

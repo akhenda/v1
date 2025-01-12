@@ -42,7 +42,7 @@ async function create(bookId: number, authorId: number) {
  *
  * @returns The deleted book author relationship.
  */
-async function deleteById(id: number) {
+function deleteById(id: number) {
   logger.debug('delete book author', id);
 
   try {

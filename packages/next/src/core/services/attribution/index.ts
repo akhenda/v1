@@ -12,18 +12,22 @@ export const Attribution = {
    * This is called once on app launch and is used to set up the attribution service.
    * It is an asynchronous function, so it returns a promise.
    *
-   * @returns {Promise<void>}
+   * @returns {void}
    */
-  async init() {},
+  init() {
+    // implemenation
+  },
 
   /**
    * Listen for deep links that trigger app installs.
    *
    * This should be called once the attribution service is initialized.
    *
-   * @returns {Promise<void>}
+   * @returns {void}
    */
-  listenForDeepLinks() {},
+  listenForDeepLinks() {
+    // implemenation
+  },
 
   /**
    * Handles the install attribution process.
@@ -35,7 +39,9 @@ export const Attribution = {
    * Make sure to call this function after the attribution service
    * has been initialized.
    */
-  handleInstallAttribution() {},
+  handleInstallAttribution() {
+    // implemenation
+  },
 
   /**
    * Sets the invite ID for the current user.
@@ -46,7 +52,9 @@ export const Attribution = {
    *
    * @param {string} inviteId - The invite ID to set for the current user.
    */
-  setInviteId() {},
+  setInviteId() {
+    // implemenation
+  },
 
   /**
    * Generates an invite link for the current user.
@@ -57,7 +65,9 @@ export const Attribution = {
    *
    * @returns {Promise<string>} A promise that resolves with the generated invite link.
    */
-  getInviteLink() {},
+  getInviteLink() {
+    // implemenation
+  },
 
   /**
    * Tracks an event in the attribution service.
@@ -69,7 +79,9 @@ export const Attribution = {
    * @param {string} eventName - The name of the event to track.
    * @param {Record<string, unknown>} [properties] - Additional event properties.
    */
-  trackEvent() {},
+  trackEvent() {
+    // implemenation
+  },
 
   /**
    * Tracks revenue in the attribution service.
@@ -82,5 +94,7 @@ export const Attribution = {
    * Ensure that this function is called after initializing the
    * attribution service and relevant revenue events occur in the app.
    */
-  trackRevenue() {},
+  trackRevenue() {
+    // implemenation
+  },
 };
