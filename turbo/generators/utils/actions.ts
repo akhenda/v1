@@ -50,14 +50,16 @@ export const bunCreateExpo: PlopTypes.CustomActionFunction = async (
     // Resolve the target path
     const targetPath = path.resolve(answers?.path || '.');
 
-    console.log(`Creating a new Expo app "${appName}" at "${targetPath}"...`);
+    console.log(`\nCreating a new Expo app "${appName}" at "${targetPath}"...`);
 
     // Run the bun create expo command
-    execSync(`bun create expo ${appName}`, {
+    execSync(`bun --bun create expo ${appName}`, {
       stdio: 'inherit',
-
-      // Set the working directory to the specified path
-      cwd: targetPath,
+      cwd: targetPath, // Set the working directory to the specified path
+      env: {
+        ...process.env, // Inherit the parent environment
+        BUN: '1', // Explicitly set BUN as the package manager
+      },
     });
 
     return `Successfully created Expo app: ${appName} at ${targetPath}`;
@@ -83,7 +85,7 @@ export const bunCreateNextApp: PlopTypes.CustomActionFunction = async (
     // Resolve the target path
     const targetPath = path.resolve(answers?.path || '.');
 
-    console.log(`Creating a new Next.js app "${targetPath}"...`);
+    console.log(`\nCreating a new Next.js app at "${targetPath}"...`);
 
     // Run the bun create next-app command
     execSync('bun create next-app', {

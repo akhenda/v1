@@ -12,12 +12,11 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
   // use the custom action
   plop.setGenerator('test', {
     description: 'Noma sana...',
-    prompts: [{ type: 'input', name: 'title', message: 'What should be?' }],
-    actions: [
-      { type: 'doTheThing', configProp: 'available from the config param' },
-      { type: 'doTheAsyncThing', speed: 'slow' },
-      { type: 'bunInstall' },
+    prompts: [
+      { type: 'input', name: 'appName', message: 'What?' },
+      { type: 'input', name: 'path', message: 'Where?' },
     ],
+    actions: [{ type: 'bunCreateExpo' }],
   });
 
   plop.setGenerator('example', example);
