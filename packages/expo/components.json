@@ -1,6 +1,6 @@
 {
   "aliases": {
-    "components": "@design/ui-kit/components",
+    "components": "./src/design/ui-kit/components",
     "lib": "packages/expo/design/lib"
   }
 }

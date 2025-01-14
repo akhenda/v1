@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pressable, View } from 'react-native';
 
-import { useColorScheme } from '@/design/lib/hooks/use-color-scheme';
-import { MoonStar } from '@/design/lib/icons/MoonStar';
-import { Sun } from '@/design/lib/icons/Sun';
-import { cn } from '@/design/lib/utils';
-import { setAndroidNavigationBar } from '@/design/lib/utils/android-navigation-bar';
+import { useColorScheme } from '../../lib/hooks/use-color-scheme';
+import { MoonStar } from '../../lib/icons/MoonStar';
+import { Sun } from '../../lib/icons/Sun';
+import { cn } from '../../lib/utils';
+import { setAndroidNavigationBar } from '../../lib/utils/android-navigation-bar';
 
 /**
  * A component that allows the user to toggle the color scheme.

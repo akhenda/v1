@@ -1,6 +1,6 @@
 import * as SecureStore from 'expo-secure-store';
 
-import { logger } from '@/core/observability';
+import { logger } from '../observability';
 
 /**
  * Retrieves a value from the secure storage.

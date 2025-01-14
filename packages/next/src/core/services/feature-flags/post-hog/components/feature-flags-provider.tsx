@@ -1,4 +1,4 @@
-import { NoOp } from '@/design/lib/utils';
+import { NoOp } from '../../../../../design/lib/utils';
 
 /**
  * A do-nothing component to be used as a drop-in replacement for `FlagsmithProvider`

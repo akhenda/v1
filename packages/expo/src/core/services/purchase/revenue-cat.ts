@@ -1,8 +1,8 @@
 import type { LOG_LEVEL } from 'react-native-purchases';
 import RevenueCat from 'react-native-purchases';
 
-import { IS_IOS, config } from '@/core/constants';
-import { logger } from '@/core/observability';
+import { IS_IOS, config } from '../../constants';
+import { logger } from '../../observability';
 
 import type { PurchasePayload } from './types';
 

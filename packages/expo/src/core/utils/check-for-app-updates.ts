@@ -4,8 +4,8 @@ import { Linking } from 'react-native';
 import type { StartUpdateOptions } from 'sp-react-native-in-app-updates';
 import SpInAppUpdates, { IAUUpdateKind } from 'sp-react-native-in-app-updates';
 
-import { IS_ANDROID, ONE_SECOND, config } from '@/core/constants';
-import { ErrorMonitoring, logger } from '@/core/observability';
+import { IS_ANDROID, ONE_SECOND, config } from '../constants';
+import { ErrorMonitoring, logger } from '../observability';
 
 import { noop } from './helpers';
 import { sleep } from './sleep';

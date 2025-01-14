@@ -1,7 +1,7 @@
 import { usePathname, useSegments } from 'expo-router';
 import { useCallback, useEffect } from 'react';
 
-import { convertStringToKebabCase } from '@/core/utils';
+import { convertStringToKebabCase } from '../../../../utils';
 
 import Analytics from '../lib';
 

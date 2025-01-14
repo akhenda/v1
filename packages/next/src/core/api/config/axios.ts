@@ -2,9 +2,9 @@
 import assert from 'node:assert/strict';
 import Axios, { type InternalAxiosRequestConfig } from 'axios';
 
-import { config } from '@/core/constants';
-import { logger } from '@/core/observability';
-import { sessionTokenStorage } from '@/core/storage';
+import { config } from '../../constants';
+import { logger } from '../../observability';
+import { sessionTokenStorage } from '../../storage';
 
 assert(config.apiURL, 'env variable not set: apiURL');
 

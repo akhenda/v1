@@ -1,6 +1,6 @@
 import type { i18n } from 'i18next';
 
-import { config } from '@/core/constants';
+import { config } from '../../constants';
 
 /**
  * Returns the best-matching locale to the given i18n instance's language.

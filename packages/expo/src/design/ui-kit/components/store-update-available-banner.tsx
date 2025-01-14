@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { openAppStorePage } from '@/core/utils';
+import { openAppStorePage } from '../../../core/utils';
 
 import { Button } from './ui/button';
 import { Text } from './ui/text';

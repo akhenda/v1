@@ -1,6 +1,6 @@
 import { MMKV } from 'react-native-mmkv';
 
-import { logger } from '@/core/observability';
+import { logger } from '../observability';
 
 export const defaultStorage = new MMKV();
 

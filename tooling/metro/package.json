@@ -1,0 +1,19 @@
+{
+  "name": "@v1/metro",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "format": "biome --write .",
+    "lint": "biome check .",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@v1/logging": "workspace:*",
+    "remeda": "2.19.0"
+  }
+}

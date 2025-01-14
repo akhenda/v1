@@ -1,4 +1,4 @@
-import { STORAGE_KEYS } from '@/core/constants';
+import { STORAGE_KEYS } from '../../constants';
 
 import { getStorageHelpers } from '../helpers';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextInput, type TextInputProps } from 'react-native';
 
-import { cn } from '@/design/lib';
+import { cn } from '../../../lib';
 
 const Input = React.forwardRef<React.ElementRef<typeof TextInput>, TextInputProps>(
   ({ className, placeholderClassName, ...props }, ref) => {

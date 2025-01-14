@@ -1,6 +1,6 @@
 import { initDateLocale } from '@v1/date/dayjs';
 
-import { getSupportedDateLocale } from '@/core/i18n';
+import { getSupportedDateLocale } from '../i18n';
 
 import { Attribution } from './attribution';
 

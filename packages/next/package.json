@@ -3,8 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "main": "./src/index.ts",
+  "imports": {
+    "#*": "./src/*"
+  },
   "exports": {
-    ".": "./src/index.ts"
+    "./global.css": "./src/design/ui-kit/global.css",
+    "./tailwind.config": "./src/design/ui-kit/tailwind.config.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
-import type { Planet } from '@/core/api/endpoints/dragon-ball';
-import { getDragonBallPlanet } from '@/core/api/endpoints/dragon-ball';
+import type { Planet } from '../../../../core/api/endpoints/dragon-ball';
+import { getDragonBallPlanet } from '../../../../core/api/endpoints/dragon-ball';
 
 const QUERY_KEY = 'planet';
 

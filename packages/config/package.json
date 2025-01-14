@@ -4,24 +4,7 @@
   "private": true,
   "type": "module",
   "sideEffects": false,
-  "exports": {
-    "./client": {
-      "types": "./src/client/index.ts",
-      "default": "./dist/client/index.cjs"
-    },
-    "./mobile": {
-      "types": "./src/mobile/index.ts",
-      "default": "./dist/mobile/index.cjs"
-    },
-    "./next": {
-      "types": "./src/next/index.ts",
-      "default": "./dist/next/index.cjs"
-    },
-    "./server": {
-      "types": "./src/server/index.ts",
-      "default": "./dist/server/index.cjs"
-    }
-  },
+  "main": "./src/index.ts",
   "scripts": {
     "build": "tsup src --format cjs,esm",
     "build:tsc": "tsc",

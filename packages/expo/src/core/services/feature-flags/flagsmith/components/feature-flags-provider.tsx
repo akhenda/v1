@@ -4,9 +4,8 @@ import flagsmith from 'react-native-flagsmith';
 import { FlagsmithProvider } from 'react-native-flagsmith/react';
 import type { IFlagsmith } from 'react-native-flagsmith/types';
 
-import { FIFTEEN_MINUTES, IS_IOS, config } from '@/core/constants';
-import { featureFlagStorage } from '@/core/storage';
-
+import { FIFTEEN_MINUTES, IS_IOS, config } from '../../../../constants';
+import { featureFlagStorage } from '../../../../storage';
 import { defaultFlags } from '../default-flags';
 
 const cacheOptions = { skipAPI: true, ttl: FIFTEEN_MINUTES };

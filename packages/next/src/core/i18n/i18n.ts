@@ -5,7 +5,7 @@ import { initReactI18next } from 'react-i18next';
 // https://github.com/locize/translation-check#use-it-as-plugin
 import { i18nextPlugin } from 'translation-check';
 
-import { config } from '@/core/constants';
+import { config } from '../constants';
 
 import { resources } from './resources';
 

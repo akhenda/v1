@@ -15,6 +15,25 @@ import { Platform } from 'react-native';
 const WEB_FONT_STACK =
   'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
+export const COLORS = {
+  light: {
+    background: 'hsl(0 0% 100%)', // background
+    border: 'hsl(214.3 31.8% 91.4%)', // border
+    card: 'hsl(0 0% 100%)', // card
+    notification: 'hsl(0 100% 50%)', // destructive
+    primary: 'hsl(222.2 47.4% 11.2%)', // primary
+    text: 'hsl(222.2 47.4% 11.2%)', // foreground
+  },
+  dark: {
+    background: 'hsl(224 71% 4%)', // background
+    border: 'hsl(216 34% 17%)', // border
+    card: 'hsl(224 71% 4%)', // card
+    notification: 'hsl(0 63% 31%)', // destructive
+    primary: 'hsl(210 40% 98%)', // primary
+    text: 'hsl(213 31% 91%)', // foreground
+  },
+};
+
 /**
  * Navigation Fonts
  */
@@ -46,22 +65,4 @@ export const NAV_FONTS = Platform.select({
  * file with the new colors. Each color has a commented css variable name next
  * to it.
  */
-export const NAV_THEME = {
-  light: {
-    background: 'hsl(0 0% 100%)', // background
-    border: 'hsl(214.3 31.8% 91.4%)', // border
-    card: 'hsl(0 0% 100%)', // card
-    notification: 'hsl(0 100% 50%)', // destructive
-    primary: 'hsl(222.2 47.4% 11.2%)', // primary
-    text: 'hsl(222.2 47.4% 11.2%)', // foreground
-  },
-  dark: {
-    background: 'hsl(224 71% 4%)', // background
-    border: 'hsl(216 34% 17%)', // border
-    card: 'hsl(224 71% 4%)', // card
-    notification: 'hsl(0 63% 31%)', // destructive
-    primary: 'hsl(210 40% 98%)', // primary
-    text: 'hsl(213 31% 91%)', // foreground
-  },
-  fonts: NAV_FONTS,
-} as const;
+export const NAV_THEME = { ...COLORS, fonts: NAV_FONTS } as const;

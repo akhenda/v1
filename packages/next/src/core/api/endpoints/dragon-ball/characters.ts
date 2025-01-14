@@ -6,7 +6,7 @@
 import type { Character, CharacterFilters, CharacterListItem } from './characters.types';
 import type { Page } from './types';
 
-import { client } from '@/core/api/config';
+import { client } from '../../config';
 
 const BASE_URL = 'https://dragonball-api.com/api';
 const ENDPOINT = '/characters';

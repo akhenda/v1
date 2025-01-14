@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as R from 'remeda';
 
-import { logger } from '@/core/observability';
+import { logger } from '../observability';
 
 type Props = {
   onChangeFound?: (data: {

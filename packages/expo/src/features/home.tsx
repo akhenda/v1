@@ -2,7 +2,7 @@ import { Link } from 'expo-router';
 import { verifyInstallation } from 'nativewind';
 import { SafeAreaView, Text, View } from 'react-native';
 
-import { Button } from '@/design/ui-kit/components/ui/button';
+import { Button } from '../design/ui-kit/components/ui/button';
 
 import RickyScreen from './ricky';
 

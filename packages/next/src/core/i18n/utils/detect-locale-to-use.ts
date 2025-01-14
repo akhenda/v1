@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-import { config } from '@/core/constants';
+import { config } from '../../constants';
 
 const NOT_FOUND_INDEX = -1;
 

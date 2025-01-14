@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
-import type { Character } from '@/core/api/endpoints/dragon-ball';
-import { getDragonBallCharacter } from '@/core/api/endpoints/dragon-ball';
+import type { Character } from '../../../../core/api/endpoints/dragon-ball';
+import { getDragonBallCharacter } from '../../../../core/api/endpoints/dragon-ball';
 
 const QUERY_KEY = 'character';
 

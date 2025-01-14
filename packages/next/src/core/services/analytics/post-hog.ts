@@ -4,7 +4,7 @@
  */
 import { setupAnalytics } from '@v1/analytics/next';
 
-import { config } from '@/core/constants';
+import { config } from '../../constants';
 
 const { apiKey, apiHost, personProfiles } = config.postHog;
 const Analytics = setupAnalytics({ apiKey, apiHost, personProfiles }, { isProd: config.isProd });

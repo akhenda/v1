@@ -3,12 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "exports": {
-    ".": "./src/index.ts",
-    "./mobile": "./src/mobile.ts",
-    "./nextjs": "./src/nextjs.ts",
-    "./pino": "./src/libs/pino.ts"
-  },
+  "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "biome check .",

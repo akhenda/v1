@@ -1,11 +1,7 @@
 {
   "extends": "@v1/typescript/nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@v1/*": ["../../packages/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]

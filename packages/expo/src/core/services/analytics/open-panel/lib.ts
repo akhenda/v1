@@ -1,6 +1,6 @@
 import { setupAnalytics } from '@v1/analytics/op/mobile';
 
-import { config } from '@/core/constants';
+import { config } from '../../../constants';
 
 import type { AnalyticsEventNames } from '../types';
 

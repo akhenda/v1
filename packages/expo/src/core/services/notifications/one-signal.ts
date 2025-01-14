@@ -1,7 +1,7 @@
 import { OneSignal } from 'react-native-onesignal';
 
-import { config } from '@/core/constants';
-import { logger } from '@/core/observability';
+import { config } from '../../constants';
+import { logger } from '../../observability';
 
 /**
  * Provides methods for interacting with the OneSignal library.

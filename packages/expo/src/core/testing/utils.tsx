@@ -7,7 +7,7 @@ import { cleanup, render as rtlRender } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 
-import { NAV_THEME } from '@/design/lib/constants';
+import { NAV_THEME } from '../../design/lib/constants';
 
 afterEach(cleanup);
 

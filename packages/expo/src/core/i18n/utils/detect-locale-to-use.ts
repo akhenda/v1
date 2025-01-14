@@ -1,6 +1,6 @@
 import * as Localization from 'expo-localization';
 
-import { config } from '@/core/constants';
+import { config } from '../../constants';
 
 const SELECTED_LOCALIZATION = 0;
 const NOT_FOUND_INDEX = -1;

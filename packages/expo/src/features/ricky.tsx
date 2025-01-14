@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import Animated, { FadeInUp, FadeOutDown, LayoutAnimationConfig } from 'react-native-reanimated';
 
-import { Info } from '@/design/lib/icons/Info';
-import { Avatar, AvatarFallback, AvatarImage } from '@/design/ui-kit/components/ui/avatar';
-import { Button } from '@/design/ui-kit/components/ui/button';
+import { Info } from '../design/lib/icons/Info';
+import { Avatar, AvatarFallback, AvatarImage } from '../design/ui-kit/components/ui/avatar';
+import { Button } from '../design/ui-kit/components/ui/button';
 import {
   Card,
   CardContent,
@@ -12,10 +12,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/design/ui-kit/components/ui/card';
-import { Progress } from '@/design/ui-kit/components/ui/progress';
-import { Text } from '@/design/ui-kit/components/ui/text';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/design/ui-kit/components/ui/tooltip';
+} from '../design/ui-kit/components/ui/card';
+import { Progress } from '../design/ui-kit/components/ui/progress';
+import { Text } from '../design/ui-kit/components/ui/text';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../design/ui-kit/components/ui/tooltip';
 
 const GITHUB_AVATAR_URI =
   'https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg';

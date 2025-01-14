@@ -1,7 +1,7 @@
 import { MMKV } from 'react-native-mmkv';
 
-import { STORAGE_KEYS } from '@/core/constants';
-import type { SupportedLocale } from '@/core/i18n/types';
+import { STORAGE_KEYS } from '../../constants';
+import type { SupportedLocale } from '../../i18n/types';
 
 import { getStorageHelpers } from '../helpers';
 

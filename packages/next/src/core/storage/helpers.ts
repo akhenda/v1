@@ -1,4 +1,4 @@
-import { logger } from '@/core/observability';
+import { logger } from '../observability';
 
 /**
  * Retrieves a value from the local storage.

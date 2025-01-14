@@ -1,5 +1,6 @@
 import * as Application from 'expo-application';
 import Constants from 'expo-constants';
+
 import baseConfig from './base';
 
 const { constants: baseConstants, env: baseEnv } = baseConfig;

@@ -2,9 +2,6 @@
   "extends": "@v1/typescript/expo-library.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["jest"]

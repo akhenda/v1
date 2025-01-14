@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { useLastSupportedAppVersion } from '@/core/hooks/use-last-supported-app-version';
-import { openAppStorePage } from '@/core/utils';
+import { useLastSupportedAppVersion } from '../../../core/hooks/use-last-supported-app-version';
+import { openAppStorePage } from '../../../core/utils';
 
 import { Button } from './ui/button';
 import { Text } from './ui/text';

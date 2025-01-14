@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 import type { Edge } from 'react-native-safe-area-context';
 import type { Tailwindest } from 'tailwindest';
 
-import { cn } from '@/design/lib/utils';
+import { cn } from '../../lib/utils';
 
 import { SafeView } from './safe-view';
 

@@ -1,8 +1,8 @@
 import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
 
-import { CircleUserRound } from '@/design/lib/icons';
-import { cn } from '@/design/lib/utils';
+import { CircleUserRound } from '../../lib/icons';
+import { cn } from '../../lib/utils';
 
 /**
  * A component that renders a pressable icon which, when pressed, navigates to

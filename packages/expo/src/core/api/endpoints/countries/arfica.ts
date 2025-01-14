@@ -5,7 +5,7 @@
  */
 import type { Country } from './types';
 
-import { client } from '@/core/api/config';
+import { client } from '../../config';
 
 const BASE_URL = 'https://restcountries.com/v3.1';
 const ENDPOINT = '/region';

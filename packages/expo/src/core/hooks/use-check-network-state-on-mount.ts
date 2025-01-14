@@ -1,9 +1,9 @@
 import * as Network from 'expo-network';
 
-import { ONE_SECOND } from '@/core/constants';
-import { ErrorMonitoring } from '@/core/observability';
-import { sleep } from '@/core/utils';
-import { Toaster } from '@/design/ui-kit/components/toaster';
+import { Toaster } from '../../design/ui-kit/components/toaster';
+import { ONE_SECOND } from '../constants';
+import { ErrorMonitoring } from '../observability';
+import { sleep } from '../utils';
 
 import { useOnMount } from './use-on-mount';
 

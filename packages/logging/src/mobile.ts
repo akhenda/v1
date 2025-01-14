@@ -4,7 +4,7 @@
 import { consoleTransport, logger } from 'react-native-logs';
 import type { ConsoleTransportOptions } from 'react-native-logs/dist/transports/consoleTransport.js';
 
-import getConfig from '@v1/config/mobile';
+import getConfig from '@v1/config/src/mobile';
 
 import type { LogLevel } from './config.js';
 import { createLogger } from './libs/pino.js';

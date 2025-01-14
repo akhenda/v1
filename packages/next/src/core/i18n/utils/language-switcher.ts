@@ -2,8 +2,8 @@ import i18next from 'i18next';
 
 import { initDateLocale } from '@v1/date/dayjs';
 
-import type { SupportedLocale } from '@/core/i18n/types';
-import { logger } from '@/core/observability';
+import { logger } from '../../observability';
+import type { SupportedLocale } from '../types';
 
 import { setSavedAppLocale } from './language-detector';
 

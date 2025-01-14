@@ -1,6 +1,6 @@
 import { Image as ExpoImage } from 'expo-image';
 
-import { logger } from '@/core/observability';
+import { logger } from '../observability';
 
 /**
  * Preloads images from the given sources.

@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRef } from 'react';
 
-import type { CharacterListItem, Page } from '@/core/api/endpoints/dragon-ball';
-import { updateDragonBallCharacterDescription } from '@/core/api/endpoints/dragon-ball';
+import type { CharacterListItem, Page } from '../../../../core/api/endpoints/dragon-ball';
+import { updateDragonBallCharacterDescription } from '../../../../core/api/endpoints/dragon-ball';
 
 import * as GetCharacters from './use-get-characters';
 

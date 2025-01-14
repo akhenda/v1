@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-import { config } from '@/core/constants';
+import { config } from '../../constants';
 
 import { axios } from './axios';
 

@@ -10,13 +10,13 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 
-import { persistOptions, queryClient } from '@/core/api';
-import { ErrorMonitoring } from '@/core/observability';
-import { Analytics } from '@/core/services/analytics';
-import { FeatureFlagsProvider } from '@/core/services/feature-flags';
-import { NAV_THEME } from '@/design/lib/constants';
-import { useColorScheme } from '@/design/lib/hooks';
-import { FullscreenErrorBoundary } from '@/design/ui-kit/components/fullscreen-error-boundary';
+import { NAV_THEME } from '../../design/lib/constants';
+import { useColorScheme } from '../../design/lib/hooks';
+import { FullscreenErrorBoundary } from '../../design/ui-kit/components/fullscreen-error-boundary';
+import { persistOptions, queryClient } from '../api';
+import { ErrorMonitoring } from '../observability';
+import { Analytics } from '../services/analytics';
+import { FeatureFlagsProvider } from '../services/feature-flags';
 
 const { ExpoPostHogProvider } = Analytics;
 

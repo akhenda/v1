@@ -3,7 +3,7 @@
  *
  * Base URL: http://dragonball-api.com/api
  */
-import { client } from '@/core/api/config';
+import { client } from '../../config';
 
 import type { Planet, PlanetFilters } from './planets.types';
 import type { Page } from './types';

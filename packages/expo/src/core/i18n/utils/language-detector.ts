@@ -1,14 +1,14 @@
 import * as Localization from 'expo-localization';
 import type { LanguageDetectorModule } from 'i18next';
 
-import { config } from '@/core/constants';
-import type { SupportedLocale } from '@/core/i18n/types';
-import { Analytics } from '@/core/services/analytics';
-import { appLocaleStorage } from '@/core/storage';
+import { config } from '../../constants';
+import { Analytics } from '../../services/analytics';
+import { appLocaleStorage } from '../../storage';
+import type { SupportedLocale } from '../types';
 
 /**
  * Retrieves the user's saved locale from the app's storage. The locale is saved in the key
- * `APP_LOCALE_KEY` (which is imported from `@/core/storage/items/app`).
+ * `APP_LOCALE_KEY` (which is imported from `../../storage/items/app`).
  *
  * @returns The saved locale, or undefined if it is not set.
  */

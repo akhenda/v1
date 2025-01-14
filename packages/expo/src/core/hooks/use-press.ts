@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { isPromise } from '@/core/utils';
+import { isPromise } from '../utils';
 
 /**
  * @description

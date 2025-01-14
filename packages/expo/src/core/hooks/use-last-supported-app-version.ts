@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import semverGte from 'semver/functions/gte';
 
-import { config } from '@/core/constants';
-import { useGetFlagValueSync } from '@/core/services/feature-flags';
+import { config } from '../constants';
+import { useGetFlagValueSync } from '../services/feature-flags';
 
 import { useOnMount } from './use-on-mount';
 

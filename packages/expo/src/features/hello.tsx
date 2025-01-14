@@ -1,4 +1,4 @@
-import { Text } from '@/design/ui-kit/components/ui/text';
+import { Text } from '../design/ui-kit/components/ui/text';
 
 function Hello() {
   return <Text>Hello, World!</Text>;

@@ -1,8 +1,8 @@
 import { keepPreviousData, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
-import type { CharacterListItem, Page } from '@/core/api/endpoints/dragon-ball';
-import { getDragonBallCharacters } from '@/core/api/endpoints/dragon-ball';
+import type { CharacterListItem, Page } from '../../../../core/api/endpoints/dragon-ball';
+import { getDragonBallCharacters } from '../../../../core/api/endpoints/dragon-ball';
 
 const QUERY_KEY = 'characters';
 

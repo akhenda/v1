@@ -4,8 +4,8 @@ import { Platform, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FullWindowOverlay } from 'react-native-screens';
 
-import { Button } from '@/design/ui-kit/components/ui/button';
-import { Input } from '@/design/ui-kit/components/ui/input';
+import { Button } from '../design/ui-kit/components/ui/button';
+import { Input } from '../design/ui-kit/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -14,9 +14,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/design/ui-kit/components/ui/select';
-import { Text } from '@/design/ui-kit/components/ui/text';
-import { H1, Muted } from '@/design/ui-kit/components/ui/typography';
+} from '../design/ui-kit/components/ui/select';
+import { Text } from '../design/ui-kit/components/ui/text';
+import { H1, Muted } from '../design/ui-kit/components/ui/typography';
 
 const CUSTOM_PORTAL_HOST_NAME = 'modal-example';
 const WindowOverlay = Platform.OS === 'ios' ? FullWindowOverlay : React.Fragment;

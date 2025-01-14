@@ -9,7 +9,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import { cn } from '@/design/lib';
+import { cn } from '../../../lib';
 
 const Progress = React.forwardRef<
   ProgressPrimitive.RootRef,

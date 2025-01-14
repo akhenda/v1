@@ -2,8 +2,8 @@ import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persi
 import { QueryClient } from '@tanstack/react-query';
 import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client';
 
-import { GC_TIME, STALE_TIME, STORAGE_KEYS, THIRTY_DAYS } from '@/core/constants';
-import { queryClientStorage } from '@/core/storage';
+import { GC_TIME, STALE_TIME, STORAGE_KEYS, THIRTY_DAYS } from '../../constants';
+import { queryClientStorage } from '../../storage';
 
 const defaultMutationConfig = { retry: false };
 const defaultQueryConfig = {
