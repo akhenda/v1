@@ -3,10 +3,10 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "tooling/*",
     "packages/*",
     "packages/backend/*",
-    "packages/shared/*"
+    "packages/shared/*",
+    "packages/tooling/*"
   ],
   "packageManager": "bun@1.1.26",
   "volta": {
