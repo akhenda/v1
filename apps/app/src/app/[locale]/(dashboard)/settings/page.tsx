@@ -9,9 +9,9 @@ import { Upload } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import { api } from '@v1/backend/convex/_generated/api';
-import type { Id } from '@v1/backend/convex/_generated/dataModel';
-import * as validators from '@v1/backend/convex/utils/validators';
+import { api } from '@v1/convex/_generated/api';
+import type { Id } from '@v1/convex/_generated/dataModel';
+import * as validators from '@v1/convex/utils/validators';
 import { Button } from '@v1/ui/button';
 import { Input } from '@v1/ui/input';
 import { UploadInput } from '@v1/ui/upload-input';

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 
-import { api } from '@v1/backend/convex/_generated/api';
+import { api } from '@v1/convex/_generated/api';
 
 export default async function Layout({ children }: PropsWithChildren) {
   const user = await fetchQuery(api.users.getUser, {}, { token: await convexAuthNextjsToken() });

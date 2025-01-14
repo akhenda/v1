@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-import type { api } from '@v1/backend/convex/_generated/api';
+import type { api } from '@v1/convex/_generated/api';
 import { Button, buttonVariants } from '@v1/ui/button';
 import {
   DropdownMenu,

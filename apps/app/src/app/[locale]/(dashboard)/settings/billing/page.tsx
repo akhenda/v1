@@ -4,8 +4,8 @@ import { useAction, useQuery } from 'convex/react';
 import { useState } from 'react';
 
 import { getLocaleCurrency } from '@/utils/misc';
-import { api } from '@v1/backend/convex/_generated/api';
-import { CURRENCIES, PLANS } from '@v1/backend/convex/schema';
+import { api } from '@v1/convex/_generated/api';
+import { CURRENCIES, PLANS } from '@v1/convex/schema';
 import { Button } from '@v1/ui/button';
 import { Switch } from '@v1/ui/switch';
 
@@ -23,9 +23,8 @@ export default function BillingSettings() {
 
   const handleUpgradeCheckout = async () => {
     const url = await getUpgradeCheckoutUrl({ interval: selectedPlanInterval });
-    if (!url) {
-      return;
-    }
+    if (!url) return;
+
     window.location.href = url;
   };
 

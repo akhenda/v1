@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/packages/backend',
+  cacheDir: '../../node_modules/.vite/packages/backend/convex',
   test: {
     watch: false,
     globals: true,

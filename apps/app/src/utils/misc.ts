@@ -1,4 +1,4 @@
-import { CURRENCIES } from "@v1/backend/convex/schema";
+import { CURRENCIES } from "@v1/convex/schema";
 
 /**
  * Locales.

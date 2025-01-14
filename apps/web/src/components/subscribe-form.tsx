@@ -1,6 +1,6 @@
 'use client';
 
-import { api } from '@v1/backend/convex/_generated/api';
+import { api } from '@v1/convex/_generated/api';
 import { Button } from '@v1/ui/button';
 import { Icons } from '@v1/ui/icons';
 import { Input } from '@v1/ui/input';
@@ -18,11 +18,7 @@ function SubmitButton() {
   );
 }
 
-type Props = {
-  group: string;
-  placeholder: string;
-  className?: string;
-};
+type Props = { group: string; placeholder: string; className?: string };
 
 export function SubscribeForm({ group, placeholder, className }: Props) {
   const subscribe = useAction(api.web.subscribe);

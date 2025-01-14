@@ -1,7 +1,13 @@
 {
   "name": "v1",
   "private": true,
-  "workspaces": ["apps/*", "tooling/*", "packages/*", "packages/shared/*"],
+  "workspaces": [
+    "apps/*",
+    "tooling/*",
+    "packages/*",
+    "packages/backend/*",
+    "packages/shared/*"
+  ],
   "packageManager": "bun@1.1.26",
   "volta": {
     "node": "22.12.0",

@@ -1,7 +1,14 @@
 {
-  "name": "@v1/backend",
+  "name": "@v1/convex",
   "version": "0.1.0",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    "./_generated/*": "./convex/_generated/*.js",
+    "./schema": "./convex/schema.ts",
+    "./utils/*": "./convex/utils/*.ts"
+  },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "dev": "convex dev --tail-logs",
@@ -16,10 +23,8 @@
     "test:coverage": "vitest run --coverage --coverage.reporter=text",
     "typecheck": "tsc --project convex/tsconfig.json --noEmit"
   },
-  "type": "module",
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@v1/config": "workspace:*",
     "convex": "1.17.4",
     "convex-helpers": "0.1.67",
     "openai": "4.77.0",

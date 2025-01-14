@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 
-import { api } from '@v1/backend/convex/_generated/api';
-import * as validators from '@v1/backend/convex/utils/validators';
+import { api } from '@v1/convex/_generated/api';
+import * as validators from '@v1/convex/utils/validators';
 import { Button } from '@v1/ui/button';
 import { Input } from '@v1/ui/input';
 

@@ -3,7 +3,7 @@ import { fetchQuery, preloadQuery } from 'convex/nextjs';
 import { redirect } from 'next/navigation';
 import type { ReactNode } from 'react';
 
-import { api } from '@v1/backend/convex/_generated/api';
+import { api } from '@v1/convex/_generated/api';
 
 import { Navigation } from './_components/navigation';
 

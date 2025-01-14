@@ -97,11 +97,7 @@ export async function sendSubscriptionSuccessEmail({
 }: SubscriptionEmailOptions) {
   const html = await renderSubscriptionSuccessEmail({ email, subscriptionId });
 
-  await sendEmail({
-    to: email,
-    subject: 'Successfully Subscribed to PRO',
-    html,
-  });
+  await sendEmail({ to: email, subject: 'Successfully Subscribed to PRO', html });
 }
 
 export async function sendSubscriptionErrorEmail({
@@ -110,9 +106,5 @@ export async function sendSubscriptionErrorEmail({
 }: SubscriptionEmailOptions) {
   const html = await renderSubscriptionErrorEmail({ email, subscriptionId });
 
-  await sendEmail({
-    to: email,
-    subject: 'Subscription Issue - Customer Support',
-    html,
-  });
+  await sendEmail({ to: email, subject: 'Subscription Issue - Customer Support', html });
 }
