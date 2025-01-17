@@ -4,17 +4,17 @@
 import { consoleTransport, logger } from 'react-native-logs';
 import type { ConsoleTransportOptions } from 'react-native-logs/dist/transports/consoleTransport.js';
 
-import getConfig from '@v1/config/src/mobile';
+// import getConfig from '@v1/config/mobile';
 
 import type { LogLevel } from './config.js';
-import { createLogger } from './libs/pino.js';
+// import { createLogger } from './libs/pino.js';
 
 type Colors = NonNullable<ConsoleTransportOptions['colors']>;
 type ExtractColor<T> = T extends Record<string, infer U> ? U : never;
 type Color = ExtractColor<Colors>;
 
-const config = getConfig({ client: {}, shared: {} });
-const { env } = config;
+// const config = getConfig({ client: {}, shared: {} });
+// const { env } = config;
 
 const DevLogger = logger.createLogger({
   async: true,
@@ -36,7 +36,7 @@ const DevLogger = logger.createLogger({
     colors: {
       trace: 'cyanBright',
       debug: 'white',
-      done: 'whiteBright',
+      done: 'green',
       success: 'greenBright',
       info: 'blueBright',
       notice: 'blue',
@@ -52,12 +52,13 @@ const DevLogger = logger.createLogger({
 export type { LogLevel };
 
 export function createProjectLogger(
-  project: string,
-  level: LogLevel = 'trace',
-  options?: Record<string, unknown>,
-  withLogtail = true,
+  _project: string,
+  _level: LogLevel = 'trace',
+  _options?: Record<string, unknown>,
+  _withLogtail = true,
 ) {
-  const PinoLogger = createLogger(project, level, options, withLogtail);
+  // const PinoLogger = createLogger(project, level, options, withLogtail);
 
-  return env.isDevelopment ? DevLogger : PinoLogger;
+  // return env.isDevelopment ? DevLogger : PinoLogger;
+  return DevLogger;
 }

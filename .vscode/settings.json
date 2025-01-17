@@ -66,5 +66,8 @@
   },
   "[handlebars]": {
     "editor.defaultFormatter": "mohd-akram.vscode-html-format"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   }
 }

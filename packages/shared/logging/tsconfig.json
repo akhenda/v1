@@ -1,8 +1,5 @@
 {
   "extends": "@v1/typescript/base.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "include": ["src/**/*.ts", "app.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.mts", "app.d.ts"],
   "exclude": ["node_modules"]
 }

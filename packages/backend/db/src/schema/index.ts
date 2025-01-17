@@ -5,7 +5,6 @@ import { type TableNames, relations, tables } from './tables/index.js';
 export * from './tables/index.js';
 
 export const schema = { ...tables, ...relations } as const;
-export default schema;
 
 export type Schema = typeof schema;
 export type DB = PostgresJsDatabase<Schema>;

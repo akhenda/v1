@@ -2,12 +2,11 @@
   "name": "@v1/kv",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "format": "biome --write .",
-    "lint": "biome check .",
+    "format": "biome format --write src",
+    "lint": "biome check src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

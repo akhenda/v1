@@ -1,8 +1,12 @@
 import { OpenPanel } from '@openpanel/react-native';
 
-import { logger, noop } from '../utils.js';
+import { createProjectLogger } from '@v1/logging/mobile';
+
+import { noop } from '../utils.js';
 
 import type { Config, Properties, TrackedUser } from './types.js';
+
+const logger = createProjectLogger('@v1/analytics');
 
 /* Setup */
 

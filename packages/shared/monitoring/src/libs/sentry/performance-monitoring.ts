@@ -1,6 +1,6 @@
 import type { Span, StartSpanOptions } from '@sentry/core';
 
-import type { PossibleSentry } from './types.js';
+import type { PossibleSentry } from './types';
 
 export function getProjectPerformanceMonitoring<T extends PossibleSentry>(Sentry: T) {
   return {

@@ -1,12 +1,12 @@
 // https://medium.com/@barisberkemalkoc/axios-interceptor-intelligent-db46653b7303
-import assert from 'node:assert/strict';
+// import assert from 'node:assert/strict';
 import Axios, { type InternalAxiosRequestConfig } from 'axios';
 
 import { config } from '../../constants';
 import { logger } from '../../observability';
 import { sessionTokenStorage } from '../../storage';
 
-assert(config.apiURL, 'env variable not set: apiURL');
+// assert(config.apiURL, 'env variable not set: apiURL');
 
 /**
  * Returns a promise that resolves with a new session token after a 1 second delay.

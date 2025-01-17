@@ -1,9 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "React Library",
-  "extends": "./base-strict.json",
+  "extends": "./base.json",
   "compilerOptions": {
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+
     "jsx": "react-native",
+    "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false
   }

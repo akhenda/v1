@@ -2,9 +2,13 @@ import { PostHog, PostHogProvider } from 'posthog-react-native';
 import type { PostHogPersistedProperty } from 'posthog-react-native/lib/posthog-core/src';
 import type { PropsWithChildren } from 'react';
 
-import { NoOp, logger, noop } from '../utils.js';
+import { createProjectLogger } from '@v1/logging/mobile';
+
+import { NoOp, noop } from '../utils.js';
 
 import type { Config, ExpoPostHogProviderProps, SetData, TrackedUser } from './types.js';
+
+export const logger = createProjectLogger('@v1/analytics');
 
 /* Setup */
 

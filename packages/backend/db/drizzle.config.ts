@@ -6,12 +6,11 @@
  */
 import { defineConfig } from 'drizzle-kit';
 
-// @ts-ignore
 import env from './dist/env.js';
 
 export default defineConfig({
   schema: './dist/src/schema/index.js',
-  out: './src/migrations',
+  out: env.DB_MIGRATION_DIR,
   dialect: 'postgresql',
   dbCredentials: { url: env.DATABASE_URL },
   verbose: true,

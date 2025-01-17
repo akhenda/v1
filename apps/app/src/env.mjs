@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 export const env = createEnv({
   shared: {
@@ -16,8 +16,7 @@ export const env = createEnv({
   },
   runtimeEnv: {
     NEXT_PUBLIC_CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL,
-    NEXT_PUBLIC_OPENPANEL_CLIENT_ID:
-      process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID,
+    NEXT_PUBLIC_OPENPANEL_CLIENT_ID: process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
     PORT: process.env.PORT,
     VERCEL_URL: process.env.VERCEL_URL,

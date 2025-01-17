@@ -5,19 +5,53 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    "./op/mobile": "./src/libs/open-panel/mobile.tsx",
-    "./op/next": "./src/libs/open-panel/next.tsx",
-    "./op/server": "./src/libs/open-panel/server.ts",
-    "./op/web": "./src/libs/open-panel/web.ts",
-    "./mobile": "./src/libs/post-hog/mobile.tsx",
-    "./next": "./src/libs/post-hog/next.tsx",
-    "./server": "./src/libs/post-hog/server.ts",
-    "./web": "./src/libs/post-hog/web.ts"
+    "./op/mobile": {
+      "types": "./src/libs/open-panel/mobile.tsx",
+      "require": "./dist/open-panel/mobile.cjs",
+      "import": "./dist/open-panel/mobile.js"
+    },
+    "./op/next": {
+      "types": "./src/libs/open-panel/next.tsx",
+      "require": "./dist/open-panel/next.cjs",
+      "import": "./dist/open-panel/next.js"
+    },
+    "./op/server": {
+      "types": "./src/libs/open-panel/server.ts",
+      "require": "./dist/open-panel/server.cjs",
+      "import": "./dist/open-panel/server.js"
+    },
+    "./op/web": {
+      "types": "./src/libs/open-panel/web.ts",
+      "require": "./dist/open-panel/web.cjs",
+      "import": "./dist/open-panel/web.js"
+    },
+    "./mobile": {
+      "types": "./src/libs/post-hog/mobile.tsx",
+      "require": "./dist/post-hog/mobile.cjs",
+      "import": "./dist/post-hog/mobile.js"
+    },
+    "./next": {
+      "types": "./src/libs/post-hog/next.tsx",
+      "require": "./dist/post-hog/next.cjs",
+      "import": "./dist/post-hog/next.js"
+    },
+    "./server": {
+      "types": "./src/libs/post-hog/server.ts",
+      "require": "./dist/post-hog/server.cjs",
+      "import": "./dist/post-hog/server.js"
+    },
+    "./web": {
+      "types": "./src/libs/post-hog/web.ts",
+      "require": "./dist/post-hog/web.cjs",
+      "import": "./dist/post-hog/web.js"
+    }
   },
   "scripts": {
+    "build": "tsup",
     "clean": "rm -rf .turbo node_modules",
-    "lint": "biome check .",
-    "format": "biome --write .",
+    "dev": "tsup --watch",
+    "lint": "biome check src",
+    "format": "biome format --write src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -27,15 +61,18 @@
     "@openpanel/web": "1.0.1",
     "@v1/logging": "workspace:*",
     "@vercel/functions": "1.5.1",
-    "expo-application": "6.0.1",
+    "expo-application": "6.0.2",
     "expo-constants": "17.0.4",
-    "expo-device": "7.0.1",
+    "expo-device": "7.0.2",
     "expo-file-system": "18.0.6",
-    "expo-localization": "16.0.0",
+    "expo-localization": "16.0.1",
     "next": "15.1.3",
     "posthog-js": "1.205.0",
     "posthog-node": "4.3.2",
     "posthog-react-native": "3.6.1",
     "remeda": "2.19.0"
+  },
+  "devDependencies": {
+    "tsup": "8.3.5"
   }
 }

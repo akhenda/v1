@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 // @ts-ignore
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -7,6 +7,7 @@ import { PostHogProvider, usePostHog } from 'posthog-js/react';
 import { type ReactNode, Suspense, useEffect } from 'react';
 
 import { NoOp } from '../utils.js';
+
 import type { Config, NextPostHogProviderProps } from './types.js';
 
 export function NextPostHogProvider({
@@ -53,7 +54,7 @@ export function PostHogPageView() {
  *
  * @see: https://nextjs.org/docs/messages/deopted-into-client-rendering
  */
-export default function SuspendedPostHogPageView() {
+export function SuspendedPostHogPageView() {
   return (
     <Suspense fallback={null}>
       <PostHogPageView />

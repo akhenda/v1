@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import getConfig from '@v1/config/mobile';
+import { getConfig } from '@v1/config/mobile';
 
 /**
  * @see https://docs.expo.dev/guides/using-config/#environment-variables

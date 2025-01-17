@@ -2,7 +2,6 @@ import { migrate } from 'drizzle-orm/postgres-js/migrator';
 
 import { connection, db } from './drizzle.js';
 
-import config from '../drizzle.config.js';
 import env from '../env.js';
 
 if (!env.DB_MIGRATING) {
@@ -10,7 +9,7 @@ if (!env.DB_MIGRATING) {
 }
 
 (async () => {
-  await migrate(db, { migrationsFolder: config.out! });
+  await migrate(db, { migrationsFolder: env.DB_MIGRATION_DIR });
 
   await connection.end();
 })();

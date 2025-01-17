@@ -12,6 +12,7 @@ import {
   Tailwind,
 } from '@react-email/components';
 
+// TODO(prod): Use the env package
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3001';

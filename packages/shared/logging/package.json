@@ -3,9 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "main": "./src/index.ts",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    },
+    "./mobile": {
+      "types": "./src/mobile.ts",
+      "require": "./dist/mobile.cjs",
+      "import": "./dist/mobile.js"
+    },
+    "./nextjs": {
+      "types": "./src/nextjs.ts",
+      "require": "./dist/nextjs.cjs",
+      "import": "./dist/nextjs.js"
+    },
+    "./pino": {
+      "types": "./src/pino.ts",
+      "require": "./dist/pino.cjs",
+      "import": "./dist/pino.js"
+    }
+  },
   "scripts": {
-    "clean": "rm -rf .turbo node_modules",
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist node_modules",
+    "dev": "tsup --watch",
     "lint": "biome check .",
     "format": "biome format --write .",
     "release": "semantic-release",
@@ -20,7 +46,7 @@
     "@v1/config": "workspace:*",
     "@v1/release": "workspace:*",
     "@v1/types": "workspace:*",
-    "chalk": "5.3.0",
+    "chalk": "4.1.2",
     "error-stack-parser": "2.1.4",
     "pino": "9.5.0",
     "react-native-logs": "5.3.0",
@@ -28,5 +54,8 @@
     "stack-generator": "2.0.10",
     "unilogr": "0.0.27",
     "universal-logger-pro": "1.2.1"
+  },
+  "devDependencies": {
+    "tsup": "8.3.5"
   }
 }

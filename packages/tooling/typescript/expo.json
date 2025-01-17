@@ -1,8 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Expo Application",
-  "extends": "./base-strict.json",
+  "extends": "./base.json",
   "compilerOptions": {
-    "jsx": "react-native"
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "jsx": "react-native",
+    "moduleResolution": "Bundler",
+    "module": "Preserve",
+    "strict": true
   }
 }

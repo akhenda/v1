@@ -1,6 +1,7 @@
 import { posthog } from 'posthog-js';
 
 import { logger, noop } from '../utils.js';
+
 import type { Config, SetData } from './types.js';
 
 /* Setup */

@@ -1,59 +1,21 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
-
-const { getDefaultConfig } = require('expo/metro-config');
-const { withNativeWind } = require('nativewind/metro');
-const { mergeConfig } = require('metro-config');
-// const { FileStore } = require('metro-cache');
 const path = require('node:path');
+const { getDefaultConfig } = require('expo/metro-config');
+const {
+  withTurborepoManagedCache,
+  withWorkspace,
+  withNativewind,
+  composePlugins,
+} = require('@v1/metro');
 
-// Find the project and workspace directories
-const projectRoot = __dirname;
+const PROJECT_ROOT = __dirname;
+const WORKSPACE_ROOT = path.resolve(PROJECT_ROOT, '../..');
 
-const defaultConfig = getDefaultConfig(projectRoot);
+const withV1 = composePlugins(
+  (config) => withNativewind(config, WORKSPACE_ROOT),
+  (config) => withWorkspace(config, WORKSPACE_ROOT, PROJECT_ROOT),
+  (config) => withTurborepoManagedCache(config, PROJECT_ROOT),
+);
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('metro-config').MetroConfig}
- */
-const customConfig = { cacheVersion: 'dbz' };
+const config = getDefaultConfig(PROJECT_ROOT);
 
-/**
- * Metro configuration
- * @param {import('metro-config').MetroConfig} config
- */
-function withTurborepoMetro(config) {
-  // This can be replaced with `find-yarn-workspace-root`
-  const monorepoRoot = path.resolve(projectRoot, '../..');
-
-  // 1. Watch all files within the monorepo
-  config.watchFolders = [monorepoRoot];
-
-  // 2. - Force resolving nested modules to the folders below
-  config.resolver.disableHierarchicalLookup = true;
-
-  // 3. Let Metro know where to resolve packages and in what order
-  config.resolver.nodeModulesPaths = [
-    path.resolve(projectRoot, 'node_modules'),
-    path.resolve(monorepoRoot, 'node_modules'),
-  ];
-
-  // Use turborepo to restore the cache when possible
-  // config.cacheStores = [
-  //   new FileStore({
-  //     root: path.join(projectRoot, 'node_modules', '.cache', 'metro'),
-  //   }),
-  // ];
-}
-
-async function createConfig() {
-  const turboConfig = await withTurborepoMetro(mergeConfig(defaultConfig, customConfig));
-  const nativeWindConfig = withNativeWind(turboConfig, { input: './src/global.css' });
-
-  nativeWindConfig.resetCache = true;
-
-  return nativeWindConfig;
-}
-
-module.exports = createConfig();
+module.exports = withV1(config);

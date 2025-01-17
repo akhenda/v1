@@ -1,4 +1,4 @@
-import { Button } from "@v1/ui/button";
+import { Button } from '@v1/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@v1/ui/dialog";
+} from '@v1/ui/dialog';
 
 interface UnsubscribeWarningModalProps {
   isOpen: boolean;
@@ -25,8 +25,7 @@ export function UnsubscribeWarningModal({
         <DialogHeader>
           <DialogTitle>Active Subscription</DialogTitle>
           <DialogDescription>
-            You have an active subscription. To delete your account, you need to
-            unsubscribe first.
+            You have an active subscription. To delete your account, you need to unsubscribe first.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

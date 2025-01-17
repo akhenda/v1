@@ -9,9 +9,7 @@
  * @returns A configuration for semantic-release.
  */
 function getBaseConfig(project) {
-  console.log('project: ', project);
   const projectName = project.trim().replace('@v1/', '').trim();
-  console.log('projectName: ', projectName);
 
   /**
    * @type {import('semantic-release').GlobalConfig}

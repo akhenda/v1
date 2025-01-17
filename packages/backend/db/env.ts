@@ -23,6 +23,7 @@ const EnvSchema = {
   DB_PORT: z.coerce.number(),
   DATABASE_URL: z.string(),
   DB_MIGRATING: stringBoolean,
+  DB_MIGRATION_DIR: z.string().default('./src/migrations'),
   DB_SEEDING: stringBoolean,
   DB_LOG_LEVEL: z.enum(['info', 'warn', 'error', 'debug', 'trace']).default('info'),
 };

@@ -6,27 +6,31 @@
   "sideEffects": false,
   "exports": {
     "./client": {
-      "types": "./src/client/index.ts",
-      "default": "./dist/client/index.cjs"
+      "require": "./dist/client/index.cjs",
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
     },
     "./mobile": {
-      "types": "./src/mobile/index.ts",
-      "default": "./dist/mobile/index.cjs"
+      "require": "./dist/mobile/index.cjs",
+      "types": "./dist/mobile/index.d.ts",
+      "import": "./dist/mobile/index.js"
     },
     "./next": {
-      "types": "./src/next/index.ts",
-      "default": "./dist/next/index.cjs"
+      "require": "./dist/next/index.cjs",
+      "types": "./dist/next/index.d.ts",
+      "import": "./dist/next/index.js"
     },
     "./server": {
-      "types": "./src/server/index.ts",
-      "default": "./dist/server/index.cjs"
+      "require": "./dist/server/index.cjs",
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
     }
   },
   "scripts": {
-    "build": "tsup src --format cjs,esm",
-    "build:tsc": "tsc",
+    "build": "tsup",
+    "build:tsc": "rm -rf dist && tsc",
     "clean": "rm -rf .turbo dist node_modules coverage",
-    "dev": "tsc --watch",
+    "dev": "tsup --watch",
     "format": "biome format --write .",
     "lint": "biome check .",
     "release": "semantic-release",

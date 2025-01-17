@@ -1,1 +1,1 @@
-export * from './libs/upstash/index.js';
+export * from './libs/upstash';

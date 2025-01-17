@@ -1,1 +1,1 @@
-export * from './libs/sentry/index.js';
+export * from './libs/sentry';

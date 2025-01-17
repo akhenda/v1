@@ -4,15 +4,20 @@
   "private": true,
   "type": "module",
   "main": "./src/index.ts",
+  "exports": {
+    "types": "./src/index.ts",
+    "require": "./dist/src/index.cjs",
+    "import": "./dist/src/index.js"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "clean": "rm -rf .turbo node_modules",
-    "dev": "bun run docker:up",
+    "dev": "bun run docker:up && tsup --watch",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "drizzle-kit:copy": "cp node_modules/drizzle-kit/bin.cjs node_modules/drizzle-kit/bin.js",
     "drizzle-kit:esm": "npx jiti ../../node_modules/drizzle-kit/bin.js --config=./drizzle.config.ts",
-    "format": "biome --write .",
+    "format": "biome format --write .",
     "generate": "bun run build && drizzle-kit generate",
     "lint": "biome check .",
     "migrate": "bun run build && drizzle-kit migrate --config=./drizzle.config.ts",
@@ -39,6 +44,7 @@
   "devDependencies": {
     "cross-env": "7.0.3",
     "drizzle-kit": "0.30.1",
+    "tsup": "8.3.5",
     "tsx": "4.19.2"
   }
 }

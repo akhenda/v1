@@ -1,18 +1,23 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": ["expo/tsconfig.base", "@v1/typescript/expo.json"],
   "compilerOptions": {
     "strict": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./src/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@env/*": ["./src/core/constants/config/*"]
     }
   },
   "include": [
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "nativewind-env.d.ts"
+    "app.config.ts",
+    "nativewind-env.d.ts",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
   ]
 }

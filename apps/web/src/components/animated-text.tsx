@@ -1,19 +1,18 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from 'react';
 
-const lettersAndSymbols = "abcdefghijklmnopqrstuvwxyz!@#$%^&*-_+=;:<>,";
+const lettersAndSymbols = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*-_+=;:<>,';
 
 interface AnimatedTextProps {
   text: string;
 }
 
 export function AnimatedText({ text }: AnimatedTextProps) {
-  const [animatedText, setAnimatedText] = useState("");
+  const [animatedText, setAnimatedText] = useState('');
 
   const getRandomChar = useCallback(
-    () =>
-      lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
+    () => lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
     [],
   );
 
@@ -24,9 +23,9 @@ export function AnimatedText({ text }: AnimatedTextProps) {
 
     const generateRandomText = () =>
       text
-        .split("")
+        .split('')
         .map(() => getRandomChar())
-        .join("");
+        .join('');
 
     setAnimatedText(generateRandomText());
 
@@ -43,9 +42,9 @@ export function AnimatedText({ text }: AnimatedTextProps) {
           text.slice(0, i + 1) +
           prevText
             .slice(i + 1)
-            .split("")
+            .split('')
             .map(() => getRandomChar())
-            .join(""),
+            .join(''),
       );
     }
   }, [text, getRandomChar]);

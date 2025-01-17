@@ -1,5 +1,10 @@
 {
   "name": "@v1/typescript",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "format": "biome format --write .",
+    "lint": "biome check ."
+  }
 }

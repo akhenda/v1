@@ -1,3 +1,3 @@
-import ModalScreen from '@v1/expo/src/features/modal';
+import ModalScreen from '@/features/modal';
 
 export default ModalScreen;

@@ -1,4 +1,5 @@
-export { getAppErrorMonitoring } from './error-monitoring.js';
-export { getProjectPerformanceMonitoring } from './performance-monitoring.js';
-export * from './constants.js';
-export * from './types.js';
+export { getAppErrorMonitoring } from './error-monitoring';
+export { getAppErrorMonitoring as getAppErrorMonitoringRN } from './error-monitoring.native';
+export { getProjectPerformanceMonitoring } from './performance-monitoring';
+export * from './constants';
+export * from './types';

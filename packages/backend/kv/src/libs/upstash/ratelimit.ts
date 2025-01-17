@@ -2,7 +2,7 @@ import 'server-only';
 
 import { Ratelimit } from '@upstash/ratelimit';
 
-import { client } from './redis.js';
+import { client } from './redis';
 
 export const ratelimit = new Ratelimit({
   limiter: Ratelimit.fixedWindow(10, '10s'),

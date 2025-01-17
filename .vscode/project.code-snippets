@@ -2,32 +2,36 @@
   "View": {
     "prefix": "V",
     "description": "A Simple View ",
-    "body": ["<View className=\"flex-1 items-center justify-center\">", "  $1", "</View>"],
+    "body": [
+      "<View className=\"flex-1 items-center justify-center\">",
+      "  $1",
+      "</View>"
+    ]
   },
   "Button": {
     "prefix": "bt",
     "description": "Button",
-    "body": ["<Button onPress={() => }>", "  <Text>${1}</Text>", "</Button>"],
+    "body": ["<Button onPress={() => }>", "  <Text>${1}</Text>", "</Button>"]
   },
   "Text": {
     "prefix": "T",
     "description": "A Simple Text",
-    "body": ["<Text>", "  $1", "</Text>"],
+    "body": ["<Text>", "  $1", "</Text>"]
   },
   "export *": {
     "prefix": "ex",
     "description": "export *",
-    "body": ["export * from '.$1';"],
+    "body": ["export * from '.$1';"]
   },
   "import": {
     "prefix": "im",
     "description": "import",
-    "body": ["import * from ${1}"],
+    "body": ["import * from ${1}"]
   },
   "state": {
     "prefix": "useS",
     "description": "state",
-    "body": ["const [${1}, set${1:example}] = useState();", ""],
+    "body": ["const [${1}, set${1:example}] = useState();", ""]
   },
   "Component": {
     "prefix": "comp",
@@ -47,12 +51,12 @@
       "    </View>",
       "  );",
       "};",
-      "",
-    ],
+      ""
+    ]
   },
   "router": {
     "prefix": "router",
     "description": "navigate",
-    "body": ["const router = useRouter();", ""],
-  },
+    "body": ["const router = useRouter();", ""]
+  }
 }

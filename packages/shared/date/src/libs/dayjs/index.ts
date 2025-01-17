@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
-import dayjsLocalizedFormat from 'dayjs/plugin/localizedFormat.js';
-import dayjsUtc from 'dayjs/plugin/utc.js';
+import dayjsLocalizedFormat from 'dayjs/plugin/localizedFormat';
+import dayjsUtc from 'dayjs/plugin/utc';
 
-import type { DateFormats } from './types.js';
+import type { DateFormats } from './types';
 
 import 'dayjs/locale/en';
 import 'dayjs/locale/sw';

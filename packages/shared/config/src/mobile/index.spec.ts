@@ -3,8 +3,8 @@ import { options } from './example.js';
 
 describe('env/mobile', () => {
   it('gets mobile envs & constants from config', async () => {
-    const getConfig = await import('./index.js');
-    const config = getConfig.default(options);
+    const { getConfig } = await import('./index.js');
+    const config = getConfig(options);
     const { env, constants } = config;
 
     // Constants
@@ -39,8 +39,8 @@ describe('env/mobile', () => {
     });
 
     it('gets mobile envs & constants from config', async () => {
-      const getConfig = await import('./index.js');
-      const config = getConfig.default(options);
+      const { getConfig } = await import('./index.js');
+      const config = getConfig(options);
       const { env, constants } = config;
 
       // Constants

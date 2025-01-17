@@ -1,2 +1,2 @@
-export * from './ratelimit.js';
-export * from './redis.js';
+export * from './ratelimit';
+export * from './redis';

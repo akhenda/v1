@@ -12,7 +12,8 @@
  */
 import type { ExpoEnvOptions, ZodEnvSchema } from '../types.js';
 
-import constants from './constants.js';
+import { type ExpoAppVariant, type NodeEnv, expoAppVariants, nodeEnvs } from '../types.js';
+import { constants } from './constants.js';
 import getEnv from './env.js';
 
 /**
@@ -27,10 +28,10 @@ import getEnv from './env.js';
  * @param options - The environment options that include client and shared environments.
  * @returns An object with constants and the validated environment variables.
  */
-function getConfig<TClient extends ZodEnvSchema, TShared extends ZodEnvSchema>(
+export function getConfig<TClient extends ZodEnvSchema, TShared extends ZodEnvSchema>(
   options: ExpoEnvOptions<TClient, TShared>,
 ) {
   return { constants, env: getEnv(options) };
 }
 
-export default getConfig;
+export { expoAppVariants, nodeEnvs, type ExpoAppVariant, type NodeEnv };

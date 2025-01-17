@@ -1,6 +1,6 @@
 import type { SupportedLocale, SupportedLocales } from '../types.js';
 
-export const isDev = __DEV__;
+export const isDev = process.env.NODE_ENV === 'development';
 export const bundleIdRegex = /^com\.[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[dev|prod|preview|rc]+$/;
 
 export interface BaseConfig {
@@ -37,7 +37,7 @@ export interface BaseConfig {
   supportedLocales: SupportedLocales;
 }
 
-const constants: BaseConfig = {
+export const constants: BaseConfig = {
   catchErrors: 'always',
   exitRoutes: ['Welcome', 'Home'],
   persistNavigation: 'never',
@@ -45,5 +45,3 @@ const constants: BaseConfig = {
   defaultLocale: 'en',
   supportedLocales: ['en', 'sw'],
 };
-
-export default constants;

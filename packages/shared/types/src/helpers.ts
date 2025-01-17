@@ -36,9 +36,7 @@ export type Union2Tuple<T> = PickOne<T> extends infer U // assign PickOne<T> to 
  *
  * https://www.youtube.com/watch?v=2lCCKiWGlC0
  */
-export type Prettify<T> = {
-  [K in keyof T]: T[K];
-} & {};
+export type Prettify<T> = { [K in keyof T]: T[K] } & {};
 
 /**
  * Converts an array of strings into a union
@@ -46,3 +44,69 @@ export type Prettify<T> = {
 export type UnionFromArray<T extends readonly string[]> = {
   [K in T[number]]: K;
 }[T[number]];
+
+/**
+ * Converts an object into a partial object, except for the specified keys
+ */
+export type NullableExcept<T extends Record<string, unknown>, K extends keyof T> = {
+  [key in K]: NonNullable<T[K]>;
+} & Partial<T>;
+
+/**
+ * Converts an object into a nullable object
+ */
+export type Nullish<T> = T | null | undefined;
+
+/**
+ * Converts a union into an intersection
+ */
+export type UnionToIntersection<U> = // biome-ignore lint/suspicious/noExplicitAny: this is a type utility
+  (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+
+/**
+ * Creates a tuple with a fixed length
+ */
+export type FixedTuple<T, N extends number, R extends unknown[] = []> = R['length'] extends N
+  ? R
+  : FixedTuple<T, N, [T, ...R]>;
+
+/**
+ * Creates a tuple
+ */
+export type Tuple<
+  T,
+  N extends number | undefined = undefined,
+  R extends T[] = [],
+> = N extends undefined ? [T, ...T[]] : R['length'] extends N ? R : Tuple<T, N, [T, ...R]>;
+
+/**
+ * The result of a function
+ */
+export type Result<T = string, E = Error> =
+  | { data: T; success: true }
+  | { success: false; error: E };
+
+/**
+ * Creates a type with required fields
+ */
+export type RequiredFields<T, K extends keyof T> = T & Required<Pick<T, K>>;
+
+/**
+ * Creates a type with optional fields
+ */
+export type PartialFields<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+/**
+ * Creates a placeholder object
+ */
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+type ObjectPlaceholder = Record<string, any>;
+
+/**
+ * Overrides one object with another
+ */
+export type Override<T1 extends ObjectPlaceholder, T2 extends ObjectPlaceholder> = Omit<
+  T1,
+  keyof T2
+> &
+  T2;

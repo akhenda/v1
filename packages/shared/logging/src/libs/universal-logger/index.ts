@@ -1,10 +1,12 @@
 import * as R from 'remeda';
-import universalLogger, { defineLogLevel } from './core/index.js';
+import { defineLogLevel, logger as universalLogger } from './core/index.js';
 
 import { LOGS_CONFIG, type LogLevel } from '../../config.js';
 
 import type { LoggerOptions } from './core/types.js';
 import { styleable } from './plugin/index.js';
+
+export type UniversalLogger = ReturnType<typeof universalLogger>;
 
 const TRACE = defineLogLevel('trace', LOGS_CONFIG.levels.trace);
 const DEBUG = defineLogLevel('debug', LOGS_CONFIG.levels.debug);
@@ -46,7 +48,7 @@ class Logger {
   private static level: LogLevel;
   private static project: string;
 
-  logger: ReturnType<typeof universalLogger> | null = null;
+  logger: UniversalLogger | null = null;
 
   /**
    * The Logger's constructor should always be private to prevent direct

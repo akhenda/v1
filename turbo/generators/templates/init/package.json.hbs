@@ -3,12 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./src/index.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "format": "biome --write .",
+    "format": "biome format --write .",
     "lint": "biome check .",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },

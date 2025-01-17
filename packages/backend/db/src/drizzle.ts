@@ -1,7 +1,7 @@
 import { drizzle as drizzleORM } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
-import schema, { type DB } from './schema/index.js';
+import { type DB, schema } from './schema/index.js';
 
 import env from '../env.js';
 

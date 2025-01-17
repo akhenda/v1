@@ -6,7 +6,7 @@ import { DEBUG, ERROR, INFO, OFF, TRACE, WARN } from './constants.js';
 import stacktrace from './stacktrace.js';
 import type { LogContext, LogHandler } from './types.js';
 
-class Logger extends EventEmitter {
+export class Logger extends EventEmitter {
   namespace = '';
   level = OFF;
   stacktrace = false;
@@ -119,5 +119,3 @@ class Logger extends EventEmitter {
     if (ERROR.value >= this.level.value) this.invokeChainedHandlers(ERROR, messages);
   }
 }
-
-export default Logger;

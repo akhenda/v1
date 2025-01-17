@@ -1,6 +1,6 @@
 import type { SeverityLevel } from '@sentry/core';
 
-import { type LogLevel, createProjectLogger } from '@v1/logging/src/mobile';
+import { type LogLevel, createProjectLogger } from '@v1/logging/mobile';
 import { breadcrumbType, breadcrumbsCategory } from '@v1/monitoring';
 
 import { Toaster, type ToasterType } from '../../design/ui-kit/components/toaster';

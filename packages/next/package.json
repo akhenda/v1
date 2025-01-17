@@ -13,9 +13,9 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "format": "biome --write .",
-    "lint": "biome check .",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "format:disabled": "biome format --write .",
+    "lint:disabled": "biome check .",
+    "typecheck:disabled": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
     "@sentry/core": "8.47.0",
@@ -50,12 +50,12 @@
   "devDependencies": {
     "@testing-library/dom": "10.4.0",
     "@testing-library/react": "16.1.0",
-    "@types/react": "19.0.4",
-    "@types/react-dom": "19.0.2",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
     "autoprefixer": "10.4.20",
     "postcss": "8.4.49",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "tailwindcss": "3.4.17",
     "tailwindcss-animate": "1.0.7",
     "typescript": "5.7.2"

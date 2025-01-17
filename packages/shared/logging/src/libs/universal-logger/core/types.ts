@@ -1,4 +1,5 @@
 import type ErrorStackParser from 'error-stack-parser';
+
 import type LogLevel from './LogLevel.js';
 
 export type LogContext = {

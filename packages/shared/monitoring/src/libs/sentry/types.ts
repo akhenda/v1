@@ -12,7 +12,7 @@ import type {
 
 import type { Primitives } from '@v1/types';
 
-import type { tags } from './constants.js';
+import type { tags } from './constants';
 
 export type PossibleSentry = {
   init: (options: {

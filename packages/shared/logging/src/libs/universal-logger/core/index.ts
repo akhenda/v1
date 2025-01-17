@@ -1,11 +1,13 @@
 import type { LogLevel as Level } from '../../../config.js';
 
 import LogLevel from './LogLevel.js';
-import Logger from './Logger.js';
+import { Logger } from './Logger.js';
 import { DEBUG } from './constants.js';
 
 const contextualLoggers: { [key: string]: Logger } = {};
 const globalLogger = new Logger({ level: DEBUG });
+
+export * from './constants.js';
 
 globalLogger.on('setLevel', (level) => {
   // Apply filter level to all registered contextual loggers
@@ -16,7 +18,7 @@ globalLogger.on('setLevel', (level) => {
   });
 });
 
-const logger = (name: string) => {
+export const logger = (name: string): Logger => {
   // biome-ignore lint/style/noParameterAssign: very intentional
   name = String(name || '');
 
@@ -31,6 +33,3 @@ const logger = (name: string) => {
 export const defineLogLevel = (name: Level, value: number) => {
   return new LogLevel(name, value);
 };
-
-export * from './constants.js';
-export default logger;

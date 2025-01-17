@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "index.cjs",
+  "sideEffects": false,
+  "scripts": {
+    "format": "biome format --write .",
+    "lint": "biome check ."
+  },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",

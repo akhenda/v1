@@ -2,8 +2,8 @@ import type { Breadcrumb, CaptureContext, Event, Scope, SeverityLevel, User } fr
 
 import type { Primitives } from '@v1/types';
 
-import type { tags } from './constants.js';
-import type { ErrorMonitoringConfig, PossibleSentry } from './types.js';
+import type { tags } from './constants';
+import type { ErrorMonitoringConfig, PossibleSentry } from './types';
 
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
@@ -14,7 +14,7 @@ const onesignalRegex = /onesignal.com/i;
 const appleRegex = /apple.com/i;
 const postHogRegex = /posthog.com/i;
 
-export function getAppErrorMonitoring<T extends PossibleSentry>(Sentry: T) {
+export function getAppErrorMonitoring<TSentry extends PossibleSentry>(Sentry: TSentry) {
   return {
     /*  Setup  */
     init({
