@@ -1,6 +1,0 @@
-{
-  "aliases": {
-    "components": "./src/design/ui-kit/components",
-    "lib": "packages/expo/design/lib"
-  }
-}

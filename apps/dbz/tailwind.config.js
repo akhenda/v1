@@ -1,4 +1,4 @@
-const baseConfig = require('@v1/expo/tailwind.config');
+const baseConfig = require('./src/design/ui-kit/tailwind.config');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = baseConfig;
