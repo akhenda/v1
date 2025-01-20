@@ -29,18 +29,14 @@ export default function MaterialTopTabsLayout() {
         screenOptions={{
           tabBarActiveTintColor: colors.text,
           tabBarInactiveTintColor: 'grey',
-          tabBarLabelStyle: {
-            fontSize: 14,
-            textTransform: 'none',
-            fontWeight: 'bold',
-          },
+          tabBarLabelStyle: { fontSize: 14, textTransform: 'none', fontWeight: 'bold' },
           tabBarIndicatorStyle: { backgroundColor: colors.text },
           tabBarScrollEnabled: true,
           tabBarItemStyle: { width: width / 2 },
         }}
       >
-        <MaterialTopTabs.Screen name="index" options={{ title: 'Start Page' }} />
-        <MaterialTopTabs.Screen name="hello" options={{ title: 'Hello, World!' }} />
+        <MaterialTopTabs.Screen name="index" options={{ title: 'Favoutites' }} />
+        <MaterialTopTabs.Screen name="settings" options={{ title: 'Settings' }} />
       </MaterialTopTabs>
     </>
   );

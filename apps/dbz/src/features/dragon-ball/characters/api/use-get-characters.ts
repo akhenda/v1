@@ -15,8 +15,7 @@ export function getQueryKey(page?: number) {
 export function useGetCharacters(page: number) {
   const query = useQuery<Page<CharacterListItem> | undefined>({
     queryKey: getQueryKey(page),
-    queryFn: ({ signal }) =>
-      getDragonBallCharacters(page, { affiliation: 'Z Fighter' }, { signal }),
+    queryFn: ({ signal }) => getDragonBallCharacters(page, {}, { signal }),
     placeholderData: keepPreviousData,
   });
 
@@ -27,8 +26,7 @@ export function useGetCharacters(page: number) {
     if (query.data?.links.next) {
       queryClient.prefetchQuery({
         queryKey: getQueryKey(page + 1),
-        queryFn: ({ signal }) =>
-          getDragonBallCharacters(page + 1, { affiliation: 'Z Fighter' }, { signal }),
+        queryFn: ({ signal }) => getDragonBallCharacters(page + 1, {}, { signal }),
       });
     }
   }, [query.data, page, queryClient]);

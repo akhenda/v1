@@ -13,12 +13,15 @@ const ENDPOINT = '/region';
 client.setBaseURL(BASE_URL);
 
 /**
- * Get a list of countries in the Africa region.
+ * Fetches a list of countries in the Africa region from the API.
  *
- * @returns A list of countries in the Africa region.
+ * @param options Optional settings for the request, including an abort signal.
+ * @returns A promise that resolves to an array of Country objects.
  */
-export async function getCountries() {
-  const { data } = await client.get<Country[]>(`${ENDPOINT}/africa`);
+export async function getCountries(options?: { signal?: AbortSignal }) {
+  // Send a GET request to the API to fetch countries in the Africa region
+  const { data } = await client.get<Country[]>(`${ENDPOINT}/africa`, {}, options);
 
+  // Return the fetched data
   return data;
 }

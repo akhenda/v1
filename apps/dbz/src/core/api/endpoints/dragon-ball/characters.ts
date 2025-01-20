@@ -3,6 +3,7 @@
  *
  * Base URL: http://dragonball-api.com/api
  */
+
 import type { Character, CharacterFilters, CharacterListItem } from './characters.types';
 import type { Page } from './types';
 
@@ -26,10 +27,11 @@ export async function getDragonBallCharacters(
   filters: CharacterFilters = {},
   options?: { signal?: AbortSignal },
 ) {
-  const { data } = await client.get<Page<CharacterListItem>>(ENDPOINT, {
-    params: { page, ...filters },
-    signal: options?.signal,
-  });
+  const { data } = await client.get<Page<CharacterListItem>>(
+    ENDPOINT,
+    { page, ...filters },
+    options,
+  );
 
   return data;
 }
@@ -42,9 +44,7 @@ export async function getDragonBallCharacters(
  * @returns The character.
  */
 export async function getDragonBallCharacter(id: number, options?: { signal?: AbortSignal }) {
-  const { data } = await client.get<Character>(`${ENDPOINT}/${id}`, {
-    signal: options?.signal,
-  });
+  const { data } = await client.get<Character>(`${ENDPOINT}/${id}`, {}, options);
 
   return data;
 }

@@ -1,3 +1,3 @@
-import HomeScreen from '@/features/home';
+import { Planets } from '@/features/dragon-ball';
 
-export default HomeScreen;
+export default Planets;

@@ -26,10 +26,7 @@ export async function getDragonBallPlanets(
   filters: PlanetFilters = {},
   options?: { signal?: AbortSignal },
 ) {
-  const { data } = await client.get<Page<Planet>>(ENDPOINT, {
-    params: { page, ...filters },
-    signal: options?.signal,
-  });
+  const { data } = await client.get<Page<Planet>>(ENDPOINT, { page, ...filters }, options);
 
   return data;
 }
@@ -42,9 +39,7 @@ export async function getDragonBallPlanets(
  * @returns The response data from the API.
  */
 export async function getDragonBallPlanet(id: number, options?: { signal?: AbortSignal }) {
-  const { data } = await client.patch<Planet>(`${ENDPOINT}/${id}`, {
-    signal: options?.signal,
-  });
+  const { data } = await client.get<Planet>(`${ENDPOINT}/${id}`, {}, options);
 
   return data;
 }

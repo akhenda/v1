@@ -1,4 +1,11 @@
-import { keepPreviousData, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  type InfiniteData,
+  type QueryKey,
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 import { useEffect } from 'react';
 
 import type { Page, Planet } from '../../../../core/api/endpoints/dragon-ball';
@@ -30,6 +37,25 @@ export function useGetPlanets(page: number) {
       });
     }
   }, [query.data, page, queryClient]);
+
+  return query;
+}
+
+export function useGetInfinitePlanets() {
+  const query = useInfiniteQuery<
+    Page<Planet> | undefined,
+    Error,
+    InfiniteData<Page<Planet>, number>,
+    QueryKey,
+    number
+  >({
+    queryKey: getQueryKey(),
+    queryFn: ({ signal, pageParam }) => getDragonBallPlanets(pageParam, {}, { signal }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      return lastPage?.links.next ? lastPage.meta.currentPage + 1 : undefined;
+    },
+  });
 
   return query;
 }

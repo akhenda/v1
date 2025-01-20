@@ -1,9 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 import { QueryClient } from '@tanstack/react-query';
 import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client';
 
 import { GC_TIME, STALE_TIME, STORAGE_KEYS, THIRTY_DAYS } from '../../constants';
-import { queryClientStorage } from '../../storage';
 
 const defaultMutationConfig = { retry: false };
 const defaultQueryConfig = {
@@ -15,7 +15,7 @@ const defaultQueryConfig = {
 
 const asyncStoragePersister = createAsyncStoragePersister({
   key: STORAGE_KEYS.store.id,
-  storage: queryClientStorage,
+  storage: AsyncStorage,
 });
 
 export const persistOptions: Omit<PersistQueryClientOptions, 'queryClient'> = {

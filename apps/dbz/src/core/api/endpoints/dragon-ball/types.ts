@@ -13,3 +13,9 @@ export type Page<T> = {
   meta: PageMeta;
   links: PageLinks;
 };
+
+export type InfinitePage<T> = {
+  items: T[];
+  previousCursor?: number;
+  nextCursor?: number;
+};

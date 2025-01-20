@@ -1,2 +1,2 @@
 export { useGetPlanet } from './use-get-planet';
-export { useGetPlanets } from './use-get-planets';
+export { useGetPlanets, useGetInfinitePlanets } from './use-get-planets';
